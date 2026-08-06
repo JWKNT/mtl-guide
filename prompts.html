@@ -22,13 +22,11 @@
     <main class="doc-shell">
       <header class="doc-hero">
         <div><h1>Prompt library</h1><p class="doc-summary">Reusable prompts for discovery, authority building, strict translation, bilingual review, and consistency auditing.</p></div>
-        <a class="raw-link" href="PROMPTS.md">View raw Markdown</a>
+        <div class="doc-actions">
+          <button class="toc-toggle" id="toc-toggle" type="button" aria-expanded="false" aria-controls="doc-toc">Contents</button>
+          <a class="raw-link" href="PROMPTS.md">View raw Markdown</a>
+        </div>
       </header>
-      <div class="doc-toolbar">
-        <button class="toc-toggle" id="toc-toggle" type="button" aria-expanded="false" aria-controls="doc-toc">Contents</button>
-        <label class="doc-search" for="doc-search"><span>Search</span><input id="doc-search" type="search" autocomplete="off" placeholder="Filter sections…"><kbd>⌘K</kbd></label>
-        <span class="search-status" id="search-status"></span>
-      </div>
       <div class="doc-layout">
         <aside class="doc-toc" id="doc-toc" aria-label="On this page"><h2>On this page</h2><ol><li><a href="#shared-project-brief">Shared project brief</a></li><li><a href="#1-script-discovery-and-risk-scan">1. Script discovery and risk scan</a></li><li><a href="#2-terminology-authority-proposal">2. Terminology-authority proposal</a></li><li><a href="#3-vn-specific-uncommon-grammar-guide-builder">3. VN-specific uncommon-grammar guide builder</a></li><li><a href="#4-strict-batch-translation">4. Strict batch translation</a></li><li><a href="#5-bilingual-accuracy-review">5. Bilingual accuracy review</a></li><li><a href="#6-consistency-and-reveal-audit">6. Consistency and reveal audit</a></li><li><a href="#7-monolingual-polish-pass">7. Monolingual polish pass</a></li><li><a href="#prompt-version-record">Prompt-version record</a></li></ol></aside>
         <article class="doc-content" id="doc-content"><div class="doc-preamble"><p>These prompts are starting points. Replace every bracketed field and remove instructions that do not fit the project. Keep spoiler-bearing inputs and outputs in the private workspace.</p><p>Models may ignore formatting rules or damage markup. Validate their output programmatically before merging it.</p></div><section class="doc-section" id="shared-project-brief"><h2>Shared project brief</h2><p>Attach this block to each task, filled with the current approved rules.</p><pre><code class="language-text">PROJECT
@@ -192,7 +190,7 @@ source_batch_hash: [SHA-256]
 terminology_version: [git commit/hash]
 grammar_guide_version: [git commit/hash]
 settings: [temperature, seed, or provider options]
-human_reviewer: [name or blank]</code></pre><p>Reproducibility does not mean a future model call will emit identical prose. It means the exact input, rules, output, and review history are recoverable.</p></section><div class="search-empty" id="search-empty" hidden>No sections match that search.</div></article>
+human_reviewer: [name or blank]</code></pre><p>Reproducibility does not mean a future model call will emit identical prose. It means the exact input, rules, output, and review history are recoverable.</p></section></article>
       </div>
     </main>
     <div class="toc-backdrop" id="toc-backdrop" hidden></div>

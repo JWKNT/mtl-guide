@@ -1,55 +1,10 @@
 (() => {
   "use strict";
 
-  const search = document.querySelector("#doc-search");
   const sections = [...document.querySelectorAll(".doc-section")];
-  const status = document.querySelector("#search-status");
-  const empty = document.querySelector("#search-empty");
   const toc = document.querySelector("#doc-toc");
   const tocToggle = document.querySelector("#toc-toggle");
   const backdrop = document.querySelector("#toc-backdrop");
-
-  function normalize(value) {
-    return value.toLowerCase().normalize("NFKC");
-  }
-
-  function runSearch() {
-    if (!search) return;
-    const tokens = normalize(search.value).trim().split(/\s+/).filter(Boolean);
-    let visible = 0;
-
-    for (const section of sections) {
-      const haystack = normalize(section.textContent || "");
-      const match = !tokens.length || tokens.every((token) => haystack.includes(token));
-      section.hidden = !match;
-      if (match) visible += 1;
-    }
-
-    if (status) status.textContent = tokens.length ? `${visible} section${visible === 1 ? "" : "s"}` : `${sections.length} sections`;
-    if (empty) empty.hidden = visible > 0;
-
-    const url = new URL(window.location.href);
-    search.value ? url.searchParams.set("q", search.value) : url.searchParams.delete("q");
-    history.replaceState(null, "", url);
-  }
-
-  if (search) {
-    const initial = new URLSearchParams(window.location.search).get("q") || "";
-    search.value = initial;
-    search.addEventListener("input", runSearch);
-    runSearch();
-    document.addEventListener("keydown", (event) => {
-      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {
-        event.preventDefault();
-        search.focus();
-      }
-      if (event.key === "Escape" && document.activeElement === search) {
-        search.value = "";
-        runSearch();
-        search.blur();
-      }
-    });
-  }
 
   document.querySelectorAll(".doc-content pre").forEach((pre) => {
     const button = document.createElement("button");

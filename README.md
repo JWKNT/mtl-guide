@@ -11,7 +11,7 @@ All public examples in this repository are fictional. Keep extracted scripts, ga
 - [`templates/grammar-guide-template.md`](templates/grammar-guide-template.md): blank grammar-guide structure.
 - [`PROMPTS.md`](PROMPTS.md): prompts for discovery, translation, review, and consistency checks.
 - [`examples/sample-batch.tsv`](examples/sample-batch.tsv): minimal translation-batch format.
-- [`tools/validate_batch.py`](tools/validate_batch.py): structural validator for TSV batches.
+- [`Batch validator`](validator.html): source for the structural TSV checker, displayed as a normal site page.
 
 ## Workflow
 

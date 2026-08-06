@@ -37,6 +37,14 @@ const documents = [
     title: "Grammar guide template",
     summary: "A blank structure for documenting recurring MT failures with evidence and concrete translation decisions.",
   },
+  {
+    source: "tools/validate_batch.py",
+    output: "validator.html",
+    title: "Batch validator",
+    summary: "A dependency-free structural check for TSV translation batches.",
+    language: "python",
+    code: true,
+  },
 ];
 
 function escapeHtml(value) {
@@ -214,16 +222,14 @@ function pageTemplate(document, rendered) {
     <main class="doc-shell">
       <header class="doc-hero">
         <div><h1>${escapeHtml(document.title)}</h1><p class="doc-summary">${escapeHtml(document.summary)}</p></div>
-        <a class="raw-link" href="${document.source}">View raw Markdown</a>
+        <div class="doc-actions">
+          <button class="toc-toggle" id="toc-toggle" type="button" aria-expanded="false" aria-controls="doc-toc">Contents</button>
+          <a class="raw-link" href="${document.source}">View raw Markdown</a>
+        </div>
       </header>
-      <div class="doc-toolbar">
-        <button class="toc-toggle" id="toc-toggle" type="button" aria-expanded="false" aria-controls="doc-toc">Contents</button>
-        <label class="doc-search" for="doc-search"><span>Search</span><input id="doc-search" type="search" autocomplete="off" placeholder="Filter sections…"><kbd>⌘K</kbd></label>
-        <span class="search-status" id="search-status"></span>
-      </div>
       <div class="doc-layout">
         <aside class="doc-toc" id="doc-toc" aria-label="On this page"><h2>On this page</h2><ol>${toc}</ol></aside>
-        <article class="doc-content" id="doc-content">${rendered.preamble ? `<div class="doc-preamble">${rendered.preamble}</div>` : ""}${rendered.html}<div class="search-empty" id="search-empty" hidden>No sections match that search.</div></article>
+        <article class="doc-content" id="doc-content">${rendered.preamble ? `<div class="doc-preamble">${rendered.preamble}</div>` : ""}${rendered.html}</article>
       </div>
     </main>
     <div class="toc-backdrop" id="toc-backdrop" hidden></div>
@@ -232,9 +238,42 @@ function pageTemplate(document, rendered) {
 </html>\n`;
 }
 
+function codePageTemplate(document, code) {
+  return `<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="${escapeHtml(document.summary)}">
+    <meta name="theme-color" content="#ffffff">
+    <title>${escapeHtml(document.title)} · MTL Guide</title>
+    <link rel="stylesheet" href="assets/styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#doc-content">Skip to code</a>
+    <header class="site-header">
+      <a class="site-title" href="index.html">MTL Guide</a>
+      <nav aria-label="Primary navigation">
+        <a href="workflow.html">Workflow</a>
+        <a href="grammar.html">Grammar</a>
+        <a href="prompts.html">Prompts</a>
+        <a href="https://github.com/JWKNT/mtl-guide" target="_blank" rel="noreferrer">GitHub</a>
+      </nav>
+    </header>
+    <main class="doc-shell code-shell">
+      <header class="doc-hero">
+        <div><h1>${escapeHtml(document.title)}</h1><p class="doc-summary">${escapeHtml(document.summary)}</p></div>
+      </header>
+      <article class="doc-content code-document" id="doc-content"><pre><code class="language-${escapeHtml(document.language)}">${escapeHtml(code)}</code></pre></article>
+    </main>
+    <script src="assets/app.js"></script>
+  </body>
+</html>\n`;
+}
+
 for (const document of documents) {
   const source = fs.readFileSync(path.join(root, document.source), "utf8");
-  const output = pageTemplate(document, renderMarkdown(source));
+  const output = document.code ? codePageTemplate(document, source) : pageTemplate(document, renderMarkdown(source));
   fs.writeFileSync(path.join(root, document.output), output);
   process.stdout.write(`built ${document.output}\n`);
 }
