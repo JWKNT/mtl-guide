@@ -1,0 +1,4 @@
+line_id	speaker_source	speaker_target	source_text	target_text	status	model	notes
+DEMO:0001	語り手	Narrator	霧が濃くなると<color=blue>青く</color>点滅する。	It flashed <color=blue>blue</color> whenever the fog thickened.	human-reviewed		Fictional example.
+DEMO:0003	語り手	Narrator	鍵を返し、廊下に出たところで、ようやく異変に気づいた。	I returned the key and stepped into the hall. Only then did I notice something was wrong.	human-reviewed		Fictional example.
+DEMO:0005	港くれは	Kureha Minato	記録のすべてが失われたわけではない。	Not all of the records were lost.	human-reviewed		Fictional example.

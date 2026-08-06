@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Reusable prompts for discovery, authority building, strict translation, bilingual review, and consistency auditing.">
+    <meta name="theme-color" content="#ffffff">
+    <title>Prompt library · MTL Guide</title>
+    <link rel="stylesheet" href="assets/styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#doc-content">Skip to document</a>
+    <header class="site-header">
+      <a class="site-identity" href="index.html" aria-label="MTL Guide home"><strong>MTL Guide</strong><span>Visual novel translation workflow</span></a>
+      <nav aria-label="Primary navigation">
+        <a href="workflow.html">Workflow</a>
+        <a href="grammar.html">Grammar</a>
+        <a href="prompts.html" aria-current="page">Prompts</a>
+        <a href="https://github.com/JWKNT/mtl-guide" target="_blank" rel="noreferrer">GitHub</a>
+      </nav>
+    </header>
+    <main class="doc-shell">
+      <header class="doc-hero">
+        <div><p class="eyebrow">MTL Guide · Reference document</p><h1>Prompt library</h1><p class="doc-summary">Reusable prompts for discovery, authority building, strict translation, bilingual review, and consistency auditing.</p></div>
+        <a class="raw-link" href="PROMPTS.md">View raw Markdown</a>
+      </header>
+      <div class="doc-toolbar">
+        <button class="toc-toggle" id="toc-toggle" type="button" aria-expanded="false" aria-controls="doc-toc">Contents</button>
+        <label class="doc-search" for="doc-search"><span>Search</span><input id="doc-search" type="search" autocomplete="off" placeholder="Filter sections…"><kbd>⌘K</kbd></label>
+        <span class="search-status" id="search-status"></span>
+      </div>
+      <div class="doc-layout">
+        <aside class="doc-toc" id="doc-toc" aria-label="On this page"><h2>On this page</h2><ol><li><a href="#shared-project-brief">Shared project brief</a></li><li><a href="#1-script-discovery-and-risk-scan">1. Script discovery and risk scan</a></li><li><a href="#2-terminology-authority-proposal">2. Terminology-authority proposal</a></li><li><a href="#3-vn-specific-uncommon-grammar-guide-builder">3. VN-specific uncommon-grammar guide builder</a></li><li><a href="#4-strict-batch-translation">4. Strict batch translation</a></li><li><a href="#5-bilingual-accuracy-review">5. Bilingual accuracy review</a></li><li><a href="#6-consistency-and-reveal-audit">6. Consistency and reveal audit</a></li><li><a href="#7-monolingual-polish-pass">7. Monolingual polish pass</a></li><li><a href="#prompt-version-record">Prompt-version record</a></li></ol></aside>
+        <article class="doc-content" id="doc-content"><div class="doc-preamble"><p>These prompts are starting points. Replace every bracketed field and remove instructions that do not fit the project. Keep spoiler-bearing inputs and outputs in the private workspace.</p><p>Models may ignore formatting rules or damage markup. Validate their output programmatically before merging it.</p></div><section class="doc-section" id="shared-project-brief"><h2>Shared project brief</h2><p>Attach this block to each task, filled with the current approved rules.</p><pre><code class="language-text">PROJECT
+- Source language: [Japanese]
+- Target language: [English]
+- Medium: visual novel
+- Narration tense/person: [rule]
+- Name order and romanization: [rule]
+- Honorific policy: [rule]
+- Typography: [rule]
+- Rating/tone constraints: [rule]
+- Engine tags/placeholders: [syntax and preservation rule]
+- Output length constraints: [textbox limits]
+
+TRANSLATION PRIORITIES, IN ORDER
+1. Preserve meaning, agency, logical scope, uncertainty, and reveal timing.
+2. Preserve character voice and register.
+3. Produce natural target-language prose.
+4. Preserve approved terminology exactly.
+5. Preserve all IDs, tags, variables, and control syntax exactly.
+
+Never invent context. When a line remains ambiguous, keep it ambiguous and add a short note.</code></pre></section><section class="doc-section" id="1-script-discovery-and-risk-scan"><h2>1. Script discovery and risk scan</h2><p>Use this on representative excerpts from across the VN, not the entire script in one request.</p><pre><code class="language-text">You are profiling a visual novel before translation. Analyze the supplied source rows; do not translate the full excerpt.
+
+Return four sections:
+
+1. TERM CANDIDATES
+A table with: source form, reading evidence, proposed English, category, aliases, line IDs, confidence, and why consistency matters.
+
+2. IDENTITY AND SPEAKER RISKS
+Possible aliases, inherited titles, time/costume variants, production-only speaker suffixes, ambiguous same-name characters, and reveal-sensitive naming. Do not assert that two identities are the same unless the excerpt supports it; label hypotheses.
+
+3. RECURRING GRAMMAR RISKS
+Constructions likely to produce wrong or wooden MT in this specific prose. For each: line IDs, source shape, likely failure, and the decision a translator must make.
+
+4. STYLE OBSERVATIONS
+Narration habits, register shifts, character-specific speech patterns, fragment/list rhythm, punctuation, and domain terminology.
+
+Distinguish observed evidence from inference. Quote only the shortest phrase needed to identify a pattern.
+
+[PROJECT BRIEF]
+[SOURCE ROWS WITH STABLE IDS AND CONTEXT]</code></pre></section><section class="doc-section" id="2-terminology-authority-proposal"><h2>2. Terminology-authority proposal</h2><pre><code class="language-text">Act as a terminology researcher, not a bulk translator. Using the evidence below, propose additions or changes to the project's terminology authority.
+
+For each entry return:
+- canonical source form;
+- required English form;
+- source aliases/readings;
+- category;
+- status: locked, working, or review;
+- usage rule;
+- evidence line IDs;
+- conflicts with existing entries.
+
+Rules:
+- Explicit in-game Latin text and ruby/readings outrank guesses from the kanji.
+- Do not merge aliases or people without evidence.
+- Separate neutral and derogatory terms.
+- Separate organization, facility, product, rank, and person names even when they share a word.
+- Identify sprite/costume/age labels that must not appear in normal dialogue names.
+- Put uncertain romanization, segmentation, or diacritics in review.
+- Do not silently replace an approved term. Explain any proposed change.
+
+[CURRENT TERMINOLOGY AUTHORITY]
+[EVIDENCE ROWS]</code></pre></section><section class="doc-section" id="3-vn-specific-uncommon-grammar-guide-builder"><h2>3. VN-specific uncommon-grammar guide builder</h2><pre><code class="language-text">Build or extend a translator-facing grammar and restructuring guide for this specific visual novel. This is not a general textbook.
+
+Group repeated problems by construction. Each entry must contain:
+- a concise searchable heading;
+- stable line ID;
+- a short source excerpt or abstracted source shape;
+- head noun and omitted subject when relevant;
+- the likely literal/MT failure;
+- a natural structural translation or rewrite;
+- a short explanation of why it preserves the original;
+- notes on register, uncertainty, reveal timing, tags, or line breaks.
+
+Prioritize patterns that recur, reverse logical scope, assign an action to the wrong character, flatten uncertainty, or create unreadable English. Do not add an entry merely because a sentence contains uncommon vocabulary.
+
+If context is insufficient, say what surrounding rows are needed. Do not use knowledge from later scenes to resolve an earlier ambiguity.
+
+[PROJECT BRIEF]
+[CURRENT GRAMMAR GUIDE]
+[SOURCE ROWS WITH BEFORE/AFTER CONTEXT]</code></pre></section><section class="doc-section" id="4-strict-batch-translation"><h2>4. Strict batch translation</h2><p>Protect complex tags with placeholders before using this prompt whenever possible.</p><pre><code class="language-text">Translate only the rows in TARGET ROWS. CONTEXT ROWS are read-only and must not appear in the output.
+
+Return TSV only, with exactly these columns and no Markdown fence:
+line_id&lt;TAB&gt;target_text&lt;TAB&gt;notes
+
+Requirements:
+- Output exactly one row for every target line_id, in the same order.
+- Copy line_id exactly. Do not add, omit, merge, or split rows.
+- Do not translate speaker IDs, commands, filenames, variables, or tag syntax.
+- Preserve every [[PLACEHOLDER_...]] token exactly once and in a grammatically appropriate position.
+- Use approved terminology exactly.
+- Resolve omitted subjects from the supplied scene context. If still ambiguous, preserve ambiguity and note it.
+- Preserve the source's certainty level: fact, observation, inference, hearsay, possibility, or condition.
+- Preserve identity reveal timing and the name used by the current viewpoint.
+- Restructure Japanese syntax freely when needed for clear English, but do not invent or omit information.
+- Match each speaker's approved voice and register.
+- Keep text within [LIMIT] unless a note explains why that is impossible.
+- Leave notes empty unless there is a real ambiguity, terminology conflict, cultural issue, or layout risk.
+
+[PROJECT BRIEF]
+[RELEVANT TERMINOLOGY ENTRIES]
+[RELEVANT GRAMMAR-GUIDE SECTIONS]
+[SCENE/SPEAKER SUMMARY]
+[CONTEXT ROWS]
+[TARGET ROWS]</code></pre></section><section class="doc-section" id="5-bilingual-accuracy-review"><h2>5. Bilingual accuracy review</h2><p>This pass diagnoses first. It should not rewrite every line into the reviewer's preferred style.</p><pre><code class="language-text">Audit each source/target pair as a bilingual visual-novel editor.
+
+Check, in order:
+1. meaning, omitted information, and invented information;
+2. subject, object, pronoun, tense, and causal direction;
+3. negation scope, conditionals, concession, and evidentiality;
+4. terminology, aliases, titles, and reveal timing;
+5. voice, register, fluency, and textbox constraints;
+6. tags, placeholders, variables, and punctuation.
+
+Return a table with:
+line_id | verdict | severity | issue | minimal_revision | rationale
+
+Verdicts: pass, revise, or needs-context.
+Severity: critical, major, minor, or none.
+
+Use the smallest revision that fixes the issue. Do not flag a faithful line merely because another wording is possible. If the source is genuinely ambiguous, request the specific neighboring context needed instead of guessing.
+
+[PROJECT BRIEF]
+[TERMINOLOGY AUTHORITY]
+[RELEVANT GRAMMAR GUIDE]
+[SOURCE/TARGET ROWS WITH CONTEXT]</code></pre></section><section class="doc-section" id="6-consistency-and-reveal-audit"><h2>6. Consistency and reveal audit</h2><pre><code class="language-text">Audit these translated batches against the terminology authority and timeline notes.
+
+Report only actionable findings in these groups:
+- non-approved spelling or capitalization;
+- deprecated term;
+- alias used in the wrong social or timeline context;
+- production-only speaker qualifier leaked into displayed text;
+- two distinct concepts collapsed into one English term;
+- same source concept translated inconsistently without a contextual reason;
+- known identity named before the viewpoint/source reveals it;
+- title, kinship term, or rank flattened in a way that changes the relationship.
+
+For each finding give line_id, current text, required form or question, authority entry, and confidence. Do not perform blind string replacement when grammar or context changes the correct form.
+
+[TERMINOLOGY AUTHORITY]
+[TIMELINE/REVEAL NOTES]
+[TRANSLATED ROWS]</code></pre></section><section class="doc-section" id="7-monolingual-polish-pass"><h2>7. Monolingual polish pass</h2><p>Run only after bilingual accuracy review.</p><pre><code class="language-text">Read the target-language scene as a visual-novel editor without rewriting its meaning.
+
+Flag:
+- sentences that do not parse on first reading;
+- Japanese-shaped noun piles or excessive nominalization;
+- accidental repetition or unclear pronouns;
+- character voices that drift from the supplied voice rules;
+- fragments that appear accidental;
+- dialogue that is too formal, too casual, or implausibly expository;
+- lines likely to overflow the stated textbox limit.
+
+Return line_id, issue, and minimal revision. Preserve approved terms, tags, uncertainty, and reveal timing. Do not smooth intentional fragments, repetition, or awkwardness that defines a character.
+
+[PROJECT BRIEF]
+[CHARACTER VOICE RULES]
+[TARGET-LANGUAGE SCENE]</code></pre></section><section class="doc-section" id="prompt-version-record"><h2>Prompt-version record</h2><p>Record a small manifest beside generated batches:</p><pre><code class="language-text">prompt_version: [git commit or semantic version]
+model: [exact model identifier]
+generated_at: [ISO 8601 timestamp]
+source_batch_hash: [SHA-256]
+terminology_version: [git commit/hash]
+grammar_guide_version: [git commit/hash]
+settings: [temperature, seed, or provider options]
+human_reviewer: [name or blank]</code></pre><p>Reproducibility does not mean a future model call will emit identical prose. It means the exact input, rules, output, and review history are recoverable.</p></section><div class="search-empty" id="search-empty" hidden>No sections match that search.</div></article>
+      </div>
+    </main>
+    <footer class="site-footer"><p>MTL Guide · Fictional examples, reusable process</p><p><a href="PROMPTS.md">Raw source</a> · <a href="https://github.com/JWKNT/mtl-guide">GitHub</a></p></footer>
+    <div class="toc-backdrop" id="toc-backdrop" hidden></div>
+    <script src="assets/app.js"></script>
+  </body>
+</html>

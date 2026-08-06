@@ -1,0 +1,10 @@
+{
+  "name": "mtl-guide",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Static reference site for a visual novel machine-translation workflow.",
+  "scripts": {
+    "build": "node build.js",
+    "check": "node --check build.js && node --check assets/app.js && python3 tools/validate_batch.py examples/sample-batch.tsv"
+  }
+}
