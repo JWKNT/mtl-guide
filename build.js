@@ -10,13 +10,13 @@ const documents = [
   {
     source: "README.md",
     output: "workflow.html",
-    title: "Complete workflow",
+    title: "Workflow",
     summary: "The end-to-end process: canonical source, stable IDs, terminology, grammar, batching, validation, QA, and release.",
   },
   {
     source: "grammar-guide-example.md",
     output: "grammar.html",
-    title: "Uncommon grammar guide",
+    title: "Grammar guide example",
     summary: "A spoiler-free example of a title-specific Japanese-to-English grammar and restructuring authority.",
   },
   {

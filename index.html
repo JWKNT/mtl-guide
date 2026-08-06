@@ -3,93 +3,65 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="A reproducible, context-aware workflow for machine-assisted visual novel translation.">
+    <meta name="description" content="A reusable process for machine-assisted visual novel translation.">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="MTL Guide · Visual Novel Translation Workflow">
-    <meta property="og:description" content="Terminology, grammar, prompting, validation, and QA for maintainable visual novel translations.">
+    <meta property="og:title" content="MTL Guide">
+    <meta property="og:description" content="Templates and guidance for consistent, reviewable visual novel machine translation.">
     <meta property="og:url" content="https://jwknt.github.io/mtl-guide/">
     <meta name="twitter:card" content="summary">
     <meta name="theme-color" content="#ffffff">
-    <title>MTL Guide · Visual Novel Translation Workflow</title>
+    <title>MTL Guide</title>
     <link rel="stylesheet" href="assets/styles.css">
   </head>
   <body>
-    <a class="skip-link" href="#main-content">Skip to guide</a>
+    <a class="skip-link" href="#main-content">Skip to content</a>
 
     <header class="site-header">
       <a class="site-title" href="index.html">MTL Guide</a>
-      <nav aria-label="Primary navigation">
-        <a href="workflow.html">Workflow</a>
-        <a href="grammar.html">Grammar</a>
-        <a href="prompts.html">Prompts</a>
+      <nav aria-label="Site links">
         <a href="https://github.com/JWKNT/mtl-guide" target="_blank" rel="noreferrer">GitHub</a>
       </nav>
     </header>
 
-    <main id="main-content" class="landing-shell">
-      <header class="page-intro">
-        <h1>Visual novel MTL workflow</h1>
-        <p>
-          A practical process for machine-assisted translation that keeps source data intact,
-          terminology consistent, difficult grammar explicit, and every batch reviewable.
-        </p>
-      </header>
-
-      <section class="file-index" aria-labelledby="files-title">
-        <h2 id="files-title">Guides and templates</h2>
-        <div class="file-list">
-          <a href="workflow.html"><strong>Complete workflow</strong><span>Extraction through release</span><code>README.md</code></a>
-          <a href="grammar.html"><strong>Grammar guide</strong><span>Worked, spoiler-free examples</span><code>grammar-guide-example.md</code></a>
-          <a href="prompts.html"><strong>Prompt library</strong><span>Discovery, translation, and review</span><code>PROMPTS.md</code></a>
-          <a href="terminology-template.html"><strong>Terminology template</strong><span>Names, aliases, items, and rules</span><code>templates/terminology-authority.md</code></a>
-          <a href="grammar-template.html"><strong>Grammar template</strong><span>Project-specific failure patterns</span><code>templates/grammar-guide-template.md</code></a>
-        </div>
-      </section>
-
-      <div class="overview-grid">
-        <section aria-labelledby="process-title">
-          <h2 id="process-title">The short version</h2>
-          <ol class="process-list">
-            <li><strong>Verify the runtime source.</strong> A shipped game may contain obsolete or duplicate scripts.</li>
-            <li><strong>Export losslessly.</strong> Preserve every row and control field; give each translatable row a stable ID.</li>
-            <li><strong>Write the authorities first.</strong> Lock terminology and document recurring grammar traps with real examples.</li>
-            <li><strong>Batch by context.</strong> Translate scenes, not arbitrary character counts, with neighboring rows available.</li>
-            <li><strong>Protect structure mechanically.</strong> Tags, variables, commands, IDs, and source text are not entrusted to prompts.</li>
-            <li><strong>Merge by stable ID.</strong> Never overwrite existing work silently; record prompt, model, status, and notes.</li>
-            <li><strong>Review three times.</strong> Structural checks, bilingual editing, then in-engine testing.</li>
-            <li><strong>Release a patch, not source data.</strong> Keep originals private and make the build reproducible.</li>
-          </ol>
-        </section>
-
-        <aside class="overview-notes" aria-label="Core rules and QA">
-          <section aria-labelledby="rules-title">
-            <h2 id="rules-title">Core rules</h2>
-            <ul>
-              <li>The canonical source and control columns stay immutable.</li>
-              <li>Names, aliases, ranks, and recurring items use an approved authority.</li>
-              <li>Rumor, inference, conditionals, vague referents, and reveal timing remain intact.</li>
-              <li>Production-only sprite labels never leak into displayed names.</li>
-              <li>MT output is a draft until reviewed.</li>
-            </ul>
-          </section>
-
-          <section aria-labelledby="qa-title">
-            <h2 id="qa-title">QA passes</h2>
-            <dl class="qa-list">
-              <div><dt>Structural</dt><dd>IDs, rows, tags, placeholders, variables, and missing text.</dd></div>
-              <div><dt>Linguistic</dt><dd>Meaning, agency, negation, certainty, terminology, voice, and fluency.</dd></div>
-              <div><dt>In-engine</dt><dd>Layout, choices, timing, formatting, saves, menus, and patch behavior.</dd></div>
-            </dl>
-          </section>
-        </aside>
-      </div>
-
-      <p class="source-note">
-        This site renders the repository's Markdown files. Models and agents can use the
-        <a href="README.md">raw sources</a> directly.
+    <main id="main-content" class="landing-shell minimal-home">
+      <h1>MTL Guide</h1>
+      <p class="home-intro">
+        Templates and notes for building a consistent, reviewable visual novel translation.
+        Start with the workflow, then copy the two project templates into a private workspace.
       </p>
-    </main>
 
-    <script src="assets/app.js"></script>
+      <ul class="resource-list">
+        <li>
+          <a href="workflow.html">Workflow</a>
+          <p>The complete process from identifying the runtime script through batching, review, in-engine QA, and release.</p>
+          <a class="raw-source" href="README.md">README.md</a>
+        </li>
+        <li>
+          <a href="terminology-template.html">Terminology authority template</a>
+          <p>Use this to lock names, aliases, items, locations, ranks, typography, speaker labels, and unresolved decisions.</p>
+          <a class="raw-source" href="templates/terminology-authority.md">Markdown</a>
+        </li>
+        <li>
+          <a href="grammar-template.html">Grammar guide template</a>
+          <p>Use this to record title-specific constructions that repeatedly produce incorrect or wooden translations.</p>
+          <a class="raw-source" href="templates/grammar-guide-template.md">Markdown</a>
+        </li>
+        <li>
+          <a href="grammar.html">Grammar guide example</a>
+          <p>A filled, spoiler-free example showing the expected level of evidence and concrete sentence analysis.</p>
+          <a class="raw-source" href="grammar-guide-example.md">Markdown</a>
+        </li>
+        <li>
+          <a href="prompts.html">Prompt library</a>
+          <p>Prompts for script discovery, terminology, grammar analysis, batch translation, bilingual review, and consistency checks.</p>
+          <a class="raw-source" href="PROMPTS.md">PROMPTS.md</a>
+        </li>
+        <li>
+          <a href="examples/sample-batch.tsv">Sample batch and validator</a>
+          <p>A minimal TSV format and a small structural checker for IDs, tags, placeholders, empty targets, and remaining Japanese.</p>
+          <a class="raw-source" href="tools/validate_batch.py">Python</a>
+        </li>
+      </ul>
+    </main>
   </body>
 </html>
