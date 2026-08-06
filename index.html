@@ -17,10 +17,7 @@
     <a class="skip-link" href="#main-content">Skip to guide</a>
 
     <header class="site-header">
-      <a class="site-identity" href="index.html" aria-label="MTL Guide home">
-        <strong>MTL Guide</strong>
-        <span>Visual novel translation workflow</span>
-      </a>
+      <a class="site-title" href="index.html">MTL Guide</a>
       <nav aria-label="Primary navigation">
         <a href="workflow.html">Workflow</a>
         <a href="grammar.html">Grammar</a>
@@ -30,128 +27,68 @@
     </header>
 
     <main id="main-content" class="landing-shell">
-      <section class="hero" aria-labelledby="hero-title">
-        <div class="hero-copy">
-          <p class="eyebrow">Engine-agnostic · Source-preserving · Reviewable</p>
-          <h1 id="hero-title">A disciplined process for visual novel MTL.</h1>
-          <p class="hero-lede">
-            Turn machine translation into a reproducible editorial workflow: verify the real
-            runtime script, lock terminology, document title-specific grammar, translate in
-            context, and validate every batch before it reaches the game.
-          </p>
-          <div class="hero-actions">
-            <a class="primary-link" href="workflow.html">Read the complete workflow <span aria-hidden="true">→</span></a>
-            <a class="secondary-link" href="grammar.html">See the grammar guide</a>
-          </div>
-        </div>
-        <dl class="hero-stats" aria-label="Workflow summary">
-          <div><dt>Phases</dt><dd>9</dd></div>
-          <div><dt>QA passes</dt><dd>3</dd></div>
-          <div><dt>Source rows changed</dt><dd>0</dd></div>
-        </dl>
-      </section>
+      <header class="page-intro">
+        <h1>Visual novel MTL workflow</h1>
+        <p>
+          A practical process for machine-assisted translation that keeps source data intact,
+          terminology consistent, difficult grammar explicit, and every batch reviewable.
+        </p>
+      </header>
 
-      <section class="reference-section" aria-labelledby="reference-title">
-        <div class="section-heading">
-          <div>
-            <p class="eyebrow">Reference set</p>
-            <h2 id="reference-title">Start with the artifact you need.</h2>
-          </div>
-          <p>Every rendered page links back to its raw Markdown source for models and automation.</p>
-        </div>
-
-        <div class="reference-grid">
-          <article class="reference-card featured-card">
-            <span class="file-label">README.md</span>
-            <h3><a href="workflow.html">Complete workflow</a></h3>
-            <p>Canonical-source verification, stable IDs, batching, three-stage QA, release gates, and completion criteria.</p>
-            <a class="card-link" href="workflow.html">Open workflow <span aria-hidden="true">→</span></a>
-          </article>
-          <article class="reference-card">
-            <span class="file-label">grammar-guide-example.md</span>
-            <h3><a href="grammar.html">Grammar guide</a></h3>
-            <p>Fictional, spoiler-free worked examples showing how to document the constructions that repeatedly defeat MT.</p>
-            <a class="card-link" href="grammar.html">Open guide <span aria-hidden="true">→</span></a>
-          </article>
-          <article class="reference-card">
-            <span class="file-label">PROMPTS.md</span>
-            <h3><a href="prompts.html">Prompt library</a></h3>
-            <p>Discovery, terminology, grammar, strict translation, bilingual review, consistency, and polish prompts.</p>
-            <a class="card-link" href="prompts.html">Open prompts <span aria-hidden="true">→</span></a>
-          </article>
-          <article class="reference-card">
-            <span class="file-label">templates/</span>
-            <h3><a href="terminology-template.html">Project templates</a></h3>
-            <p>Blank terminology and grammar authorities with evidence, status, review queues, and provenance built in.</p>
-            <div class="card-links">
-              <a href="terminology-template.html">Terminology</a>
-              <a href="grammar-template.html">Grammar</a>
-            </div>
-          </article>
+      <section class="file-index" aria-labelledby="files-title">
+        <h2 id="files-title">Guides and templates</h2>
+        <div class="file-list">
+          <a href="workflow.html"><strong>Complete workflow</strong><span>Extraction through release</span><code>README.md</code></a>
+          <a href="grammar.html"><strong>Grammar guide</strong><span>Worked, spoiler-free examples</span><code>grammar-guide-example.md</code></a>
+          <a href="prompts.html"><strong>Prompt library</strong><span>Discovery, translation, and review</span><code>PROMPTS.md</code></a>
+          <a href="terminology-template.html"><strong>Terminology template</strong><span>Names, aliases, items, and rules</span><code>templates/terminology-authority.md</code></a>
+          <a href="grammar-template.html"><strong>Grammar template</strong><span>Project-specific failure patterns</span><code>templates/grammar-guide-template.md</code></a>
         </div>
       </section>
 
-      <section class="pipeline-section" aria-labelledby="pipeline-title">
-        <div class="section-heading">
-          <div>
-            <p class="eyebrow">The pipeline</p>
-            <h2 id="pipeline-title">Nine gates, in order.</h2>
-          </div>
-          <p>Each stage creates evidence the next stage can trust. Skipping ahead makes later consistency work much harder.</p>
-        </div>
-        <ol class="pipeline-list">
-          <li><span>01</span><div><strong>Scope</strong><p>Define content, platform, permissions, patch format, and review ownership.</p></div></li>
-          <li><span>02</span><div><strong>Canonical source</strong><p>Prove which script and auxiliary tables the shipped runtime actually uses.</p></div></li>
-          <li><span>03</span><div><strong>Lossless table</strong><p>Preserve every engine row and assign immutable translation keys.</p></div></li>
-          <li><span>04</span><div><strong>Terminology</strong><p>Lock names, aliases, items, ranks, organizations, and typography.</p></div></li>
-          <li><span>05</span><div><strong>Grammar</strong><p>Document the title's recurring structural traps with concrete examples.</p></div></li>
-          <li><span>06</span><div><strong>Style &amp; batches</strong><p>Define voice and presentation rules, then split by scene with context.</p></div></li>
-          <li><span>07</span><div><strong>Translation loop</strong><p>Generate bounded drafts, validate them, and merge by stable ID only.</p></div></li>
-          <li><span>08</span><div><strong>Three-pass QA</strong><p>Run structural, linguistic, and in-engine review as separate gates.</p></div></li>
-          <li><span>09</span><div><strong>Release</strong><p>Resolve review items, rebuild reproducibly, and distribute only patch data.</p></div></li>
-        </ol>
-      </section>
+      <div class="overview-grid">
+        <section aria-labelledby="process-title">
+          <h2 id="process-title">The short version</h2>
+          <ol class="process-list">
+            <li><strong>Verify the runtime source.</strong> A shipped game may contain obsolete or duplicate scripts.</li>
+            <li><strong>Export losslessly.</strong> Preserve every row and control field; give each translatable row a stable ID.</li>
+            <li><strong>Write the authorities first.</strong> Lock terminology and document recurring grammar traps with real examples.</li>
+            <li><strong>Batch by context.</strong> Translate scenes, not arbitrary character counts, with neighboring rows available.</li>
+            <li><strong>Protect structure mechanically.</strong> Tags, variables, commands, IDs, and source text are not entrusted to prompts.</li>
+            <li><strong>Merge by stable ID.</strong> Never overwrite existing work silently; record prompt, model, status, and notes.</li>
+            <li><strong>Review three times.</strong> Structural checks, bilingual editing, then in-engine testing.</li>
+            <li><strong>Release a patch, not source data.</strong> Keep originals private and make the build reproducible.</li>
+          </ol>
+        </section>
 
-      <section class="principles-section" aria-labelledby="principles-title">
-        <div class="section-heading">
-          <div>
-            <p class="eyebrow">Guardrails</p>
-            <h2 id="principles-title">What the model is never trusted to protect alone.</h2>
-          </div>
-        </div>
-        <div class="principle-grid">
-          <article><span>◆</span><h3>Source integrity</h3><p>Source text, commands, IDs, and control fields remain immutable.</p></article>
-          <article><span>◆</span><h3>Terminology</h3><p>Approved forms and context rules live outside individual prompts.</p></article>
-          <article><span>◆</span><h3>Uncertainty</h3><p>Inference, rumor, conditionals, and reveal timing remain intact.</p></article>
-          <article><span>◆</span><h3>Markup</h3><p>Tags and variables are protected, restored, and compared mechanically.</p></article>
-          <article><span>◆</span><h3>Merge safety</h3><p>Outputs merge by stable ID and never silently replace prior work.</p></article>
-          <article><span>◆</span><h3>Release quality</h3><p>Passing a validator is necessary, but never substitutes for editorial QA.</p></article>
-        </div>
-      </section>
+        <aside class="overview-notes" aria-label="Core rules and QA">
+          <section aria-labelledby="rules-title">
+            <h2 id="rules-title">Core rules</h2>
+            <ul>
+              <li>The canonical source and control columns stay immutable.</li>
+              <li>Names, aliases, ranks, and recurring items use an approved authority.</li>
+              <li>Rumor, inference, conditionals, vague referents, and reveal timing remain intact.</li>
+              <li>Production-only sprite labels never leak into displayed names.</li>
+              <li>MT output is a draft until reviewed.</li>
+            </ul>
+          </section>
 
-      <section class="model-section" aria-labelledby="model-title">
-        <div>
-          <p class="eyebrow">For models and agents</p>
-          <h2 id="model-title">Prefer the raw, versioned sources.</h2>
-          <p>
-            The website is for reading. Automated systems should ingest the Markdown files
-            directly so headings, code blocks, tables, and project templates remain easy to parse.
-          </p>
-        </div>
-        <ul class="raw-file-list">
-          <li><a href="README.md">Workflow source</a><code>README.md</code></li>
-          <li><a href="grammar-guide-example.md">Grammar source</a><code>grammar-guide-example.md</code></li>
-          <li><a href="PROMPTS.md">Prompt source</a><code>PROMPTS.md</code></li>
-          <li><a href="templates/terminology-authority.md">Terminology template</a><code>templates/terminology-authority.md</code></li>
-          <li><a href="templates/grammar-guide-template.md">Grammar template</a><code>templates/grammar-guide-template.md</code></li>
-        </ul>
-      </section>
+          <section aria-labelledby="qa-title">
+            <h2 id="qa-title">QA passes</h2>
+            <dl class="qa-list">
+              <div><dt>Structural</dt><dd>IDs, rows, tags, placeholders, variables, and missing text.</dd></div>
+              <div><dt>Linguistic</dt><dd>Meaning, agency, negation, certainty, terminology, voice, and fluency.</dd></div>
+              <div><dt>In-engine</dt><dd>Layout, choices, timing, formatting, saves, menus, and patch behavior.</dd></div>
+            </dl>
+          </section>
+        </aside>
+      </div>
+
+      <p class="source-note">
+        This site renders the repository's Markdown files. Models and agents can use the
+        <a href="README.md">raw sources</a> directly.
+      </p>
     </main>
-
-    <footer class="site-footer">
-      <p>MTL Guide · Fictional examples, reusable process</p>
-      <p><a href="https://github.com/JWKNT/mtl-guide">View source on GitHub</a></p>
-    </footer>
 
     <script src="assets/app.js"></script>
   </body>

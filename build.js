@@ -203,7 +203,7 @@ function pageTemplate(document, rendered) {
   <body>
     <a class="skip-link" href="#doc-content">Skip to document</a>
     <header class="site-header">
-      <a class="site-identity" href="index.html" aria-label="MTL Guide home"><strong>MTL Guide</strong><span>Visual novel translation workflow</span></a>
+      <a class="site-title" href="index.html">MTL Guide</a>
       <nav aria-label="Primary navigation">
         ${navLink("workflow.html", "Workflow", current === "workflow.html")}
         ${navLink("grammar.html", "Grammar", current === "grammar.html")}
@@ -213,7 +213,7 @@ function pageTemplate(document, rendered) {
     </header>
     <main class="doc-shell">
       <header class="doc-hero">
-        <div><p class="eyebrow">MTL Guide · Reference document</p><h1>${escapeHtml(document.title)}</h1><p class="doc-summary">${escapeHtml(document.summary)}</p></div>
+        <div><h1>${escapeHtml(document.title)}</h1><p class="doc-summary">${escapeHtml(document.summary)}</p></div>
         <a class="raw-link" href="${document.source}">View raw Markdown</a>
       </header>
       <div class="doc-toolbar">
@@ -226,7 +226,6 @@ function pageTemplate(document, rendered) {
         <article class="doc-content" id="doc-content">${rendered.preamble ? `<div class="doc-preamble">${rendered.preamble}</div>` : ""}${rendered.html}<div class="search-empty" id="search-empty" hidden>No sections match that search.</div></article>
       </div>
     </main>
-    <footer class="site-footer"><p>MTL Guide · Fictional examples, reusable process</p><p><a href="${document.source}">Raw source</a> · <a href="https://github.com/JWKNT/mtl-guide">GitHub</a></p></footer>
     <div class="toc-backdrop" id="toc-backdrop" hidden></div>
     <script src="assets/app.js"></script>
   </body>
