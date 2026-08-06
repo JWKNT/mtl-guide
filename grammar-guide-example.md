@@ -2,7 +2,7 @@
 
 > All lines and characters below are invented for this guide. They do not come from a published visual novel. In a real project, use short examples from the private canonical script and cite stable line IDs.
 
-This file demonstrates what a title-specific grammar guide should look like. Recommended translations illustrate structure; they are not the only valid line edits.
+This file demonstrates what a title-specific grammar guide should look like. Every worked example includes a plausible bad English output and a good English output. The bad version should expose a real MT failure—wrong scope, lost agency, flattened uncertainty, literal syntax, broken register, or damaged markup—not merely sound comically unnatural. Good translations illustrate the required decision; they are not the only valid line edits.
 
 ## Core procedure
 
@@ -15,6 +15,7 @@ For each difficult line:
 5. Restructure freely while preserving voice, ambiguity, and reveal timing.
 6. Check approved names and terms.
 7. Confirm that tags and placeholders remain balanced.
+8. Record both the likely bad output and a corrected good output so the failure is concrete.
 
 ## 1. Long prenominal modifiers
 
@@ -25,8 +26,8 @@ Japanese can place an entire proposition before the noun it modifies. English us
 - Line: `DEMO:0001`
 - Source: `霧が濃くなると青く点滅して危険を知らせる古い携帯端末`
 - Head noun: `古い携帯端末`
-- Awkward: “The old portable terminal that flashes blue and informs of danger when the fog becomes thick…”
-- Better: “The old handheld flashed blue whenever the fog thickened, warning its owner of danger.”
+- Bad English: “The old portable terminal that flashes blue and informs of danger when the fog becomes thick…”
+- Good English: “The old handheld flashed blue whenever the fog thickened, warning its owner of danger.”
 
 The Japanese explains the full behavior before naming the object. English is clearer when the device becomes the subject immediately.
 
@@ -34,7 +35,8 @@ The Japanese explains the full behavior before naming the object. English is cle
 
 - Line: `DEMO:0002`
 - Source shape: `幼い頃に島を離れ、十年ぶりに灯台へ戻ってきた少女`
-- Better: “She had left the island as a child. Now, ten years later, she had returned to the lighthouse.”
+- Bad English: “The girl who left the island when she was young and returned to the lighthouse for the first time in ten years.”
+- Good English: “She had left the island as a child. Now, ten years later, she had returned to the lighthouse.”
 
 Do not force two life stages into “the girl who left…and returned….” Separate sentences can preserve the temporal turn.
 
@@ -47,7 +49,8 @@ Japanese may omit a subject for several consecutive lines. The missing actor is 
 - Line: `DEMO:0003`
 - Context: first-person narration
 - Source: `鍵を返し、廊下に出たところで、ようやく異変に気づいた。`
-- Better: “I returned the key and stepped into the hall. Only then did I notice something was wrong.”
+- Bad English: “After the key was returned and the corridor was entered, the abnormality was finally noticed.”
+- Good English: “I returned the key and stepped into the hall. Only then did I notice something was wrong.”
 
 All three actions belong to the narrator. A model may incorrectly assign the final perception to another active character.
 
@@ -55,7 +58,8 @@ All three actions belong to the narrator. A model may incorrectly assign the fin
 
 - Line: `DEMO:0004`
 - Source: `本当のことを話せば、先生は止めるだろう。`
-- Better: “If I told the doctor the truth, she would try to stop me.”
+- Bad English: “If the truth were told, the teacher would stop.”
+- Good English: “If I told the doctor the truth, she would try to stop me.”
 
 The subject of `話せば` comes from viewpoint context. `先生` is the subject of `止める`, and its role translation must come from the terminology authority.
 
@@ -65,8 +69,8 @@ The subject of `話せば` comes from viewpoint context. `先生` is the subject
 
 - Line: `DEMO:0005`
 - Source: `記録のすべてが失われたわけではない。`
-- Correct: “Not all of the records were lost.”
-- Wrong: “None of the records survived.”
+- Bad English: “None of the records survived.”
+- Good English: “Not all of the records were lost.”
 
 The source denies total loss; it does not assert that everything disappeared.
 
@@ -74,7 +78,8 @@ The source denies total loss; it does not assert that everything disappeared.
 
 - Line: `DEMO:0006`
 - Source: `方法がないわけではないが、今夜は使えない。`
-- Better: “It wasn't that we had no way to do it; we just couldn't use it tonight.”
+- Bad English: “It is not the case that there is no method, but tonight cannot use it.”
+- Good English: “It wasn't that we had no way to do it; we just couldn't use it tonight.”
 
 The double negative concedes that a method exists before introducing the real limitation.
 
@@ -93,7 +98,8 @@ These forms quote, label, nominalize, explain, or infer. Repeating “the fact t
 
 - Line: `DEMO:0007`
 - Source: `ここに足跡があるということは、誰かが先に入ったということになる。`
-- Better: “These footprints meant someone had entered before us.”
+- Bad English: “The fact that footprints are here becomes the fact that someone entered first.”
+- Good English: “These footprints meant someone had entered before us.”
 
 Translate the conclusion directly. The paired nominalizers express reasoning, not two literal “facts.”
 
@@ -101,7 +107,8 @@ Translate the conclusion directly. The paired nominalizers express reasoning, no
 
 - Line: `DEMO:0008`
 - Source: `静かというより、音が吸い込まれているようだった。`
-- Better: “It wasn't so much quiet as though the room were swallowing every sound.”
+- Bad English: “Rather than quiet, it seemed that the sound was being inhaled.”
+- Good English: “It wasn't so much quiet as though the room were swallowing every sound.”
 
 This corrects the first category with a more precise one.
 
@@ -111,7 +118,8 @@ This corrects the first category with a more precise one.
 
 - Line: `DEMO:0009`
 - Source: `ようやく扉を開けたものの、その先には壁しかなかった。`
-- Better: “At last she forced the door open, only to find a wall behind it.”
+- Bad English: “She finally opened the door, although only a wall was beyond it.”
+- Good English: “At last she forced the door open, only to find a wall behind it.”
 
 “Only to find” preserves the frustrated expectation more naturally than a mechanical “although.”
 
@@ -119,7 +127,8 @@ This corrects the first category with a more precise one.
 
 - Line: `DEMO:0010`
 - Source: `今から港へ走ったところで、最終便には間に合わない。`
-- Better: “Even if we ran to the harbor now, we'd never make the last ferry.”
+- Bad English: “Even when we run to the harbor now, we cannot be in time for the last ferry.”
+- Good English: “Even if we ran to the harbor now, we'd never make the last ferry.”
 
 The conditional is explicitly futile, not a neutral future sequence.
 
@@ -127,7 +136,8 @@ The conditional is explicitly futile, not a neutral future sequence.
 
 - Line: `DEMO:0011`
 - Source: `百歩譲って彼の話を信じるとしても、時計の説明がつかない。`
-- Better: “Even if I granted his story, it still wouldn't explain the clock.”
+- Bad English: “Even if I yielded one hundred steps and believed his story, the clock could not be explained.”
+- Good English: “Even if I granted his story, it still wouldn't explain the clock.”
 
 `百歩譲って` marks argumentative reluctance. Do not translate its literal image.
 
@@ -137,7 +147,8 @@ The conditional is explicitly futile, not a neutral future sequence.
 
 - Line: `DEMO:0012`
 - Source: `姉に説得されるかたちで調査に参加することになった。`
-- Better: “My sister talked me into joining the investigation.”
+- Bad English: “It became that I would participate in the investigation in the form of being persuaded by my older sister.”
+- Good English: “My sister talked me into joining the investigation.”
 
 The Japanese uses passive persuasion plus a formal result construction. English can make the persuader the active cause.
 
@@ -145,10 +156,10 @@ The Japanese uses passive persuasion plus a formal result construction. English 
 
 - Line: `DEMO:0013`
 - Source: `濃霧のため、船は引き返すことを余儀なくされた。`
-- Neutral narration: “The fog forced the boat to turn back.”
-- Formal report: “The vessel was forced to turn back because of heavy fog.”
+- Bad English: “Due to the dense fog, the ship was unavoidably made to return.”
+- Good English: “The fog forced the boat to turn back.”
 
-Choose voice according to register. Do not preserve bureaucratic syntax in casual narration merely because the Japanese is passive.
+The bad version preserves Japanese compulsion mechanically and produces no natural English agent. In a formal report, “The vessel was forced to turn back because of heavy fog” is also good; choose voice according to register.
 
 ## 7. Change, completion, regret, and loss of control
 
@@ -158,7 +169,8 @@ Choose voice according to register. Do not preserve bureaucratic syntax in casua
 
 - Line: `DEMO:0014`
 - Source: `その日から、彼女も無線に答えるようになった。`
-- Better: “After that day, she began answering the radio.”
+- Bad English: “From that day, she also came to become able to answer the radio.”
+- Good English: “After that day, she began answering the radio.”
 
 `ようになる` describes a change in behavior or capability.
 
@@ -166,7 +178,8 @@ Choose voice according to register. Do not preserve bureaucratic syntax in casua
 
 - Line: `DEMO:0015`
 - Source: `あの歌を聞くと、どうしても昔のことを思い出してしまう。`
-- Better: “Whenever I heard that song, memories of the past came flooding back.”
+- Bad English: “When I hear that song, unfortunately I end up remembering old things.”
+- Good English: “Whenever I heard that song, memories of the past came flooding back.”
 
 The lack of control is carried by the English verb. Adding “unfortunately” would overstate the source.
 
@@ -178,7 +191,8 @@ This distinction is essential in mystery stories. Do not flatten inference or he
 
 - Line: `DEMO:0016`
 - Source: `窓は内側から割られたらしい。`
-- Better: “The window appeared to have been broken from the inside.”
+- Bad English: “The window was broken from the inside.”
+- Good English: “The window appeared to have been broken from the inside.”
 
 The narrator is inferring from evidence.
 
@@ -186,7 +200,8 @@ The narrator is inferring from evidence.
 
 - Line: `DEMO:0017`
 - Source: `昔、この島には観測所があったそうだ。`
-- Better: “They say there used to be an observatory on the island.”
+- Bad English: “There used to be an observatory on the island.”
+- Good English: “They say there used to be an observatory on the island.”
 
 Plain-form `そうだ` reports hearsay. It is not proof that the observatory existed.
 
@@ -206,7 +221,8 @@ Plain-form `そうだ` reports hearsay. It is not proof that the observatory exi
 
 - Line: `DEMO:0018`
 - Source shape: `霧笛が一度だけ鳴る夜に姿を現すのが、あの白い船だ。`
-- Better: “The white ship appeared only on nights when the foghorn sounded once.”
+- Bad English: “What appears on nights when the foghorn sounds only once is that white ship.”
+- Good English: “The white ship appeared only on nights when the foghorn sounded once.”
 
 English need not imitate the delayed `のが…だ` cleft when a direct subject is stronger.
 
@@ -214,7 +230,8 @@ English need not imitate the delayed `のが…だ` cleft when a direct subject 
 
 - Line: `DEMO:0019`
 - Source: `錆びた鎖。濡れた切符。誰もいない待合室。`
-- Better: “A rusted chain. A waterlogged ticket. An empty waiting room.”
+- Bad English: “There were a rusted chain, a wet ticket, and a waiting room where no one was.”
+- Good English: “A rusted chain. A waterlogged ticket. An empty waiting room.”
 
 The fragments create a visual sequence. Joining them into a complete sentence would flatten the rhythm.
 
@@ -233,22 +250,33 @@ Japanese role terms do not have one global English equivalent.
 
 Use contractions, sentence length, hedging, titles, and vocabulary to convey register. Avoid phonetic eye dialect unless the project has a deliberate, reviewed policy.
 
-## 11. Reveal-sensitive ambiguity
-
-### Example 20 — conditional identity
+### Example 20 — translate the role, not the dictionary label
 
 - Line: `DEMO:0020`
+- Context: a patient speaking politely to a physician
+- Source: `先生、もう一度診てください。`
+- Bad English: “Teacher, please look at me one more time.”
+- Good English: “Doctor, could you examine me again?”
+
+The bad version selects the most familiar dictionary meaning of `先生` and treats `診る` as ordinary looking. The context determines both the role noun and the medical sense of the verb; the polite request should remain polite without becoming stiff.
+
+## 11. Reveal-sensitive ambiguity
+
+### Example 21 — conditional identity
+
+- Line: `DEMO:0021`
 - Source: `もし岬で見た人物が彼女だったのなら、日記の時刻と矛盾する。`
-- Correct: “If the person I saw at the cape was her, the time in the diary couldn't be right.”
-- Wrong: “I saw her at the cape, which contradicted the diary.”
+- Bad English: “I saw her at the cape, which contradicted the diary.”
+- Good English: “If the person I saw at the cape was her, the time in the diary couldn't be right.”
 
 The source proposes an identity conditionally. Later knowledge must not turn the earlier line into a fact.
 
-### Example 21 — vague referent
+### Example 22 — vague referent
 
-- Line: `DEMO:0021`
+- Line: `DEMO:0022`
 - Source: `あの人も、同じことを知っていたのだろうか。`
-- Better: “Had that person known the same thing?”
+- Bad English: “Did she also know the same thing?”
+- Good English: “Had that person known the same thing?”
 
 If the viewpoint intentionally avoids a name or gender, English should not reveal either. Awkwardness can be preferable to a spoiler.
 
@@ -256,11 +284,12 @@ If the viewpoint intentionally avoids a name or gender, English should not revea
 
 Treat tags as protected structure, not punctuation.
 
-### Example 22 — paired tag
+### Example 23 — paired tag
 
-- Line: `DEMO:0022`
+- Line: `DEMO:0023`
 - Source: `<term=004>白い船</term>を見たのは、あの夜が初めてだった。`
-- Target: “That night was the first time I saw the <term=004>White Ship</term>.”
+- Bad English: “That night was the first time I saw the White Ship.”
+- Good English: “That night was the first time I saw the <term=004>White Ship</term>.”
 
 Translate visible text inside the tag while preserving the tag name, ID, and pair. If tags are replaced before generation, the protected form might be `That night was the first time I saw [[TAG_0001]]White Ship[[TAG_0002]].`
 
@@ -283,6 +312,15 @@ Do not split when:
 - a paired tag or variable would become unbalanced.
 
 Join only when Japanese fragments are grammatical supports that would sound accidental in English. Preserve deliberate catalogue fragments, interruptions, and emotional beats.
+
+### Example 24 — split a clause chain into readable beats
+
+- Line: `DEMO:0024`
+- Source: `端末は沈黙したまま、彼女が何度呼びかけても返事はなく、やがて画面の光まで消えた。`
+- Bad English: “The terminal remaining silent, even though she called out many times there was no reply, and before long even the screen's light disappeared.”
+- Good English: “The terminal stayed silent. No matter how many times she called, no one answered. Eventually, even the screen went dark.”
+
+The bad version follows each Japanese connective and leaves English without a stable main clause. The good version turns three narrative developments into three finite sentences while preserving their order and escalation.
 
 ## Batch checklist
 

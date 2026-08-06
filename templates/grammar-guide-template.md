@@ -14,6 +14,9 @@ For every difficult line:
 4. Decide which clause becomes the English main clause.
 5. Preserve character voice, ambiguity, and reveal timing.
 6. Preserve tags, variables, and presentation constraints.
+7. Show both a plausible bad English output and a corrected good English output.
+
+The bad output is required. It should represent a failure a literal translator or model might realistically produce, not deliberately nonsensical prose. Make the defect observable: wrong agency, reversed scope, flattened uncertainty, premature reveal, broken register, Japanese-shaped syntax, or damaged markup.
 
 ## [Construction or recurring failure]
 
@@ -25,8 +28,9 @@ For every difficult line:
 - Source shape: `[abstracted clause structure, if safer/more useful]`
 - Head noun: `[when relevant]`
 - Omitted subject: `[when relevant]`
-- Likely MT failure: “[literal/wrong output]”
-- Better architecture: “[provisional structural translation]”
+- Bad English: “[plausible literal, incorrect, wooden, or unsafe output]”
+- Good English: “[provisional translation that demonstrates the required decision]”
+- Failure type: [meaning / agency / scope / certainty / reveal / register / syntax / markup]
 - Decision: [why this preserves meaning, register, scope, or pacing]
 - Engine note: [tags, voice timing, page control, or length]
 

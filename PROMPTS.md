@@ -96,12 +96,13 @@ Group repeated problems by construction. Each entry must contain:
 - stable line ID;
 - a short source excerpt or abstracted source shape;
 - head noun and omitted subject when relevant;
-- the likely literal/MT failure;
-- a natural structural translation or rewrite;
-- a short explanation of why it preserves the original;
+- a plausible bad English output that a literal translator or model might realistically produce;
+- a corrected good English output that demonstrates the required decision;
+- the failure type: meaning, agency, scope, certainty, reveal, register, syntax, markup, or another precise category;
+- a short explanation of what is wrong with the bad output and why the good output preserves the original;
 - notes on register, uncertainty, reveal timing, tags, or line breaks.
 
-Prioritize patterns that recur, reverse logical scope, assign an action to the wrong character, flatten uncertainty, or create unreadable English. Do not add an entry merely because a sentence contains uncommon vocabulary.
+Every worked entry must include both `Bad English` and `Good English`; never make the reader infer the failure from commentary alone. The bad output must be plausible, not a deliberately absurd straw man. Prioritize patterns that recur, reverse logical scope, assign an action to the wrong character, flatten uncertainty, or create unreadable English. Do not add an entry merely because a sentence contains uncommon vocabulary.
 
 If context is insufficient, say what surrounding rows are needed. Do not use knowledge from later scenes to resolve an earlier ambiguity.
 

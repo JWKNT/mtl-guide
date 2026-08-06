@@ -58,7 +58,7 @@ Use `locked`, `working`, `review`, and `deprecated` states. A glossary is not on
 
 Sample narration, dialogue, exposition, choices, tips, and late-game scenes. Add constructions that repeatedly cause incorrect, wooden, or reveal-breaking output.
 
-Each entry should include a stable line ID, short source excerpt, likely MT failure, better English structure, and a brief explanation. Common subjects include long prenominal modifiers, omitted subjects, partial negatives, `という` and `わけ`, concession, passive chains, evidentiality, register, deliberate ambiguity, and markup inside grammatical units.
+Each entry should include a stable line ID, short source excerpt, plausible bad English output, corrected good English output, named failure type, and a brief explanation. The bad output must show a realistic error rather than a caricature, so future translators and models can see exactly what must be avoided. Common subjects include long prenominal modifiers, omitted subjects, partial negatives, `という` and `わけ`, concession, passive chains, evidentiality, register, deliberate ambiguity, and markup inside grammatical units.
 
 Use real examples in the private project guide. Use [`grammar-guide-example.md`](grammar-guide-example.md) as the public format reference.
 
