@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Reusable prompts for discovery, authority building, strict translation, bilingual review, and consistency auditing.">
+    <meta name="description" content="Reusable prompts for discovery, authority building, translation, source-aware editing, corpus QA, and handoff.">
     <meta name="theme-color" content="#ffffff">
     <title>Prompt library · MTL Guide</title>
     <link rel="stylesheet" href="assets/styles.css">
@@ -21,14 +21,14 @@
     </header>
     <main class="doc-shell">
       <header class="doc-hero">
-        <div><h1>Prompt library</h1><p class="doc-summary">Reusable prompts for discovery, authority building, strict translation, bilingual review, and consistency auditing.</p></div>
+        <div><h1>Prompt library</h1><p class="doc-summary">Reusable prompts for discovery, authority building, translation, source-aware editing, corpus QA, and handoff.</p></div>
         <div class="doc-actions">
           <button class="toc-toggle" id="toc-toggle" type="button" aria-expanded="false" aria-controls="doc-toc">Contents</button>
           <a class="raw-link" href="PROMPTS.md">View raw Markdown</a>
         </div>
       </header>
       <div class="doc-layout">
-        <aside class="doc-toc" id="doc-toc" aria-label="On this page"><h2>On this page</h2><ol><li><a href="#shared-project-brief">Shared project brief</a></li><li><a href="#1-script-discovery-and-risk-scan">1. Script discovery and risk scan</a></li><li><a href="#2-terminology-authority-proposal">2. Terminology-authority proposal</a></li><li><a href="#3-vn-specific-uncommon-grammar-guide-builder">3. VN-specific uncommon-grammar guide builder</a></li><li><a href="#4-strict-batch-translation">4. Strict batch translation</a></li><li><a href="#5-bilingual-accuracy-review">5. Bilingual accuracy review</a></li><li><a href="#6-consistency-and-reveal-audit">6. Consistency and reveal audit</a></li><li><a href="#7-monolingual-polish-pass">7. Monolingual polish pass</a></li><li><a href="#prompt-version-record">Prompt-version record</a></li></ol></aside>
+        <aside class="doc-toc" id="doc-toc" aria-label="On this page"><h2>On this page</h2><ol><li><a href="#shared-project-brief">Shared project brief</a></li><li><a href="#1-script-discovery-and-risk-scan">1. Script discovery and risk scan</a></li><li><a href="#2-terminology-authority-proposal">2. Terminology-authority proposal</a></li><li><a href="#3-vn-specific-uncommon-grammar-guide-builder">3. VN-specific uncommon-grammar guide builder</a></li><li><a href="#4-reading-order-identity-voice-and-wordplay-audit">4. Reading-order, identity, voice, and wordplay audit</a></li><li><a href="#5-strict-batch-translation">5. Strict batch translation</a></li><li><a href="#6-bilingual-accuracy-and-continuity-review">6. Bilingual accuracy and continuity review</a></li><li><a href="#7-character-voice-and-prose-pass">7. Character voice and prose pass</a></li><li><a href="#8-consistency-and-reveal-audit">8. Consistency and reveal audit</a></li><li><a href="#9-technical-and-row-correspondence-qa">9. Technical and row-correspondence QA</a></li><li><a href="#10-handoff-and-completion-audit">10. Handoff and completion audit</a></li><li><a href="#prompt-version-record">Prompt-version record</a></li></ol></aside>
         <article class="doc-content" id="doc-content"><div class="doc-preamble"><p>These prompts are starting points. Replace every bracketed field and remove instructions that do not fit the project. Keep spoiler-bearing inputs and outputs in the private workspace.</p><p>Models may ignore formatting rules or damage markup. Validate their output programmatically before merging it.</p></div><section class="doc-section" id="shared-project-brief"><h2>Shared project brief</h2><p>Attach this block to each task, filled with the current approved rules.</p><pre><code class="language-text">PROJECT
 - Source language: [Japanese]
 - Target language: [English]
@@ -40,6 +40,17 @@
 - Rating/tone constraints: [rule]
 - Engine tags/placeholders: [syntax and preservation rule]
 - Output length constraints: [textbox limits]
+- Current phase and completed gates: [discovery / draft / bilingual review / prose / QA]
+
+SOURCE OF TRUTH, IN ORDER
+1. Current source line and complete scene context.
+2. Player reading order and reveal chronology.
+3. Identity, gender, and pronoun ledger.
+4. Character and narrator voice guide.
+5. Approved names and terminology.
+6. Writing-system and wordplay decisions.
+7. Title-specific grammar guide.
+8. Current target-language draft.
 
 TRANSLATION PRIORITIES, IN ORDER
 1. Preserve meaning, agency, logical scope, uncertainty, and reveal timing.
@@ -108,7 +119,25 @@ If context is insufficient, say what surrounding rows are needed. Do not use kno
 
 [PROJECT BRIEF]
 [CURRENT GRAMMAR GUIDE]
-[SOURCE ROWS WITH BEFORE/AFTER CONTEXT]</code></pre></section><section class="doc-section" id="4-strict-batch-translation"><h2>4. Strict batch translation</h2><p>Protect complex tags with placeholders before using this prompt whenever possible.</p><pre><code class="language-text">Translate only the rows in TARGET ROWS. CONTEXT ROWS are read-only and must not appear in the output.
+[SOURCE ROWS WITH BEFORE/AFTER CONTEXT]</code></pre></section><section class="doc-section" id="4-reading-order-identity-voice-and-wordplay-audit"><h2>4. Reading-order, identity, voice, and wordplay audit</h2><p>Run this before bulk translation, then extend it when later scenes add evidence.</p><pre><code class="language-text">Read the supplied visual-novel script in player-facing order. Build four concise, evidence-backed project authorities; do not translate the full script.
+
+1. READING AND REVEAL ORDER
+List chapter/route order, unlock prerequisites, narrator/POV, time period, and what the reader currently knows. Flag extraction order that differs from play order.
+
+2. IDENTITY AND SPEECH AXES
+For each recurring character, separately record identity/gender and English pronouns; Japanese first- and second-person forms; gendered or nonstandard speech markers; public/private code-switching; and changes over the story. Never infer pronouns from feminine or masculine speech alone.
+
+3. REPRODUCIBLE VOICE
+Describe observable English levers: contraction rate, clause length, directness, hedging, question style, address terms, vocabulary, fragments, repetitions, emotional displacement, and narrator noticing habits. Personality adjectives are insufficient. State what remains stable and what develops.
+
+4. WRITING-SYSTEM RISKS
+Find ruby/furigana mismatches, kanji readings/components, shared glyphs across identities, homophones, script switches, name formation, visual contrasts, and recurring lexical networks. For each, give line IDs, function, recommendation, and one strategy: preserve directly, explain once, rebuild locally, accept controlled loss, or do not force. Separate explicit wordplay from speculation.
+
+Label observation and inference. Respect reveal timing. State what context is still missing.
+
+[PROJECT BRIEF]
+[CHAPTER/UNLOCK DATA]
+[SOURCE ROWS IN PLAYER ORDER]</code></pre></section><section class="doc-section" id="5-strict-batch-translation"><h2>5. Strict batch translation</h2><p>Protect complex tags with placeholders before using this prompt whenever possible.</p><pre><code class="language-text">Translate only the rows in TARGET ROWS. CONTEXT ROWS are read-only and must not appear in the output.
 
 Return TSV only, with exactly these columns and no Markdown fence:
 line_id&lt;TAB&gt;target_text&lt;TAB&gt;notes
@@ -129,14 +158,15 @@ Requirements:
 
 [PROJECT BRIEF]
 [RELEVANT TERMINOLOGY ENTRIES]
+[RELEVANT READING-ORDER, IDENTITY, VOICE, AND WORDPLAY ENTRIES]
 [RELEVANT GRAMMAR-GUIDE SECTIONS]
 [SCENE/SPEAKER SUMMARY]
 [CONTEXT ROWS]
-[TARGET ROWS]</code></pre></section><section class="doc-section" id="5-bilingual-accuracy-review"><h2>5. Bilingual accuracy review</h2><p>This pass diagnoses first. It should not rewrite every line into the reviewer's preferred style.</p><pre><code class="language-text">Audit each source/target pair as a bilingual visual-novel editor.
+[TARGET ROWS]</code></pre></section><section class="doc-section" id="6-bilingual-accuracy-and-continuity-review"><h2>6. Bilingual accuracy and continuity review</h2><p>This pass diagnoses first. It should not rewrite every line into the reviewer's preferred style.</p><pre><code class="language-text">Audit each source/target pair as a bilingual visual-novel editor.
 
 Check, in order:
 1. meaning, omitted information, and invented information;
-2. subject, object, pronoun, tense, and causal direction;
+2. narrator/POV, subject, object, pronoun number, tense, and causal direction;
 3. negation scope, conditionals, concession, and evidentiality;
 4. terminology, aliases, titles, and reveal timing;
 5. voice, register, fluency, and textbox constraints;
@@ -152,8 +182,28 @@ Use the smallest revision that fixes the issue. Do not flag a faithful line mere
 
 [PROJECT BRIEF]
 [TERMINOLOGY AUTHORITY]
+[READING/REVEAL, IDENTITY, VOICE, AND WORDPLAY AUTHORITIES]
 [RELEVANT GRAMMAR GUIDE]
-[SOURCE/TARGET ROWS WITH CONTEXT]</code></pre></section><section class="doc-section" id="6-consistency-and-reveal-audit"><h2>6. Consistency and reveal audit</h2><pre><code class="language-text">Audit these translated batches against the terminology authority and timeline notes.
+[SOURCE/TARGET ROWS WITH CONTEXT]</code></pre></section><section class="doc-section" id="7-character-voice-and-prose-pass"><h2>7. Character voice and prose pass</h2><p>Run only after bilingual accuracy review. Read the source and target together first, then the complete target-language chapter alone.</p><pre><code class="language-text">Edit this reviewed visual-novel chapter for character voice and natural target-language prose. Treat the current target as editable draft, but preserve all established meaning and safeguards.
+
+For every line, consult the local exchange, speaker/narrator dossier, and route progression. Check:
+- diction, contraction rate, clause length, directness, hedging, and question style;
+- terms of address, public/private code-switching, and emotional pressure;
+- dialogue timing, meaningful fragments/repetitions, and exposition that sounds translated;
+- narrator-specific noticing habits and literary texture;
+- idioms or jokes that need functional rather than literal equivalence.
+
+Do not undo approved names, pronouns, reveal boundaries, uncertainty, wordplay decisions, tags, or IDs. Do not give a character a gimmick or invented accent. After source-aware editing, read the English chapter straight through and repair only genuine flow problems.
+
+Return:
+1. changed rows as line_id | revised_target | reason;
+2. unresolved questions;
+3. a chapter sign-off stating rows reviewed, safeguards checked, and validation still required.
+
+[PROJECT BRIEF]
+[IDENTITY AND VOICE AUTHORITIES]
+[WORDPLAY/GRAMMAR AUTHORITIES]
+[SOURCE/TARGET CHAPTER IN PLAYER ORDER]</code></pre></section><section class="doc-section" id="8-consistency-and-reveal-audit"><h2>8. Consistency and reveal audit</h2><pre><code class="language-text">Audit these translated batches against the terminology authority and timeline notes.
 
 Report only actionable findings in these groups:
 - non-approved spelling or capitalization;
@@ -167,29 +217,53 @@ Report only actionable findings in these groups:
 
 For each finding give line_id, current text, required form or question, authority entry, and confidence. Do not perform blind string replacement when grammar or context changes the correct form.
 
-[TERMINOLOGY AUTHORITY]
-[TIMELINE/REVEAL NOTES]
-[TRANSLATED ROWS]</code></pre></section><section class="doc-section" id="7-monolingual-polish-pass"><h2>7. Monolingual polish pass</h2><p>Run only after bilingual accuracy review.</p><pre><code class="language-text">Read the target-language scene as a visual-novel editor without rewriting its meaning.
+[TERMINOLOGY AND IDENTITY AUTHORITIES]
+[READING-ORDER/TIMELINE NOTES]
+[VOICE AND WORDPLAY LEXICAL-NETWORK RULES]
+[TRANSLATED ROWS]</code></pre></section><section class="doc-section" id="9-technical-and-row-correspondence-qa"><h2>9. Technical and row-correspondence QA</h2><p>Run this after accuracy and prose editing. It is a mechanical release gate, not another style pass. If it finds anything, apply the fixes, validate, and run it again over the full corpus until the result is <code>CLEAN</code>.</p><pre><code class="language-text">Perform a complete final QA of these source/target rows. Do not go looking for optional rewrites.
 
-Flag:
-- sentences that do not parse on first reading;
-- Japanese-shaped noun piles or excessive nominalization;
-- accidental repetition or unclear pronouns;
-- character voices that drift from the supplied voice rules;
-- fragments that appear accidental;
-- dialogue that is too formal, too casual, or implausibly expository;
-- lines likely to overflow the stated textbox limit.
+Verify every row for:
+- exactly one matching stable ID, correct order, and English that belongs to that Japanese row rather than a neighbor;
+- no missing, duplicated, untranslated, truncated, merged, or displaced text;
+- spelling, grammar, punctuation, quotation pairing, capitalization, and locked romanization/terminology;
+- exact preservation of tags, variables, placeholders, escaped newlines, and control syntax;
+- correct speaker/narrator attribution and first-person singular/plural forms in context;
+- allowed versus accidental source-language remnants.
 
-Return line_id, issue, and minimal revision. Preserve approved terms, tags, uncertainty, and reveal timing. Do not smooth intentional fragments, repetition, or awkwardness that defines a character.
+Return only actionable findings as:
+line_id | current_target | required_target | category | evidence
+
+If and only if every supplied row passes, return exactly `CLEAN`. Do not treat a previous clean report as evidence; inspect the current files.
 
 [PROJECT BRIEF]
-[CHARACTER VOICE RULES]
-[TARGET-LANGUAGE SCENE]</code></pre></section><section class="doc-section" id="prompt-version-record"><h2>Prompt-version record</h2><p>Record a small manifest beside generated batches:</p><pre><code class="language-text">prompt_version: [git commit or semantic version]
+[AUTHORITY FILE INDEX IN CONFLICT-PRIORITY ORDER]
+[SOURCE/TARGET ROWS IN PLAYER ORDER]
+[CURRENT VALIDATOR OUTPUT]</code></pre></section><section class="doc-section" id="10-handoff-and-completion-audit"><h2>10. Handoff and completion audit</h2><p>Use this before transferring the project or declaring a phase complete.</p><pre><code class="language-text">Audit the project state; do not translate or polish lines.
+
+Verify and report:
+- canonical source/version/hash and rejected alternate sources;
+- exact source, target, chapter, and support/UI coverage counts;
+- unique stable IDs, target/archive equality, and review statuses;
+- tag, variable, placeholder, and control-field integrity;
+- remaining source-language text, with explicit allowed exceptions;
+- unresolved names, terminology, identity, pronoun, reveal, wordplay, and layout issues;
+- completed review gates per chapter in player order;
+- changelog completeness and validator commands/results;
+- compile/import state and in-engine QA state.
+
+Return: COMPLETE, INCOMPLETE, or BLOCKED; actionable findings; authoritative files in conflict-priority order; exact next action; and a short handoff brief. Do not call a first draft reviewed merely because every target is nonblank.
+
+[PROJECT BRIEF]
+[PROJECT MANIFESTS AND REPORTS]
+[VALIDATOR OUTPUT]</code></pre></section><section class="doc-section" id="prompt-version-record"><h2>Prompt-version record</h2><p>Record a small manifest beside generated batches:</p><pre><code class="language-text">prompt_version: [git commit or semantic version]
 model: [exact model identifier]
 generated_at: [ISO 8601 timestamp]
 source_batch_hash: [SHA-256]
 terminology_version: [git commit/hash]
 grammar_guide_version: [git commit/hash]
+reading_order_version: [git commit/hash]
+identity_voice_version: [git commit/hash]
+wordplay_version: [git commit/hash]
 settings: [temperature, seed, or provider options]
 human_reviewer: [name or blank]</code></pre><p>Reproducibility does not mean a future model call will emit identical prose. It means the exact input, rules, output, and review history are recoverable.</p></section></article>
       </div>

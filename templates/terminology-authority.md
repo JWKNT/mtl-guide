@@ -2,6 +2,21 @@
 
 > Replace bracketed text and fictional examples. This file is the required translation authority, not a brainstorming list. Use approved forms exactly unless an entry is marked `review`.
 
+## Authority order
+
+Resolve conflicts in this order unless the project documents a reason to differ:
+
+1. current source line and complete scene context;
+2. chapter reading order and reveal chronology;
+3. identity, gender, and pronoun ledger;
+4. character/narrator voice guide;
+5. approved names and terminology;
+6. writing-system and wordplay decisions;
+7. title-specific grammar guide;
+8. current target-language draft.
+
+The draft is editable evidence. It never overrules the source.
+
 ## Global rules
 
 - Personal-name order: [given–surname / surname–given / context-dependent].
@@ -22,6 +37,22 @@ Use this section for rules that cannot safely be represented as blind substituti
 |---|---|---|---|---|
 | [Character A] | [formal name]; [nickname]; [title] | [who uses each form and when] | [line/profile IDs] | review |
 | [Inherited title] | [holder A]; [holder B] | Do not normalize earlier scenes to the later holder. | [IDs] | review |
+
+## Reading and reveal order
+
+Record player-facing order rather than trusting filenames or archive order.
+
+| Order | Chapter/route | Unlock prerequisite | Narrator/POV | Time period | Knowledge/reveal boundary |
+|---:|---|---|---|---|---|
+| 1 | [chapter] | [none] | [narrator] | [period] | [what names/identities the reader currently knows] |
+
+## Identity, pronouns, and speech axes
+
+Do not derive identity from speech style. A male character may use feminine self-reference or endings; a woman may use rough masculine forms. Record these facts independently.
+
+| Character/identity | Identity and English pronouns | Japanese self-reference/address | Speech markers | Context/progression | Avoid |
+|---|---|---|---|---|---|
+| [Character] | [man; he/him] | [`アタシ`; `あなた`] | [feminine endings, polished cadence] | [public/private or early/late shift] | [misgendering; caricature] |
 
 ## Required distinctions
 
@@ -78,11 +109,21 @@ Do not assign one English equivalent globally when the relationship changes by c
 | `[Name]_injured` | `[Name]` | Costume/state suffix must not enter the nameplate. | working |
 | [raw label] | [display] | [rule] | review |
 
-## Character voice rules
+## Character voice and progression
 
-| Speaker | Register and syntax | Vocabulary/address | Avoid |
-|---|---|---|---|
-| [Character] | [contractions, sentence length, directness] | [titles, pronouns, recurring diction] | [flattening/gimmicks] |
+Describe language a translator can reproduce, not personality alone.
+
+| Speaker/narrator | Register and syntax | Vocabulary/address | Public/private or route progression | Avoid |
+|---|---|---|---|---|
+| [Character] | [contractions, sentence length, directness, question style] | [titles, second-person forms, recurring diction] | [how the voice changes and what remains stable] | [flattening, gimmicks, invented accent] |
+
+## Writing-system and wordplay decisions
+
+Audit ruby/furigana mismatches, kanji readings and components, homophones, script switches, name formation, visual glyph contrasts, and recurring lexical networks. Do not force an unproven pun.
+
+| Line/evidence | Source mechanism | Story/social function | Strategy | Required treatment | Controlled loss/status |
+|---|---|---|---|---|---|
+| [ID] | [shared kanji with two readings] | [links two identities] | explain once | [retain characters once, then use approved names] | [Latin spelling hides the shared glyph; locked] |
 
 ## Deprecated forms
 

@@ -11,7 +11,7 @@ const documents = [
     source: "README.md",
     output: "workflow.html",
     title: "Workflow",
-    summary: "The end-to-end process: canonical source, stable IDs, terminology, grammar, batching, validation, QA, and release.",
+    summary: "The end-to-end process: canonical source, complete text inventory, context authorities, translation, editorial gates, handoff, and release.",
   },
   {
     source: "grammar-guide-example.md",
@@ -23,13 +23,13 @@ const documents = [
     source: "PROMPTS.md",
     output: "prompts.html",
     title: "Prompt library",
-    summary: "Reusable prompts for discovery, authority building, strict translation, bilingual review, and consistency auditing.",
+    summary: "Reusable prompts for discovery, authority building, translation, source-aware editing, corpus QA, and handoff.",
   },
   {
     source: "templates/terminology-authority.md",
     output: "terminology-template.html",
     title: "Terminology authority template",
-    summary: "A blank authority for names, aliases, items, organizations, titles, voice rules, and review decisions.",
+    summary: "A blank authority for names, chronology, identity, voice, writing-system decisions, and terminology.",
   },
   {
     source: "templates/grammar-guide-template.md",
