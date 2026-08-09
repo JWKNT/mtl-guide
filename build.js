@@ -222,6 +222,7 @@ function pageTemplate(document, rendered) {
     <meta name="description" content="${escapeHtml(document.summary)}">
     <meta name="theme-color" content="#ffffff">
     <title>${escapeHtml(document.title)} · MTL Guide</title>
+    <script src="https://jwknt.github.io/site-theme/v1/theme.js"></script>
     <link rel="stylesheet" href="https://jwknt.github.io/site-theme/v1/base.css">
     <link rel="stylesheet" href="assets/styles.css">
   </head>
@@ -265,6 +266,7 @@ function codePageTemplate(document, code) {
     <meta name="description" content="${escapeHtml(document.summary)}">
     <meta name="theme-color" content="#ffffff">
     <title>${escapeHtml(document.title)} · MTL Guide</title>
+    <script src="https://jwknt.github.io/site-theme/v1/theme.js"></script>
     <link rel="stylesheet" href="https://jwknt.github.io/site-theme/v1/base.css">
     <link rel="stylesheet" href="assets/styles.css">
   </head>
