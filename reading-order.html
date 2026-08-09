@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A fictional example for documenting route order, narrator spans, chronology, and reveal boundaries.">
+    <meta name="theme-color" content="#ffffff">
+    <title>Reading and reveal order · MTL Guide</title>
+    <link rel="stylesheet" href="assets/styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#doc-content">Skip to document</a>
+    <header class="site-header">
+      <a class="site-title" href="index.html">MTL Guide</a>
+      <nav aria-label="Primary navigation">
+        <a href="workflow.html">Workflow</a>
+        <a href="reading-order.html" aria-current="page">Authorities</a>
+        <a href="grammar.html">Grammar</a>
+        <a href="prompts.html">Prompts</a>
+        <a href="https://github.com/JWKNT/mtl-guide" target="_blank" rel="noreferrer">GitHub</a>
+      </nav>
+    </header>
+    <main class="doc-shell">
+      <header class="doc-hero">
+        <div><h1>Reading and reveal order</h1><p class="doc-summary">A fictional example for documenting route order, narrator spans, chronology, and reveal boundaries.</p></div>
+        <div class="doc-actions">
+          <button class="toc-toggle" id="toc-toggle" type="button" aria-expanded="false" aria-controls="doc-toc">Contents</button>
+          <a class="raw-link" href="examples/reading-order-example.md">View raw Markdown</a>
+        </div>
+      </header>
+      <div class="doc-layout">
+        <aside class="doc-toc" id="doc-toc" aria-label="On this page"><h2>On this page</h2><ol><li><a href="#purpose">Purpose</a></li><li><a href="#chapter-order">Chapter order</a></li><li><a href="#narrator-ledger">Narrator ledger</a></li><li><a href="#reveal-boundaries">Reveal boundaries</a></li><li><a href="#working-rules">Working rules</a></li><li><a href="#sign-off">Sign-off</a></li></ol></aside>
+        <article class="doc-content" id="doc-content"><div class="doc-preamble"><blockquote><p>This is a compact, fictional example. A private project version should cite the real scenario IDs, unlock data, and runtime evidence.</p></blockquote></div><section class="doc-section" id="purpose"><h2>Purpose</h2><p>Use player-facing order rather than filenames or extraction order. This authority prevents an editor from assigning the wrong narrator, using knowledge from a later reveal, or reviewing a route before its prerequisites are understood.</p></section><section class="doc-section" id="chapter-order"><h2>Chapter order</h2><table><thead><tr><th>Order</th><th>Chapter</th><th>Unlock requirement</th><th>Narrator / POV</th><th>Time</th><th>Reader knowledge at entry</th></tr></thead><tbody><tr><td>1</td><td>P0 — Arrival</td><td>none</td><td>deliberately unidentified first person</td><td>present</td><td>The narrator knows the harbor but has no displayed name.</td></tr><tr><td>2</td><td>A1 — Fog Signal</td><td>P0</td><td>Mina Kurose</td><td>present</td><td>“The Courier” is only a title; no civilian identity is known.</td></tr><tr><td>3</td><td>X1 — Ten Years Earlier</td><td>A1</td><td>unidentified witness</td><td>past</td><td>The witness's later identity must remain hidden.</td></tr><tr><td>4</td><td>B1 — Low Tide</td><td>A1 + X1</td><td>Ren Saegusa</td><td>present</td><td>The player may connect two aliases, but Ren has not.</td></tr></tbody></table><p>If routes unlock in parallel, record both the engine's requirement graph and the editorial tie-break order used by the project.</p></section><section class="doc-section" id="narrator-ledger"><h2>Narrator ledger</h2><table><thead><tr><th>Chapter / range</th><th>Narrator status</th><th>English person and number</th><th>Evidence</th><th>Avoid</th></tr></thead><tbody><tr><td>P0:0001–0068</td><td>unknown by design</td><td>singular I</td><td>explicit <code>私</code>; solitary actions</td><td>Adding a gendered self-description.</td></tr><tr><td>A1</td><td>Mina Kurose</td><td>singular I</td><td>name box, internal monologue, scene continuity</td><td>Treating blank speaker cells as neutral narration.</td></tr><tr><td>X1</td><td>unresolved witness</td><td>preserve local ambiguity</td><td>subject omission and hidden face</td><td>Importing the identity learned in B1.</td></tr><tr><td>B1</td><td>Ren Saegusa</td><td>singular I; institutional we only when explicit</td><td>route header and faction dialogue</td><td>Normalizing every <code>我々</code> or omitted subject to “we.”</td></tr></tbody></table></section><section class="doc-section" id="reveal-boundaries"><h2>Reveal boundaries</h2><table><thead><tr><th>Fact</th><th>First suspected</th><th>First confirmed</th><th>Translation rule before confirmation</th></tr></thead><tbody><tr><td>The Courier has a civilian name</td><td>A1:0210</td><td>B1:0144</td><td>Use the title or source pronoun; never insert the name.</td></tr><tr><td>The X1 witness survives</td><td>X1:0090</td><td>B1:0302</td><td>Preserve uncertainty and evidential language.</td></tr><tr><td>Two organizations share a founder</td><td>A1:0331</td><td>B1:0418</td><td>Keep their names and ranks distinct until the source connects them.</td></tr></tbody></table></section><section class="doc-section" id="working-rules"><h2>Working rules</h2><ul><li>Read and review in this order, even when archive names sort differently.</li><li>Identify the narrator from scene evidence, command rows, and route context—not from the current English draft.</li><li>Later knowledge may explain an earlier ambiguity to the editor, but it does not authorize an early reveal.</li><li>Recheck every English I/we/my/our form after the full story map exists.</li><li>Record unresolved narrator spans explicitly; “unknown” is a valid controlled state.</li></ul></section><section class="doc-section" id="sign-off"><h2>Sign-off</h2><ul><li>Engine unlock graph checked: [date / evidence]</li><li>Editorial order checked: [date / reviewer]</li><li>Narrator spans audited: [count / result]</li><li>Reveal-sensitive terms cross-referenced to terminology authority: [version]</li></ul></section></article>
+      </div>
+    </main>
+    <div class="toc-backdrop" id="toc-backdrop" hidden></div>
+    <script src="assets/app.js"></script>
+  </body>
+</html>

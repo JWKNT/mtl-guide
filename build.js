@@ -14,6 +14,30 @@ const documents = [
     summary: "The end-to-end process: canonical source, complete text inventory, context authorities, translation, editorial gates, handoff, and release.",
   },
   {
+    source: "examples/reading-order-example.md",
+    output: "reading-order.html",
+    title: "Reading and reveal order",
+    summary: "A fictional example for documenting route order, narrator spans, chronology, and reveal boundaries.",
+  },
+  {
+    source: "examples/identity-pronoun-example.md",
+    output: "identity-pronouns.html",
+    title: "Identity and pronouns",
+    summary: "A fictional ledger that separates identity, English pronouns, Japanese self-reference, speech style, and timeline.",
+  },
+  {
+    source: "examples/voice-guide-example.md",
+    output: "voice.html",
+    title: "Character voice",
+    summary: "A fictional example of evidence-backed, reproducible character and narrator voice rules.",
+  },
+  {
+    source: "examples/wordplay-guide-example.md",
+    output: "wordplay.html",
+    title: "Writing-system and wordplay",
+    summary: "A fictional example for ruby, kanji, homophones, script changes, visual text, and controlled translation loss.",
+  },
+  {
     source: "grammar-guide-example.md",
     output: "grammar.html",
     title: "Grammar guide example",
@@ -36,14 +60,6 @@ const documents = [
     output: "grammar-template.html",
     title: "Grammar guide template",
     summary: "A blank structure for documenting recurring MT failures with evidence and concrete translation decisions.",
-  },
-  {
-    source: "tools/validate_batch.py",
-    output: "validator.html",
-    title: "Batch validator",
-    summary: "A dependency-free structural check for TSV translation batches.",
-    language: "python",
-    code: true,
   },
 ];
 
@@ -214,6 +230,7 @@ function pageTemplate(document, rendered) {
       <a class="site-title" href="index.html">MTL Guide</a>
       <nav aria-label="Primary navigation">
         ${navLink("workflow.html", "Workflow", current === "workflow.html")}
+        ${navLink("reading-order.html", "Authorities", ["reading-order.html", "identity-pronouns.html", "voice.html", "wordplay.html"].includes(current))}
         ${navLink("grammar.html", "Grammar", current === "grammar.html")}
         ${navLink("prompts.html", "Prompts", current === "prompts.html")}
         <a href="https://github.com/JWKNT/mtl-guide" target="_blank" rel="noreferrer">GitHub</a>
@@ -255,6 +272,7 @@ function codePageTemplate(document, code) {
       <a class="site-title" href="index.html">MTL Guide</a>
       <nav aria-label="Primary navigation">
         <a href="workflow.html">Workflow</a>
+        <a href="reading-order.html">Authorities</a>
         <a href="grammar.html">Grammar</a>
         <a href="prompts.html">Prompts</a>
         <a href="https://github.com/JWKNT/mtl-guide" target="_blank" rel="noreferrer">GitHub</a>

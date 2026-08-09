@@ -9,9 +9,12 @@ All public examples in this repository are fictional. Keep extracted scripts, ga
 - [`grammar-guide-example.md`](grammar-guide-example.md): a filled, spoiler-free example of a VN-specific grammar guide.
 - [`templates/terminology-authority.md`](templates/terminology-authority.md): template for names, aliases, reading/reveal order, identity, voice, wordplay, and usage rules.
 - [`templates/grammar-guide-template.md`](templates/grammar-guide-template.md): blank grammar-guide structure.
+- [`examples/reading-order-example.md`](examples/reading-order-example.md): fictional route, narrator, chronology, and reveal-order authority.
+- [`examples/identity-pronoun-example.md`](examples/identity-pronoun-example.md): fictional identity, English pronoun, Japanese self-reference, and speech-axis ledger.
+- [`examples/voice-guide-example.md`](examples/voice-guide-example.md): fictional evidence-backed character and narrator voice guide.
+- [`examples/wordplay-guide-example.md`](examples/wordplay-guide-example.md): fictional writing-system and wordplay decision guide.
 - [`PROMPTS.md`](PROMPTS.md): prompts for discovery, translation, review, and consistency checks.
 - [`examples/sample-batch.tsv`](examples/sample-batch.tsv): minimal translation-batch format.
-- [`Batch validator`](validator.html): source for the structural TSV checker, displayed as a normal site page.
 
 ## Workflow
 
