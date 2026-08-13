@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A reusable record of build identity, canonical paths, commands, data contracts, text-surface coverage, phase state, and handoff.">
+    <meta name="theme-color" content="#ffffff">
+    <title>Project manifest template · MTL Guide</title>
+    <script src="/site-theme/v1/theme.js"></script>
+    <link rel="stylesheet" href="/site-theme/v1/base.css">
+    <link rel="stylesheet" href="assets/styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#doc-content">Skip to document</a>
+    <header class="site-header">
+      <a class="site-title" href="index.html">MTL Guide</a>
+      <nav aria-label="Primary navigation">
+        <a href="workflow.html">Workflow</a>
+        <a href="project-setup.html">Setup</a>
+        <a href="round-trip-build.html">Build</a>
+        <a href="review-qa.html">Review & QA</a>
+        <a href="reading-order.html">Authorities</a>
+        <a href="prompts.html">Prompts</a>
+        <a href="https://github.com/JWKNT/mtl-guide" target="_blank" rel="noreferrer">GitHub</a>
+      </nav>
+    </header>
+    <main class="doc-shell">
+      <header class="doc-hero">
+        <div><h1>Project manifest template</h1><p class="doc-summary">A reusable record of build identity, canonical paths, commands, data contracts, text-surface coverage, phase state, and handoff.</p></div>
+        <div class="doc-actions">
+          <button class="toc-toggle" id="toc-toggle" type="button" aria-expanded="false" aria-controls="doc-toc">Contents</button>
+          <a class="raw-link" href="templates/project-manifest-template.md">View raw Markdown</a>
+        </div>
+      </header>
+      <div class="doc-layout">
+        <aside class="doc-toc" id="doc-toc" aria-label="On this page"><h2>On this page</h2><ol><li><a href="#build-identity">Build identity</a></li><li><a href="#canonical-locations">Canonical locations</a></li><li><a href="#commands">Commands</a></li><li><a href="#data-contract">Data contract</a></li><li><a href="#text-surface-inventory">Text-surface inventory</a></li><li><a href="#authority-order">Authority order</a></li><li><a href="#current-phase">Current phase</a></li><li><a href="#handoff-acknowledgement">Handoff acknowledgement</a></li></ol></aside>
+        <article class="doc-content" id="doc-content"><section class="doc-section" id="build-identity"><h2>Build identity</h2><table><thead><tr><th>Field</th><th>Value</th></tr></thead><tbody><tr><td>Project</td><td></td></tr><tr><td>Source language -&gt; target language</td><td></td></tr><tr><td>Engine and scripting backend</td><td></td></tr><tr><td>Game edition / storefront</td><td></td></tr><tr><td>Game version</td><td></td></tr><tr><td>Executable hash</td><td></td></tr><tr><td>Primary data hashes</td><td></td></tr><tr><td>Supported platforms / compatibility layers</td><td></td></tr><tr><td>Supported resolutions</td><td></td></tr><tr><td>Patch version</td><td></td></tr></tbody></table></section><section class="doc-section" id="canonical-locations"><h2>Canonical locations</h2><table><thead><tr><th>Artifact</th><th>Authoritative path</th><th>Hash / version</th><th>Producer</th></tr></thead><tbody><tr><td>Immutable original</td><td></td><td></td><td></td></tr><tr><td>Canonical source table</td><td></td><td></td><td></td></tr><tr><td>Canonical target table</td><td></td><td></td><td></td></tr><tr><td>Authority index</td><td></td><td></td><td></td></tr><tr><td>Chapter status manifest</td><td></td><td></td><td></td></tr><tr><td>Revision changelog</td><td></td><td></td><td></td></tr><tr><td>Build report</td><td></td><td></td><td></td></tr><tr><td>QA matrix</td><td></td><td></td><td></td></tr></tbody></table></section><section class="doc-section" id="commands"><h2>Commands</h2><pre><code class="language-text">extract:
+validate baseline:
+build clean:
+validate build:
+install:
+update:
+uninstall / restore:
+launch:</code></pre></section><section class="doc-section" id="data-contract"><h2>Data contract</h2><pre><code class="language-text">stable ID schema:
+source rows:
+translatable rows:
+command-only rows:
+chapters / scenes:
+review statuses:
+allowed untranslated values:
+protected tag and placeholder rules:</code></pre></section><section class="doc-section" id="text-surface-inventory"><h2>Text-surface inventory</h2><table><thead><tr><th>Surface</th><th>Extracted</th><th>Stable IDs</th><th>Authority applied</th><th>Reviewed</th><th>Engine-tested</th></tr></thead><tbody><tr><td>Scenario and narration</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>Speaker / name boxes</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>Choices</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>Tips / glossary</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>Menus / settings / popups</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>Galleries / chapter select / credits</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>Textures / video / special effects</td><td></td><td></td><td></td><td></td><td></td></tr></tbody></table></section><section class="doc-section" id="authority-order"><h2>Authority order</h2><pre><code class="language-text">1.
+2.
+3.</code></pre></section><section class="doc-section" id="current-phase"><h2>Current phase</h2><pre><code class="language-text">phase:
+completed gates:
+chapter / batch in progress:
+exact next action:
+files permitted to change:
+expected validator counts:
+unresolved decisions:
+known unsupported variants:
+last clean confirmation pass:</code></pre></section><section class="doc-section" id="handoff-acknowledgement"><h2>Handoff acknowledgement</h2><pre><code class="language-text">canonical source and target verified:
+baseline validators run:
+required authorities read:
+current phase and next action understood:
+contradictions or blockers:</code></pre></section></article>
+      </div>
+    </main>
+    <div class="toc-backdrop" id="toc-backdrop" hidden></div>
+    <script src="assets/app.js"></script>
+  </body>
+</html>

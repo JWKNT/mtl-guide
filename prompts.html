@@ -16,8 +16,10 @@
       <a class="site-title" href="index.html">MTL Guide</a>
       <nav aria-label="Primary navigation">
         <a href="workflow.html">Workflow</a>
+        <a href="project-setup.html">Setup</a>
+        <a href="round-trip-build.html">Build</a>
+        <a href="review-qa.html">Review & QA</a>
         <a href="reading-order.html">Authorities</a>
-        <a href="grammar.html">Grammar</a>
         <a href="prompts.html" aria-current="page">Prompts</a>
         <a href="https://github.com/JWKNT/mtl-guide" target="_blank" rel="noreferrer">GitHub</a>
       </nav>
@@ -31,7 +33,7 @@
         </div>
       </header>
       <div class="doc-layout">
-        <aside class="doc-toc" id="doc-toc" aria-label="On this page"><h2>On this page</h2><ol><li><a href="#shared-project-brief">Shared project brief</a></li><li><a href="#1-script-discovery-and-risk-scan">1. Script discovery and risk scan</a></li><li><a href="#2-terminology-authority-proposal">2. Terminology-authority proposal</a></li><li><a href="#3-vn-specific-uncommon-grammar-guide-builder">3. VN-specific uncommon-grammar guide builder</a></li><li><a href="#4-reading-order-identity-voice-and-wordplay-audit">4. Reading-order, identity, voice, and wordplay audit</a></li><li><a href="#5-strict-batch-translation">5. Strict batch translation</a></li><li><a href="#6-bilingual-accuracy-and-continuity-review">6. Bilingual accuracy and continuity review</a></li><li><a href="#7-character-voice-and-prose-pass">7. Character voice and prose pass</a></li><li><a href="#8-consistency-and-reveal-audit">8. Consistency and reveal audit</a></li><li><a href="#9-technical-and-row-correspondence-qa">9. Technical and row-correspondence QA</a></li><li><a href="#10-handoff-and-completion-audit">10. Handoff and completion audit</a></li><li><a href="#prompt-version-record">Prompt-version record</a></li></ol></aside>
+        <aside class="doc-toc" id="doc-toc" aria-label="On this page"><h2>On this page</h2><ol><li><a href="#shared-project-brief">Shared project brief</a></li><li><a href="#0-context-free-project-bootstrap">0. Context-free project bootstrap</a></li><li><a href="#1-script-discovery-and-risk-scan">1. Script discovery and risk scan</a></li><li><a href="#2-terminology-authority-proposal">2. Terminology-authority proposal</a></li><li><a href="#3-vn-specific-uncommon-grammar-guide-builder">3. VN-specific uncommon-grammar guide builder</a></li><li><a href="#4-reading-order-identity-voice-and-wordplay-audit">4. Reading-order, identity, voice, and wordplay audit</a></li><li><a href="#5-strict-batch-translation">5. Strict batch translation</a></li><li><a href="#6-bilingual-accuracy-and-continuity-review">6. Bilingual accuracy and continuity review</a></li><li><a href="#7-character-voice-and-prose-pass">7. Character voice and prose pass</a></li><li><a href="#8-consistency-and-reveal-audit">8. Consistency and reveal audit</a></li><li><a href="#9-technical-and-row-correspondence-qa">9. Technical and row-correspondence QA</a></li><li><a href="#10-handoff-and-completion-audit">10. Handoff and completion audit</a></li><li><a href="#11-repeated-and-parallel-passage-reconciliation">11. Repeated and parallel passage reconciliation</a></li><li><a href="#12-support-presentation-and-stateful-runtime-qa">12. Support, presentation, and stateful runtime QA</a></li><li><a href="#13-clean-build-patcher-and-release-audit">13. Clean build, patcher, and release audit</a></li><li><a href="#prompt-version-record">Prompt-version record</a></li></ol></aside>
         <article class="doc-content" id="doc-content"><div class="doc-preamble"><p>These prompts are starting points. Replace every bracketed field and remove instructions that do not fit the project. Keep spoiler-bearing inputs and outputs in the private workspace.</p><p>Models may ignore formatting rules or damage markup. Validate their output programmatically before merging it.</p></div><section class="doc-section" id="shared-project-brief"><h2>Shared project brief</h2><p>Attach this block to each task, filled with the current approved rules.</p><pre><code class="language-text">PROJECT
 - Source language: [Japanese]
 - Target language: [English]
@@ -44,6 +46,9 @@
 - Engine tags/placeholders: [syntax and preservation rule]
 - Output length constraints: [textbox limits]
 - Current phase and completed gates: [discovery / draft / bilingual review / prose / QA]
+- Project manifest and supported build matrix: [paths / versions]
+- Clean-base, source-table, and target-table hashes: [hashes]
+- Exact baseline validator and clean-build commands: [commands]
 
 SOURCE OF TRUTH, IN ORDER
 1. Current source line and complete scene context.
@@ -62,7 +67,23 @@ TRANSLATION PRIORITIES, IN ORDER
 4. Preserve approved terminology exactly.
 5. Preserve all IDs, tags, variables, and control syntax exactly.
 
-Never invent context. When a line remains ambiguous, keep it ambiguous and add a short note.</code></pre></section><section class="doc-section" id="1-script-discovery-and-risk-scan"><h2>1. Script discovery and risk scan</h2><p>Use this on representative excerpts from across the VN, not the entire script in one request.</p><pre><code class="language-text">You are profiling a visual novel before translation. Analyze the supplied source rows; do not translate the full excerpt.
+Never invent context. When a line remains ambiguous, keep it ambiguous and add a short note.</code></pre></section><section class="doc-section" id="0-context-free-project-bootstrap"><h2>0. Context-free project bootstrap</h2><p>Use this when handing a new visual novel to an agent with no prior chat context.</p><pre><code class="language-text">Act as the project lead for a machine-assisted visual novel localization. Read the workflow, project blueprint, round-trip/build guide, editorial/runtime QA guide, supplied project manifest, and every existing authority before modifying targets.
+
+First perform a read-only readiness audit. Identify the actual runtime source, engine and build variants, all visible text surfaces, stable-ID and schema design, extraction/import route, chapter dependency and editorial reading orders, narrator/viewpoint spans, identity/pronoun/voice authorities, recurring text, presentation limits, current review state, and release requirements. Verify hashes and run baseline validators. Distinguish discovered facts from assumptions.
+
+Then return:
+1. canonical artifacts and conflict-priority order;
+2. missing evidence and risks;
+3. a phase plan from canary round trip through zero-change release QA;
+4. the manifests, reports, and validators that must exist;
+5. the exact next safe action and files it may modify.
+
+Do not begin bulk translation until the running game has displayed a controlled canary rebuilt through stable IDs, the complete text surface is inventoried, the story/context authorities are initialized, and a clean rebuild is reproducible. Never treat chat history, a compiled output, or the current English draft as the sole authority.
+
+[WORKFLOW AND GUIDE PAGES]
+[PROJECT FILE TREE]
+[PROJECT MANIFEST OR EMPTY TEMPLATE]
+[EXISTING AUTHORITIES AND REPORTS]</code></pre></section><section class="doc-section" id="1-script-discovery-and-risk-scan"><h2>1. Script discovery and risk scan</h2><p>Use this on representative excerpts from across the VN, not the entire script in one request.</p><pre><code class="language-text">You are profiling a visual novel before translation. Analyze the supplied source rows; do not translate the full excerpt.
 
 Return four sections:
 
@@ -258,7 +279,33 @@ Return: COMPLETE, INCOMPLETE, or BLOCKED; actionable findings; authoritative fil
 
 [PROJECT BRIEF]
 [PROJECT MANIFESTS AND REPORTS]
-[VALIDATOR OUTPUT]</code></pre></section><section class="doc-section" id="prompt-version-record"><h2>Prompt-version record</h2><p>Record a small manifest beside generated batches:</p><pre><code class="language-text">prompt_version: [git commit or semantic version]
+[VALIDATOR OUTPUT]</code></pre></section><section class="doc-section" id="11-repeated-and-parallel-passage-reconciliation"><h2>11. Repeated and parallel passage reconciliation</h2><pre><code class="language-text">Audit the full bilingual corpus for identical and near-identical Japanese passages that recur as quotations, documents, flashbacks, retellings, alternate viewpoints, repeated scenes, ritual phrases, or key concepts. Normalize markup only for candidate discovery; retain stable IDs and full scene context for judgment.
+
+For each cluster, compare source wording, speaker/narrator, time, reveal state, dramatic function, tags, and existing English. Use the same English when the source and function are the same. If context requires a difference, preserve it and document the exact reason. Also flag accidental variation in locked terminology, capitalization, titles, names, and recurring images, plus duplicated adjacent English words or linked terms.
+
+Return stable-ID patch proposals and a cluster report. Do not apply a global replacement without checking every context.
+
+[PROJECT BRIEF]
+[REPEATED-SOURCE CANDIDATE REPORT]
+[BILINGUAL ROWS WITH SCENE CONTEXT]</code></pre></section><section class="doc-section" id="12-support-presentation-and-stateful-runtime-qa"><h2>12. Support, presentation, and stateful runtime QA</h2><pre><code class="language-text">Audit the built game, not only the scenario table. Cover choices, speaker labels, tips/glossary, menus, settings, popups, galleries, credits, chapter select, textures, ruby/helper text, backlog, fonts, wrapping, page breaks, tags, portraits, backgrounds, voice timing, and every supported input method and resolution.
+
+Exercise stateful sequences: repeatedly open/close tips; click nested or multiple linked terms; return to dialogue and advance with keyboard, mouse, controller, wheel, auto, and skip; visit backlog, settings, save/load, choices, and chapter select; lose/regain focus; resize/full-screen; and switch language or asset packs if supported. Confirm overlays release input focus, words never split at apostrophes, portraits never obscure text, and every page is reachable.
+
+Record exact environment, starting state, actions, expected and actual results, screenshot/log/line ID, affected scope, and regression case. After a fix, search for structurally equivalent instances and rerun the full case, not only the original screenshot.
+
+[PROJECT BRIEF]
+[QA MATRIX]
+[BUILT GAME AND DEBUG INSTRUCTIONS]
+[KNOWN FAILURES]</code></pre></section><section class="doc-section" id="13-clean-build-patcher-and-release-audit"><h2>13. Clean build, patcher, and release audit</h2><pre><code class="language-text">Evaluate release readiness from an immutable supported installation. Verify exact input hashes; rebuild using only canonical reviewed targets; compare the build report and output hashes; and test fresh install, previous-version update, reinstall, repeated install, interrupted-state recovery, removal/restoration, save compatibility, paths with spaces/non-ASCII characters, and every supported executable/store/platform variant.
+
+The patcher must detect unsupported, fresh, already-patched, and partial states before mutation. It must complete safely or leave the install recoverable. If it changes language packs or restarts the game, verify the visible state after relaunch rather than only checking files.
+
+Return COMPLETE, INCOMPLETE, or BLOCKED; exact tested matrix; failures with reproduction steps; files changed; rollback result; release hashes; and the one command that reproduces the distributable. Do not approve a release because it works in the developer's existing install.
+
+[PROJECT MANIFEST]
+[CLEAN-BASE AND RELEASE HASHES]
+[BUILD REPORT]
+[QA MATRIX AND PATCHER LOGS]</code></pre></section><section class="doc-section" id="prompt-version-record"><h2>Prompt-version record</h2><p>Record a small manifest beside generated batches:</p><pre><code class="language-text">prompt_version: [git commit or semantic version]
 model: [exact model identifier]
 generated_at: [ISO 8601 timestamp]
 source_batch_hash: [SHA-256]

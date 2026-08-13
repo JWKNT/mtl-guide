@@ -14,6 +14,24 @@ const documents = [
     summary: "The end-to-end process: canonical source, complete text inventory, context authorities, translation, editorial gates, handoff, and release.",
   },
   {
+    source: "PROJECT-SETUP.md",
+    output: "project-setup.html",
+    title: "Project blueprint and agent startup",
+    summary: "A context-free project contract: canonical artifacts, manifests, story model, authorities, readiness gates, and safe agent startup.",
+  },
+  {
+    source: "ROUND-TRIP-BUILD.md",
+    output: "round-trip-build.html",
+    title: "Extraction, round trip, and release build",
+    summary: "Prove the runtime source and import path, preserve engine behavior, plan presentation, build deterministically, and patch safely.",
+  },
+  {
+    source: "REVIEW-QA.md",
+    output: "review-qa.html",
+    title: "Editorial, presentation, and runtime QA",
+    summary: "A complete pass ladder for accuracy, prose, repeated text, tags, layout, stateful interactions, platforms, and release closure.",
+  },
+  {
     source: "examples/reading-order-example.md",
     output: "reading-order.html",
     title: "Reading and reveal order",
@@ -60,6 +78,18 @@ const documents = [
     output: "grammar-template.html",
     title: "Grammar guide template",
     summary: "A blank structure for documenting recurring MT failures with evidence and concrete translation decisions.",
+  },
+  {
+    source: "templates/project-manifest-template.md",
+    output: "project-manifest-template.html",
+    title: "Project manifest template",
+    summary: "A reusable record of build identity, canonical paths, commands, data contracts, text-surface coverage, phase state, and handoff.",
+  },
+  {
+    source: "templates/qa-matrix-template.md",
+    output: "qa-matrix-template.html",
+    title: "QA matrix template",
+    summary: "A reusable matrix for chapter gates, runtime environments, installation states, stateful regressions, and release sign-off.",
   },
 ];
 
@@ -232,8 +262,10 @@ function pageTemplate(document, rendered) {
       <a class="site-title" href="index.html">MTL Guide</a>
       <nav aria-label="Primary navigation">
         ${navLink("workflow.html", "Workflow", current === "workflow.html")}
+        ${navLink("project-setup.html", "Setup", current === "project-setup.html")}
+        ${navLink("round-trip-build.html", "Build", current === "round-trip-build.html")}
+        ${navLink("review-qa.html", "Review & QA", ["review-qa.html", "qa-matrix-template.html"].includes(current))}
         ${navLink("reading-order.html", "Authorities", ["reading-order.html", "identity-pronouns.html", "voice.html", "wordplay.html"].includes(current))}
-        ${navLink("grammar.html", "Grammar", current === "grammar.html")}
         ${navLink("prompts.html", "Prompts", current === "prompts.html")}
         <a href="https://github.com/JWKNT/mtl-guide" target="_blank" rel="noreferrer">GitHub</a>
       </nav>
@@ -276,8 +308,10 @@ function codePageTemplate(document, code) {
       <a class="site-title" href="index.html">MTL Guide</a>
       <nav aria-label="Primary navigation">
         <a href="workflow.html">Workflow</a>
+        <a href="project-setup.html">Setup</a>
+        <a href="round-trip-build.html">Build</a>
+        <a href="review-qa.html">Review &amp; QA</a>
         <a href="reading-order.html">Authorities</a>
-        <a href="grammar.html">Grammar</a>
         <a href="prompts.html">Prompts</a>
         <a href="https://github.com/JWKNT/mtl-guide" target="_blank" rel="noreferrer">GitHub</a>
       </nav>

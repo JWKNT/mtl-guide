@@ -21,6 +21,9 @@ PROJECT
 - Engine tags/placeholders: [syntax and preservation rule]
 - Output length constraints: [textbox limits]
 - Current phase and completed gates: [discovery / draft / bilingual review / prose / QA]
+- Project manifest and supported build matrix: [paths / versions]
+- Clean-base, source-table, and target-table hashes: [hashes]
+- Exact baseline validator and clean-build commands: [commands]
 
 SOURCE OF TRUTH, IN ORDER
 1. Current source line and complete scene context.
@@ -40,6 +43,30 @@ TRANSLATION PRIORITIES, IN ORDER
 5. Preserve all IDs, tags, variables, and control syntax exactly.
 
 Never invent context. When a line remains ambiguous, keep it ambiguous and add a short note.
+```
+
+## 0. Context-free project bootstrap
+
+Use this when handing a new visual novel to an agent with no prior chat context.
+
+```text
+Act as the project lead for a machine-assisted visual novel localization. Read the workflow, project blueprint, round-trip/build guide, editorial/runtime QA guide, supplied project manifest, and every existing authority before modifying targets.
+
+First perform a read-only readiness audit. Identify the actual runtime source, engine and build variants, all visible text surfaces, stable-ID and schema design, extraction/import route, chapter dependency and editorial reading orders, narrator/viewpoint spans, identity/pronoun/voice authorities, recurring text, presentation limits, current review state, and release requirements. Verify hashes and run baseline validators. Distinguish discovered facts from assumptions.
+
+Then return:
+1. canonical artifacts and conflict-priority order;
+2. missing evidence and risks;
+3. a phase plan from canary round trip through zero-change release QA;
+4. the manifests, reports, and validators that must exist;
+5. the exact next safe action and files it may modify.
+
+Do not begin bulk translation until the running game has displayed a controlled canary rebuilt through stable IDs, the complete text surface is inventoried, the story/context authorities are initialized, and a clean rebuild is reproducible. Never treat chat history, a compiled output, or the current English draft as the sole authority.
+
+[WORKFLOW AND GUIDE PAGES]
+[PROJECT FILE TREE]
+[PROJECT MANIFEST OR EMPTY TEMPLATE]
+[EXISTING AUTHORITIES AND REPORTS]
 ```
 
 ## 1. Script discovery and risk scan
@@ -310,6 +337,50 @@ Return: COMPLETE, INCOMPLETE, or BLOCKED; actionable findings; authoritative fil
 [PROJECT BRIEF]
 [PROJECT MANIFESTS AND REPORTS]
 [VALIDATOR OUTPUT]
+```
+
+## 11. Repeated and parallel passage reconciliation
+
+```text
+Audit the full bilingual corpus for identical and near-identical Japanese passages that recur as quotations, documents, flashbacks, retellings, alternate viewpoints, repeated scenes, ritual phrases, or key concepts. Normalize markup only for candidate discovery; retain stable IDs and full scene context for judgment.
+
+For each cluster, compare source wording, speaker/narrator, time, reveal state, dramatic function, tags, and existing English. Use the same English when the source and function are the same. If context requires a difference, preserve it and document the exact reason. Also flag accidental variation in locked terminology, capitalization, titles, names, and recurring images, plus duplicated adjacent English words or linked terms.
+
+Return stable-ID patch proposals and a cluster report. Do not apply a global replacement without checking every context.
+
+[PROJECT BRIEF]
+[REPEATED-SOURCE CANDIDATE REPORT]
+[BILINGUAL ROWS WITH SCENE CONTEXT]
+```
+
+## 12. Support, presentation, and stateful runtime QA
+
+```text
+Audit the built game, not only the scenario table. Cover choices, speaker labels, tips/glossary, menus, settings, popups, galleries, credits, chapter select, textures, ruby/helper text, backlog, fonts, wrapping, page breaks, tags, portraits, backgrounds, voice timing, and every supported input method and resolution.
+
+Exercise stateful sequences: repeatedly open/close tips; click nested or multiple linked terms; return to dialogue and advance with keyboard, mouse, controller, wheel, auto, and skip; visit backlog, settings, save/load, choices, and chapter select; lose/regain focus; resize/full-screen; and switch language or asset packs if supported. Confirm overlays release input focus, words never split at apostrophes, portraits never obscure text, and every page is reachable.
+
+Record exact environment, starting state, actions, expected and actual results, screenshot/log/line ID, affected scope, and regression case. After a fix, search for structurally equivalent instances and rerun the full case, not only the original screenshot.
+
+[PROJECT BRIEF]
+[QA MATRIX]
+[BUILT GAME AND DEBUG INSTRUCTIONS]
+[KNOWN FAILURES]
+```
+
+## 13. Clean build, patcher, and release audit
+
+```text
+Evaluate release readiness from an immutable supported installation. Verify exact input hashes; rebuild using only canonical reviewed targets; compare the build report and output hashes; and test fresh install, previous-version update, reinstall, repeated install, interrupted-state recovery, removal/restoration, save compatibility, paths with spaces/non-ASCII characters, and every supported executable/store/platform variant.
+
+The patcher must detect unsupported, fresh, already-patched, and partial states before mutation. It must complete safely or leave the install recoverable. If it changes language packs or restarts the game, verify the visible state after relaunch rather than only checking files.
+
+Return COMPLETE, INCOMPLETE, or BLOCKED; exact tested matrix; failures with reproduction steps; files changed; rollback result; release hashes; and the one command that reproduces the distributable. Do not approve a release because it works in the developer's existing install.
+
+[PROJECT MANIFEST]
+[CLEAN-BASE AND RELEASE HASHES]
+[BUILD REPORT]
+[QA MATRIX AND PATCHER LOGS]
 ```
 
 ## Prompt-version record

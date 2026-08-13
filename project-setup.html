@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A context-free project contract: canonical artifacts, manifests, story model, authorities, readiness gates, and safe agent startup.">
+    <meta name="theme-color" content="#ffffff">
+    <title>Project blueprint and agent startup · MTL Guide</title>
+    <script src="/site-theme/v1/theme.js"></script>
+    <link rel="stylesheet" href="/site-theme/v1/base.css">
+    <link rel="stylesheet" href="assets/styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#doc-content">Skip to document</a>
+    <header class="site-header">
+      <a class="site-title" href="index.html">MTL Guide</a>
+      <nav aria-label="Primary navigation">
+        <a href="workflow.html">Workflow</a>
+        <a href="project-setup.html" aria-current="page">Setup</a>
+        <a href="round-trip-build.html">Build</a>
+        <a href="review-qa.html">Review & QA</a>
+        <a href="reading-order.html">Authorities</a>
+        <a href="prompts.html">Prompts</a>
+        <a href="https://github.com/JWKNT/mtl-guide" target="_blank" rel="noreferrer">GitHub</a>
+      </nav>
+    </header>
+    <main class="doc-shell">
+      <header class="doc-hero">
+        <div><h1>Project blueprint and agent startup</h1><p class="doc-summary">A context-free project contract: canonical artifacts, manifests, story model, authorities, readiness gates, and safe agent startup.</p></div>
+        <div class="doc-actions">
+          <button class="toc-toggle" id="toc-toggle" type="button" aria-expanded="false" aria-controls="doc-toc">Contents</button>
+          <a class="raw-link" href="PROJECT-SETUP.md">View raw Markdown</a>
+        </div>
+      </header>
+      <div class="doc-layout">
+        <aside class="doc-toc" id="doc-toc" aria-label="On this page"><h2>On this page</h2><ol><li><a href="#four-project-truths">Four project truths</a></li><li><a href="#suggested-private-workspace">Suggested private workspace</a></li><li><a href="#create-the-project-manifest-first">Create the project manifest first</a></li><li><a href="#define-ownership-and-status">Define ownership and status</a></li><li><a href="#build-a-story-model-before-bulk-translation">Build a story model before bulk translation</a></li><li><a href="#authority-index-and-conflict-order">Authority index and conflict order</a></li><li><a href="#context-free-agent-startup-protocol">Context-free agent startup protocol</a></li><li><a href="#readiness-gate">Readiness gate</a></li></ol></aside>
+        <article class="doc-content" id="doc-content"><div class="doc-preamble"><p>Use this page before extraction or translation. Its purpose is to make the project understandable without chat history and to prevent a new agent from guessing which files are authoritative.</p></div><section class="doc-section" id="four-project-truths"><h2>Four project truths</h2><p>Every project should have four clearly named layers:</p><ul><li><strong>Immutable evidence:</strong> untouched game files, source text, hashes, screenshots, and extraction logs.</li><li><strong>Canonical working data:</strong> one master table keyed by stable line IDs. This is the source of truth for targets and review state.</li><li><strong>Authorities:</strong> versioned decisions for reading order, terminology, identity, pronouns, voice, grammar, wordplay, typography, and reveal timing.</li><li><strong>Receipts:</strong> reproducible build commands, validator output, changelogs, QA reports, and release manifests.</li></ul><p>Generated batches, compiled assets, web previews, and patch archives are outputs. Never let an output silently become the only copy of a translation decision.</p></section><section class="doc-section" id="suggested-private-workspace"><h2>Suggested private workspace</h2><pre><code class="language-text">project/
+  original/       untouched inputs and hashes
+  extraction/     decoded data and extraction logs
+  source/         normalized immutable source tables
+  target/         canonical target tables and statuses
+  authorities/    terminology, story, identity, voice, grammar, wordplay
+  batches/        immutable model inputs and raw outputs
+  revisions/      stable-ID patchsets and changelogs
+  tools/          extraction, validation, import, build, and audit scripts
+  build/          disposable compiled output
+  reports/        coverage, QA, layout, and release reports
+  release/        versioned distributable patches</code></pre><p>Keep copyrighted assets and spoiler-bearing notes private. A public process guide should contain only fictional or structurally generic examples.</p></section><section class="doc-section" id="create-the-project-manifest-first"><h2>Create the project manifest first</h2><p>Copy the <a href="templates/project-manifest-template.md">project manifest template</a>. Record at minimum:</p><ul><li>title, language pair, engine, game edition, version, executable hash, and data-file hashes;</li><li>supported storefronts, platforms, resolutions, and runtime versions;</li><li>exact extraction, validation, build, install, update, and uninstall commands;</li><li>canonical source and target locations;</li><li>stable-ID schema, row counts, chapter counts, and text-surface inventory;</li><li>authority files in conflict-priority order;</li><li>review-status meanings and phase completion criteria;</li><li>known uncertainties, rejected sources, unsupported builds, and current next action.</li></ul><p>Update the manifest when a fact changes. Do not make a new agent infer current state from filenames such as <code>final2</code> or <code>latest-fixed</code>.</p></section><section class="doc-section" id="define-ownership-and-status"><h2>Define ownership and status</h2><p>For every artifact, designate one authoritative location and one producer. For example, the master target table owns English prose; the glossary export is regenerated from it and the terminology authority. If the glossary and target disagree, the conflict order must say which wins.</p><p>Use explicit statuses instead of folder position. A useful line progression is:</p><pre><code class="language-text">untranslated -&gt; mt-draft -&gt; accuracy-reviewed -&gt; prose-reviewed -&gt; engine-verified</code></pre><p>A useful chapter manifest also records separate gates for source alignment, authorities applied, bilingual review, prose review, support/UI review, layout review, and runtime verification.</p></section><section class="doc-section" id="build-a-story-model-before-bulk-translation"><h2>Build a story model before bulk translation</h2><p>Read enough of the complete work to understand its actual structure before locking English choices. Create a private, spoiler-complete story model containing:</p><ul><li>a chapter dependency graph and both runtime and editorial reading orders;</li><li>scene-level viewpoint, narrator, time period, location, and reveal state;</li><li>a character identity and relationship timeline;</li><li>internal speaker label to displayed name, portrait, voice, and voice-profile mappings;</li><li>recurring scenes, quotations, documents, flashbacks, and retellings that may repeat source text;</li><li>unresolved mysteries where English must preserve ambiguity.</li></ul><p>The player-facing translation may be reveal-safe; the private authority should not be context-poor. Revisit early chapters after the full work is understood.</p></section><section class="doc-section" id="authority-index-and-conflict-order"><h2>Authority index and conflict order</h2><p>Create a one-page authority index. For each file, record its purpose, version or hash, owner, and whether it is locked or provisional. State the conflict order explicitly.</p><p>A practical default is:</p><ol><li>current source line, engine events, and immediate scene;</li><li>chapter chronology, narrator, and reveal map;</li><li>identity and pronoun ledger;</li><li>character and narrator voice guide;</li><li>terminology and proper-noun authority;</li><li>writing-system and wordplay decisions;</li><li>grammar and restructuring guide;</li><li>current English draft.</li></ol><p>The English draft is never evidence that the source means what the draft says.</p></section><section class="doc-section" id="context-free-agent-startup-protocol"><h2>Context-free agent startup protocol</h2><p>Before editing, a new agent should:</p><ol><li>Read the project manifest, authority index, and current handoff.</li><li>Verify the canonical source and target hashes and run the baseline validators.</li><li>Read every authority required for the current phase, including narrator, identity, pronoun, and voice rules.</li><li>Inspect the chapter dependency and editorial reading orders.</li><li>Confirm the current phase, completed gates, unresolved decisions, exact next chapter, and permitted files to modify.</li><li>State any contradictions before resolving them; never silently choose a lower-priority authority.</li><li>Make edits through stable IDs, record old and new targets, and rerun validators before handoff.</li></ol><p>This acknowledgement should be brief, but it prevents a fresh context from starting an unauthorized new first pass.</p></section><section class="doc-section" id="readiness-gate"><h2>Readiness gate</h2><p>Do not begin bulk translation until all of these are true:</p><ul><li>the runtime source has been identified with evidence;</li><li>a one-line export/import canary has appeared correctly in a clean runtime build;</li><li>visible text surfaces and engine control fields have been inventoried;</li><li>stable IDs survive export, merge, rebuild, and re-extraction;</li><li>source and target schemas, statuses, and validators exist;</li><li>the story, narrator, identity, terminology, voice, grammar, and wordplay authorities are initialized;</li><li>the rebuild starts from an immutable clean base;</li><li>the project manifest identifies the exact next action and definition of done.</li></ul><p>If a gate is unresolved, investigate it before spending model time on prose that may not be importable or correctly contextualized.</p></section></article>
+      </div>
+    </main>
+    <div class="toc-backdrop" id="toc-backdrop" hidden></div>
+    <script src="assets/app.js"></script>
+  </body>
+</html>

@@ -6,6 +6,11 @@ All public examples in this repository are fictional. Keep extracted scripts, ga
 
 ## Files
 
+- [`PROJECT-SETUP.md`](PROJECT-SETUP.md): project contract, private workspace, manifest, story model, authority index, and context-free agent startup protocol.
+- [`ROUND-TRIP-BUILD.md`](ROUND-TRIP-BUILD.md): canonical-source proof, canary import, presentation constraints, deterministic builds, patching, and release gates.
+- [`REVIEW-QA.md`](REVIEW-QA.md): editorial pass ladder, repeated-text reconciliation, tag/layout audits, stateful runtime testing, and clean-pass closure.
+- [`templates/project-manifest-template.md`](templates/project-manifest-template.md): reusable manifest for build identity, canonical paths, commands, counts, phase state, and handoff.
+- [`templates/qa-matrix-template.md`](templates/qa-matrix-template.md): reusable chapter, platform, installation, and interaction regression matrix.
 - [`grammar-guide-example.md`](grammar-guide-example.md): a filled, spoiler-free example of a VN-specific grammar guide.
 - [`templates/terminology-authority.md`](templates/terminology-authority.md): template for names, aliases, reading/reveal order, identity, voice, wordplay, and usage rules.
 - [`templates/grammar-guide-template.md`](templates/grammar-guide-template.md): blank grammar-guide structure.
@@ -18,13 +23,21 @@ All public examples in this repository are fictional. Keep extracted scripts, ga
 
 ## Workflow
 
-### 1. Verify the canonical source
+### 1. Establish the project contract
+
+Create the private workspace, project manifest, authority index, review statuses, and definition of done described in [`PROJECT-SETUP.md`](PROJECT-SETUP.md). Separate immutable evidence, canonical working data, authorities, and build/QA receipts. Give every artifact one authoritative location and say how derived copies are regenerated.
+
+Before bulk work, require a new agent to verify hashes and validator counts, read the authorities for its current phase, acknowledge the exact next action, and edit only through stable IDs. Project state belongs in manifests and reports, not only in chat history.
+
+### 2. Verify the canonical source and round trip
 
 Games may ship duplicate, obsolete, or development scripts. Extract likely sources without modifying the originals, then compare distinctive lines, chapter order, speakers, choices, and UI text with a clean runtime session. Document which source the executable actually uses.
 
 Record the game version, hashes, extraction method, exact runtime evidence, and why every alternate source was accepted or rejected. Do not assume the easiest file to decode is the file the executable displays.
 
-### 2. Export losslessly
+Before translating a chapter, run the clean export/import canary in [`ROUND-TRIP-BUILD.md`](ROUND-TRIP-BUILD.md): change one harmless target through a stable ID, rebuild a disposable copy, confirm the running game displays it, re-extract to detect collateral changes, and reproduce the result from the immutable base. This proves both the source and the import path.
+
+### 3. Export losslessly
 
 Keep one row per engine row, including command rows. Preserve source order and every control field. Give each row a stable ID such as `chapter:source-row`; never use translated text or current row position as the key.
 
@@ -50,7 +63,7 @@ Inventory the complete text surface before calling the export complete: scenario
 
 Retain command-only and apparently blank rows. Background, portrait, name-box, timing, and page-state changes often occur there and affect the next visible line. Any reader, preview, or patch builder must replay the engine's real event stream; never infer visual state from the translated speaker or prose.
 
-### 3. Write the terminology authority
+### 4. Write the terminology authority
 
 Do this before bulk translation. Mine speaker tables, character definitions, profiles, tips, ruby/readings, UI strings, and the script itself.
 
@@ -65,7 +78,7 @@ Record:
 
 Use `locked`, `working`, `review`, and `deprecated` states. A glossary is not only a word list: it must explain when each form is valid.
 
-### 4. Build the context authorities
+### 5. Build the context authorities
 
 Before bulk translation, read the script in the order a player can encounter it and create four compact private references:
 
@@ -74,11 +87,15 @@ Before bulk translation, read the script in the order a player can encounter it 
 - a voice guide based on observable language—syntax, contraction level, directness, address terms, code-switching, verbal habits, and progression—not personality adjectives alone;
 - a writing-system guide for ruby mismatches, kanji readings, homophones, script switches, name formation, glyph contrasts, and recurring lexical networks.
 
+Also maintain mappings from internal speakers and engine events to displayed names, voice profiles, portraits, and backgrounds. Build a report of repeated and near-repeated source passages so quotations, flashbacks, retellings, and parallel viewpoints can be reconciled deliberately rather than translated independently.
+
+Read enough of the complete work to create a spoiler-complete private story model before locking early English. Revisit the opening after later identities, narrators, relationships, and recurring language are understood; preserve only what the player is meant to know at each reveal boundary.
+
 For wordplay, choose deliberately among **preserve directly**, **explain once**, **rebuild locally**, **accept a controlled loss**, and **do not force**. Record the source line, function, recommended treatment, and sacrifice. A tempting sound resemblance is not automatically an intentional pun.
 
 Write an authority order. A useful default is: current source line and scene; reading/reveal chronology; identity/pronoun ledger; voice guide; name and terminology authority; writing-system decisions; grammar guide; current draft. The draft is evidence, never authority over the source.
 
-### 5. Write the VN-specific grammar guide
+### 6. Write the VN-specific grammar guide
 
 Sample narration, dialogue, exposition, choices, tips, and late-game scenes. Add constructions that repeatedly cause incorrect, wooden, or reveal-breaking output.
 
@@ -86,7 +103,7 @@ Each entry should include a stable line ID, short source excerpt, plausible bad 
 
 Use real examples in the private project guide. Use [`grammar-guide-example.md`](grammar-guide-example.md) as the public format reference.
 
-### 6. Translate context-sized batches
+### 7. Translate context-sized batches
 
 Batch by scene or chapter boundary, not an arbitrary character count. Include neighboring read-only rows, the scene and speaker context, relevant terminology entries, relevant grammar notes, and an exact output schema.
 
@@ -104,7 +121,7 @@ For each batch:
 
 Never silently overwrite an existing translation. Protect complicated engine tags with unique placeholders before generation when possible, then restore and compare them mechanically.
 
-### 7. Edit through explicit gates
+### 8. Edit through explicit gates
 
 Treat a complete first draft as a milestone, not a finished translation. Review chapters in the documented player reading order, not filename or extraction order.
 
@@ -117,6 +134,8 @@ Treat a complete first draft as a milestone, not a finished translation. Review 
 
 Do not collapse these gates. A robust order is complete draft → bilingual accuracy → voice/prose → technical and row-correspondence QA → support/UI QA → in-engine QA. The later mechanical pass should fix only demonstrated spelling, grammar, typography, locked-term, tag, newline, or alignment defects; it should not quietly reopen prose style.
 
+Use [`REVIEW-QA.md`](REVIEW-QA.md) for the complete editorial and runtime test ladder. It separates repeated-text, narrator/identity, tag-function, presentation, stateful interaction, platform, and release-installation audits so a clean script cannot mask a broken game.
+
 For each pass, maintain a chapter manifest with pending/in-progress/complete status and a short sign-off. Apply revisions through stable IDs, preserve `line_id | source | old target | new target | reason/pass` in a changelog, synchronize any batch archives, and rerun structural validation after every chapter. Treat automated first-person searches as an inventory, not a verdict: manually adjudicate every suspicious English I/we/my/our form against the actual narrator and scene. If a QA pass changes anything, merge the fixes and run the complete pass again. Finish only after an entire pass returns no changes. Do not trust a passing validator as proof of linguistic quality.
 
 Run the included structural example with:
@@ -125,11 +144,13 @@ Run the included structural example with:
 python3 tools/validate_batch.py examples/sample-batch.tsv
 ```
 
-### 8. Resolve, compile, and release
+### 9. Resolve, compile, and release
 
 Resolve every `review` terminology entry, search for deprecated forms, rerun validators against the full corpus, and test a clean patch install against the supported game version.
 
-Distribute only the minimum patch data permitted by the project. The release should be rebuildable from the private canonical source and reviewed target tables without repeating model calls.
+Always compile from immutable originals plus canonical reviewed targets, never recursively from a previously patched build. Emit a build report with input and output hashes, tools, commands, counts, changed files, validator results, supported versions, and warnings. Test fresh install, update, reinstall, interrupted-state recovery, language restoration if applicable, and removal across the supported runtime matrix.
+
+Distribute only the minimum patch data permitted by the project. The release should be rebuildable from the private canonical source and reviewed target tables without repeating model calls. See [`ROUND-TRIP-BUILD.md`](ROUND-TRIP-BUILD.md) for deterministic build and idempotent patcher requirements.
 
 ## Handoff packet
 
@@ -162,7 +183,9 @@ The receiving agent should acknowledge the authorities, treat accumulated Englis
 
 ## Completion checklist
 
+- project manifest, authority index, phase state, and definition of done current;
 - canonical runtime source documented;
+- clean canary export/import/re-extraction round trip reproducible;
 - every visible text surface inventoried;
 - every translatable row has a stable ID and reviewed target;
 - player reading order, narrators, identity axes, voice progression, and writing-system decisions documented;
@@ -172,6 +195,8 @@ The receiving agent should acknowledge the authorities, treat accumulated Englis
 - final spelling, grammar, markup, newline, and one-to-one row-correspondence pass returns no changes;
 - support/UI text reviewed under the same authorities;
 - routes and auxiliary text tested in-engine;
+- repeated overlays, linked terms, input methods, save/load, focus, and progression tested as stateful sequences;
+- supported versions, storefronts, platforms, compatibility layers, resolutions, install states, and save states recorded in a QA matrix;
 - clean installation, update, and removal tested;
 - release reproducible from archived originals and reviewed targets;
 - handoff packet names the exact state, unresolved work, and next action.

@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A reusable matrix for chapter gates, runtime environments, installation states, stateful regressions, and release sign-off.">
+    <meta name="theme-color" content="#ffffff">
+    <title>QA matrix template · MTL Guide</title>
+    <script src="/site-theme/v1/theme.js"></script>
+    <link rel="stylesheet" href="/site-theme/v1/base.css">
+    <link rel="stylesheet" href="assets/styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#doc-content">Skip to document</a>
+    <header class="site-header">
+      <a class="site-title" href="index.html">MTL Guide</a>
+      <nav aria-label="Primary navigation">
+        <a href="workflow.html">Workflow</a>
+        <a href="project-setup.html">Setup</a>
+        <a href="round-trip-build.html">Build</a>
+        <a href="review-qa.html" aria-current="page">Review & QA</a>
+        <a href="reading-order.html">Authorities</a>
+        <a href="prompts.html">Prompts</a>
+        <a href="https://github.com/JWKNT/mtl-guide" target="_blank" rel="noreferrer">GitHub</a>
+      </nav>
+    </header>
+    <main class="doc-shell">
+      <header class="doc-hero">
+        <div><h1>QA matrix template</h1><p class="doc-summary">A reusable matrix for chapter gates, runtime environments, installation states, stateful regressions, and release sign-off.</p></div>
+        <div class="doc-actions">
+          <button class="toc-toggle" id="toc-toggle" type="button" aria-expanded="false" aria-controls="doc-toc">Contents</button>
+          <a class="raw-link" href="templates/qa-matrix-template.md">View raw Markdown</a>
+        </div>
+      </header>
+      <div class="doc-layout">
+        <aside class="doc-toc" id="doc-toc" aria-label="On this page"><h2>On this page</h2><ol><li><a href="#environment-matrix">Environment matrix</a></li><li><a href="#chapter-and-surface-gates">Chapter and surface gates</a></li><li><a href="#stateful-regression-cases">Stateful regression cases</a></li><li><a href="#release-sign-off">Release sign-off</a></li></ol></aside>
+        <article class="doc-content" id="doc-content"><section class="doc-section" id="environment-matrix"><h2>Environment matrix</h2><table><thead><tr><th>Case</th><th>Game / store version</th><th>OS or compatibility layer</th><th>Resolution</th><th>Install state</th><th>Save state</th><th>Patch version</th><th>Result</th><th>Evidence</th></tr></thead><tbody><tr><td>Fresh install</td><td></td><td></td><td></td><td>Fresh</td><td>New</td><td></td><td></td><td></td></tr><tr><td>Update</td><td></td><td></td><td></td><td>Previous patch</td><td>Existing</td><td></td><td></td><td></td></tr><tr><td>Reinstall</td><td></td><td></td><td></td><td>Current patch</td><td>Existing</td><td></td><td></td><td></td></tr><tr><td>Recovery</td><td></td><td></td><td></td><td>Partial / interrupted</td><td>Existing</td><td></td><td></td><td></td></tr><tr><td>Removal</td><td></td><td></td><td></td><td>Current patch</td><td>Existing</td><td></td><td></td><td></td></tr></tbody></table></section><section class="doc-section" id="chapter-and-surface-gates"><h2>Chapter and surface gates</h2><table><thead><tr><th>Chapter / surface</th><th>Alignment</th><th>Accuracy</th><th>Continuity</th><th>Voice / prose</th><th>Presentation</th><th>Runtime</th><th>Clean-pass date</th></tr></thead><tbody><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></tbody></table></section><section class="doc-section" id="stateful-regression-cases"><h2>Stateful regression cases</h2><table><thead><tr><th>ID</th><th>Starting state</th><th>Actions</th><th>Expected result</th><th>Platforms tested</th><th>Result</th><th>Evidence / issue</th></tr></thead><tbody><tr><td>INPUT-01</td><td>Dialogue active</td><td>Open and close a tip repeatedly, then advance</td><td>Tip closes and every input method advances normally</td><td></td><td></td><td></td></tr><tr><td>INPUT-02</td><td>Dialogue active</td><td>Open several linked terms, close all overlays, then advance</td><td>Focus returns to gameplay; no invisible overlay intercepts input</td><td></td><td></td><td></td></tr><tr><td>TEXT-01</td><td>Maximum portraits visible</td><td>Advance through the longest line</td><td>Text wraps at word boundaries and never overlaps or clips</td><td></td><td></td><td></td></tr><tr><td>SAVE-01</td><td>Immediately before a choice</td><td>Save, choose, reload, choose alternate branch</td><td>Save and route state remain correct</td><td></td><td></td><td></td></tr><tr><td>BUILD-01</td><td>Clean supported install</td><td>Install, launch, update, reinstall, remove</td><td>Every operation completes or rolls back safely</td><td></td><td></td><td></td></tr></tbody></table></section><section class="doc-section" id="release-sign-off"><h2>Release sign-off</h2><pre><code class="language-text">canonical source hash:
+canonical target hash:
+build report:
+release hashes:
+open defects:
+accepted limitations:
+zero-change confirmation result:
+release decision and reviewer:</code></pre></section></article>
+      </div>
+    </main>
+    <div class="toc-backdrop" id="toc-backdrop" hidden></div>
+    <script src="assets/app.js"></script>
+  </body>
+</html>
