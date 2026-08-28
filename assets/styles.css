@@ -58,7 +58,8 @@ body { padding-bottom: 42px; font-size: 15px; line-height: 1.5; }
 .doc-content table { display: block; width: max-content; max-width: 100%; margin: 11px 0 16px; overflow-x: auto; border-collapse: collapse; font-size: 12px; line-height: 1.4; }
 .doc-content th { background: var(--surface); color: var(--muted-strong); font-variant: small-caps; letter-spacing: .25px; }
 .doc-content th, .doc-content td { padding: 6px 8px; border: 1px solid var(--line); text-align: left; vertical-align: top; }
-.doc-content th:first-child, .doc-content td:first-child { position: sticky; left: 0; background: var(--paper); }
+.doc-content th:first-child { position: sticky; z-index: 2; left: 0; border-right-color: var(--line-strong); background: var(--surface); }
+.doc-content td:first-child { position: sticky; z-index: 1; left: 0; border-right-color: var(--line-strong); background: var(--paper); }
 .doc-content strong { font-weight: 600; }
 .doc-content hr { margin: 20px 0; border: 0; border-top: 1px solid var(--line); }
 .toc-backdrop { position: fixed; inset: 0; z-index: 40; background: rgb(0 0 0 / .2); }
