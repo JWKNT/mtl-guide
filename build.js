@@ -251,9 +251,11 @@ function pageTemplate(document, rendered) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="${escapeHtml(document.summary)}">
     <meta name="theme-color" content="#ffffff">
-    <title>${escapeHtml(document.title)} · MTL Guide</title>
-    <script src="/site-theme/v1/theme.js"></script>
-    <link rel="stylesheet" href="/site-theme/v1/base.css">
+    <link rel="canonical" href="https://jehlp.net/mtl-guide/${document.output}">
+    <title>${escapeHtml(document.title)} · jehlp.net</title>
+    <link rel="icon" href="https://jehlp.net/site-theme/v2/favicons/mtl-guide.png" type="image/png">
+    <script src="https://jehlp.net/site-theme/v2/theme.js"></script>
+    <link rel="stylesheet" href="https://jehlp.net/site-theme/v2/base.css">
     <link rel="stylesheet" href="assets/styles.css">
   </head>
   <body>
@@ -267,7 +269,8 @@ function pageTemplate(document, rendered) {
         ${navLink("review-qa.html", "Review & QA", ["review-qa.html", "qa-matrix-template.html"].includes(current))}
         ${navLink("reading-order.html", "Authorities", ["reading-order.html", "identity-pronouns.html", "voice.html", "wordplay.html"].includes(current))}
         ${navLink("prompts.html", "Prompts", current === "prompts.html")}
-        <a href="https://github.com/JWKNT/mtl-guide" target="_blank" rel="noreferrer">GitHub</a>
+        <a href="https://jehlp.net/">Projects</a>
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Use dark theme" aria-pressed="false">◐</button>
       </nav>
     </header>
     <main class="doc-shell">
@@ -297,9 +300,11 @@ function codePageTemplate(document, code) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="${escapeHtml(document.summary)}">
     <meta name="theme-color" content="#ffffff">
-    <title>${escapeHtml(document.title)} · MTL Guide</title>
-    <script src="/site-theme/v1/theme.js"></script>
-    <link rel="stylesheet" href="/site-theme/v1/base.css">
+    <link rel="canonical" href="https://jehlp.net/mtl-guide/${document.output}">
+    <title>${escapeHtml(document.title)} · jehlp.net</title>
+    <link rel="icon" href="https://jehlp.net/site-theme/v2/favicons/mtl-guide.png" type="image/png">
+    <script src="https://jehlp.net/site-theme/v2/theme.js"></script>
+    <link rel="stylesheet" href="https://jehlp.net/site-theme/v2/base.css">
     <link rel="stylesheet" href="assets/styles.css">
   </head>
   <body>
@@ -313,7 +318,8 @@ function codePageTemplate(document, code) {
         <a href="review-qa.html">Review &amp; QA</a>
         <a href="reading-order.html">Authorities</a>
         <a href="prompts.html">Prompts</a>
-        <a href="https://github.com/JWKNT/mtl-guide" target="_blank" rel="noreferrer">GitHub</a>
+        <a href="https://jehlp.net/">Projects</a>
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Use dark theme" aria-pressed="false">◐</button>
       </nav>
     </header>
     <main class="doc-shell code-shell">

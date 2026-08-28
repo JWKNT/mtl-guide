@@ -7,12 +7,15 @@
     <meta property="og:type" content="website">
     <meta property="og:title" content="MTL Guide">
     <meta property="og:description" content="Templates and guidance for consistent, reviewable visual novel machine translation.">
-    <meta property="og:url" content="https://jwknt.github.io/mtl-guide/">
+    <meta property="og:url" content="https://jehlp.net/mtl-guide/">
+    <meta property="og:site_name" content="jehlp.net">
     <meta name="twitter:card" content="summary">
     <meta name="theme-color" content="#ffffff">
-    <title>MTL Guide</title>
-    <script src="/site-theme/v1/theme.js"></script>
-    <link rel="stylesheet" href="/site-theme/v1/base.css">
+    <link rel="canonical" href="https://jehlp.net/mtl-guide/">
+    <title>MTL Guide · jehlp.net</title>
+    <link rel="icon" href="https://jehlp.net/site-theme/v2/favicons/mtl-guide.png" type="image/png">
+    <script src="https://jehlp.net/site-theme/v2/theme.js"></script>
+    <link rel="stylesheet" href="https://jehlp.net/site-theme/v2/base.css">
     <link rel="stylesheet" href="assets/styles.css">
   </head>
   <body>
@@ -21,7 +24,8 @@
     <header class="site-header">
       <a class="site-title" href="index.html">MTL Guide</a>
       <nav aria-label="Site links">
-        <a href="https://github.com/JWKNT/mtl-guide" target="_blank" rel="noreferrer">GitHub</a>
+        <a href="https://jehlp.net/">Projects</a>
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Use dark theme" aria-pressed="false">◐</button>
       </nav>
     </header>
 
@@ -32,6 +36,8 @@
         Start with the workflow and project blueprint, then prove a clean round trip before translating in a private workspace.
       </p>
 
+      <section class="resource-group" aria-labelledby="core-guides">
+      <h2 id="core-guides">Core workflow</h2>
       <ul class="resource-list">
         <li>
           <a href="workflow.html">Workflow</a>
@@ -53,6 +59,11 @@
           <p>Separate accuracy, prose, recurrence, tag, layout, interaction, platform, and release checks through a zero-change pass.</p>
           <a class="raw-source" href="REVIEW-QA.md">Markdown</a>
         </li>
+      </ul>
+      </section>
+      <section class="resource-group" aria-labelledby="templates">
+      <h2 id="templates">Templates</h2>
+      <ul class="resource-list">
         <li>
           <a href="project-manifest-template.html">Project manifest template</a>
           <p>Record canonical inputs, hashes, commands, counts, authorities, supported builds, phase state, and the exact next action.</p>
@@ -68,6 +79,16 @@
           <p>Use this to lock reading order, identities, pronouns, voices, names, wordplay, terminology, and unresolved decisions.</p>
           <a class="raw-source" href="templates/terminology-authority.md">Markdown</a>
         </li>
+        <li>
+          <a href="grammar-template.html">Grammar guide template</a>
+          <p>Record title-specific constructions that repeatedly produce incorrect or wooden translations.</p>
+          <a class="raw-source" href="templates/grammar-guide-template.md">Markdown</a>
+        </li>
+      </ul>
+      </section>
+      <section class="resource-group" aria-labelledby="references">
+      <h2 id="references">Examples &amp; reference</h2>
+      <ul class="resource-list">
         <li>
           <a href="reading-order.html">Reading and reveal order</a>
           <p>A fictional example for route order, narrator spans, chronology, and reveal-safe editing.</p>
@@ -89,11 +110,6 @@
           <a class="raw-source" href="examples/wordplay-guide-example.md">Markdown</a>
         </li>
         <li>
-          <a href="grammar-template.html">Grammar guide template</a>
-          <p>Use this to record title-specific constructions that repeatedly produce incorrect or wooden translations.</p>
-          <a class="raw-source" href="templates/grammar-guide-template.md">Markdown</a>
-        </li>
-        <li>
           <a href="grammar.html">Grammar guide example</a>
           <p>A filled, spoiler-free example showing the expected level of evidence and concrete sentence analysis.</p>
           <a class="raw-source" href="grammar-guide-example.md">Markdown</a>
@@ -104,6 +120,7 @@
           <a class="raw-source" href="PROMPTS.md">PROMPTS.md</a>
         </li>
       </ul>
+      </section>
     </main>
   </body>
 </html>
