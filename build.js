@@ -286,7 +286,6 @@ function pageTemplate(document, rendered) {
         <article class="doc-content" id="doc-content">${rendered.preamble ? `<div class="doc-preamble">${rendered.preamble}</div>` : ""}${rendered.html}</article>
       </div>
     </main>
-    <div class="toc-backdrop" id="toc-backdrop" hidden></div>
     <script src="assets/app.js"></script>
   </body>
 </html>\n`;
