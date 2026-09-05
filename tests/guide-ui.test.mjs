@@ -15,9 +15,14 @@ test('generated contents targets exist and the region remains visible without th
   }
 });
 test('generated enhancements preserve native tables, code, and stylesheet order', () => {
+  const index = readFileSync(new URL('index.html', root), 'utf8');
+  const stylesheet = index.match(/href="(assets\/styles\.css\?v=[^"]+)"/)?.[1];
+  assert.ok(stylesheet, 'the authored index versions the local stylesheet');
   for (const name of pages) {
     const html = readFileSync(new URL(name, root), 'utf8');
-    assert.equal((html.match(/<table>/g) || []).length, (html.match(/data-scroll-region aria-label="Reference table"/g) || []).length, name);
+    assert.ok(html.includes(`href="${stylesheet}"`), `${name} uses the index stylesheet version`);
+    assert.equal((html.match(/<table class="ui-table">/g) || []).length, (html.match(/data-scroll-region aria-label="Reference table"/g) || []).length, name);
+    assert.equal((html.match(/<th\b/g) || []).length, (html.match(/<th scope="col">/g) || []).length, name);
     assert.equal((html.match(/<pre\b/g) || []).length, (html.match(/<pre data-copy-code><code/g) || []).length, name);
     assert.ok(html.indexOf('/v2/base.css') < html.indexOf('/v2/components.css'));
     assert.ok(html.indexOf('/v2/components.css') < html.indexOf('assets/styles.css'));

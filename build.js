@@ -199,7 +199,7 @@ function renderMarkdown(markdown, foldSections = []) {
       while (index < lines.length && lines[index].includes("|") && lines[index].trim()) rows.push(lines[index++]);
       const parseCells = (row) => row.trim().replace(/^\|/, "").replace(/\|$/, "").split("|").map((cell) => cell.trim());
       const headers = parseCells(rows.shift());
-      append(`<div class="doc-table-scroll" data-scroll-region aria-label="Reference table"><table><thead><tr>${headers.map((cell) => `<th>${inlineMarkdown(cell)}</th>`).join("")}</tr></thead><tbody>${rows.map((row) => `<tr>${parseCells(row).map((cell) => `<td>${inlineMarkdown(cell)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`);
+      append(`<div class="doc-table-scroll" data-scroll-region aria-label="Reference table"><table class="ui-table"><thead><tr>${headers.map((cell) => `<th scope="col">${inlineMarkdown(cell)}</th>`).join("")}</tr></thead><tbody>${rows.map((row) => `<tr>${parseCells(row).map((cell) => `<td>${inlineMarkdown(cell)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`);
       continue;
     }
 
@@ -261,7 +261,7 @@ function pageTemplate(document, rendered) {
     <link rel="stylesheet" href="https://jehlp.net/site-theme/v2/base.css">
     <link rel="stylesheet" href="https://jehlp.net/site-theme/v2/components.css">
     <script src="https://jehlp.net/site-theme/v2/components.js" defer></script>
-    <link rel="stylesheet" href="assets/styles.css">
+    <link rel="stylesheet" href="assets/styles.css?v=20260905.3">
   </head>
   <body data-site-tone="ochre">
     <a class="skip-link" href="#doc-content">Skip to document</a>
@@ -307,7 +307,7 @@ function codePageTemplate(document, code) {
     <link rel="stylesheet" href="https://jehlp.net/site-theme/v2/base.css">
     <link rel="stylesheet" href="https://jehlp.net/site-theme/v2/components.css">
     <script src="https://jehlp.net/site-theme/v2/components.js" defer></script>
-    <link rel="stylesheet" href="assets/styles.css">
+    <link rel="stylesheet" href="assets/styles.css?v=20260905.3">
   </head>
   <body data-site-tone="ochre">
     <a class="skip-link" href="#doc-content">Skip to code</a>
