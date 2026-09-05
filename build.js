@@ -266,7 +266,7 @@ function pageTemplate(document, rendered) {
   <body data-site-tone="ochre">
     <a class="skip-link" href="#doc-content">Skip to document</a>
     <header class="site-header site-header--identity">
-      <div class="site-brand"><span class="site-mark" aria-hidden="true">§</span><a class="site-title" href="index.html">MTL Guide</a></div>
+      <div class="site-brand"><img class="site-mark" src="https://jehlp.net/site-theme/v2/marks/mtl-guide.png" width="32" height="32" alt=""><a class="site-title" href="index.html">MTL Guide</a></div>
       <nav aria-label="Primary navigation">
         ${navLink("workflow.html", "Workflow", current === "workflow.html")}
         <a href="index.html#templates">Templates</a>
@@ -312,7 +312,7 @@ function codePageTemplate(document, code) {
   <body data-site-tone="ochre">
     <a class="skip-link" href="#doc-content">Skip to code</a>
     <header class="site-header site-header--identity">
-      <div class="site-brand"><span class="site-mark" aria-hidden="true">§</span><a class="site-title" href="index.html">MTL Guide</a></div>
+      <div class="site-brand"><img class="site-mark" src="https://jehlp.net/site-theme/v2/marks/mtl-guide.png" width="32" height="32" alt=""><a class="site-title" href="index.html">MTL Guide</a></div>
       <nav aria-label="Primary navigation">
         <a href="workflow.html">Workflow</a>
         <a href="index.html#templates">Templates</a>
