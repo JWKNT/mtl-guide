@@ -168,7 +168,7 @@ function renderMarkdown(markdown) {
       index += 1;
       while (index < lines.length && !/^```/.test(lines[index])) code.push(lines[index++]);
       index += 1;
-      append(`<pre><code${language ? ` class="language-${escapeHtml(language)}"` : ""}>${escapeHtml(code.join("\n"))}</code></pre>`);
+      append(`<pre data-copy-code><code${language ? ` class="language-${escapeHtml(language)}"` : ""}>${escapeHtml(code.join("\n"))}</code></pre>`);
       continue;
     }
 
@@ -196,7 +196,7 @@ function renderMarkdown(markdown) {
       while (index < lines.length && lines[index].includes("|") && lines[index].trim()) rows.push(lines[index++]);
       const parseCells = (row) => row.trim().replace(/^\|/, "").replace(/\|$/, "").split("|").map((cell) => cell.trim());
       const headers = parseCells(rows.shift());
-      append(`<table><thead><tr>${headers.map((cell) => `<th>${inlineMarkdown(cell)}</th>`).join("")}</tr></thead><tbody>${rows.map((row) => `<tr>${parseCells(row).map((cell) => `<td>${inlineMarkdown(cell)}</td>`).join("")}</tr>`).join("")}</tbody></table>`);
+      append(`<div class="doc-table-scroll" data-scroll-region aria-label="Reference table"><table><thead><tr>${headers.map((cell) => `<th>${inlineMarkdown(cell)}</th>`).join("")}</tr></thead><tbody>${rows.map((row) => `<tr>${parseCells(row).map((cell) => `<td>${inlineMarkdown(cell)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`);
       continue;
     }
 
@@ -256,6 +256,8 @@ function pageTemplate(document, rendered) {
     <link rel="icon" href="https://jehlp.net/site-theme/v2/favicons/mtl-guide.png" type="image/png">
     <script src="https://jehlp.net/site-theme/v2/theme.js"></script>
     <link rel="stylesheet" href="https://jehlp.net/site-theme/v2/base.css">
+    <link rel="stylesheet" href="https://jehlp.net/site-theme/v2/components.css">
+    <script src="https://jehlp.net/site-theme/v2/components.js" defer></script>
     <link rel="stylesheet" href="assets/styles.css">
   </head>
   <body>
@@ -277,7 +279,7 @@ function pageTemplate(document, rendered) {
       <header class="doc-hero">
         <div><h1>${escapeHtml(document.title)}</h1><p class="doc-summary">${escapeHtml(document.summary)}</p></div>
         <div class="doc-actions">
-          <button class="toc-toggle" id="toc-toggle" type="button" aria-expanded="false" aria-controls="doc-toc">Contents</button>
+          <button class="toc-toggle" id="toc-toggle" type="button" aria-expanded="false" aria-controls="doc-toc" data-disclosure="(max-width: 650px)" hidden>Contents</button>
           <a class="raw-link" href="${document.source}">View raw Markdown</a>
         </div>
       </header>
@@ -304,6 +306,8 @@ function codePageTemplate(document, code) {
     <link rel="icon" href="https://jehlp.net/site-theme/v2/favicons/mtl-guide.png" type="image/png">
     <script src="https://jehlp.net/site-theme/v2/theme.js"></script>
     <link rel="stylesheet" href="https://jehlp.net/site-theme/v2/base.css">
+    <link rel="stylesheet" href="https://jehlp.net/site-theme/v2/components.css">
+    <script src="https://jehlp.net/site-theme/v2/components.js" defer></script>
     <link rel="stylesheet" href="assets/styles.css">
   </head>
   <body>
@@ -325,7 +329,7 @@ function codePageTemplate(document, code) {
       <header class="doc-hero">
         <div><h1>${escapeHtml(document.title)}</h1><p class="doc-summary">${escapeHtml(document.summary)}</p></div>
       </header>
-      <article class="doc-content code-document" id="doc-content"><pre><code class="language-${escapeHtml(document.language)}">${escapeHtml(code)}</code></pre></article>
+      <article class="doc-content code-document" id="doc-content"><pre data-copy-code><code class="language-${escapeHtml(document.language)}">${escapeHtml(code)}</code></pre></article>
     </main>
     <script src="assets/app.js"></script>
   </body>

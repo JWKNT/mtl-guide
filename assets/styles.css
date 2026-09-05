@@ -13,10 +13,10 @@ body { padding-bottom: 42px; font-size: 1rem; line-height: 1.5; }
 .home-intro { max-width: 680px; margin: 7px 0 22px; color: var(--muted-strong); }
 .resource-group + .resource-group { margin-top: 25px; }
 .resource-group h2 { margin: 0 0 7px; color: var(--muted-strong); font: 600 .875rem/1.4 var(--sans); letter-spacing: .04em; text-transform: uppercase; }
-.resource-list { margin: 0; padding: 0; border-top: 1px solid var(--line-strong); list-style: none; }
-.resource-list li { display: grid; grid-template-columns: 190px minmax(0, 1fr) 86px; gap: 18px; align-items: baseline; padding: 10px 4px; border-bottom: 1px solid var(--line); }
+.resource-list { border-top: 1px solid var(--line-strong); }
+.resource-list li { display: grid; grid-template-columns: 190px minmax(0, 1fr) 86px; gap: 18px; align-items: baseline; padding: .8rem .25rem; }
 .resource-list li > a:first-child { font-weight: 600; }
-.resource-list p { margin: 0; color: var(--muted); font-size: .875rem; }
+.resource-list p { margin: 0; font-size: 1rem; }
 .raw-source { color: var(--muted); font: .75rem/1.4 var(--mono); text-align: right; }
 
 .doc-hero { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 26px; padding: 28px 0 18px; border-bottom: 1px solid var(--line); }
@@ -52,14 +52,11 @@ body { padding-bottom: 42px; font-size: 1rem; line-height: 1.5; }
 .doc-content blockquote p { margin: 0; }
 .doc-content code { padding: 1px 3px; background: var(--surface-blue); color: var(--ink); font: .82em/1.45 var(--mono); }
 .doc-content pre { position: relative; max-width: 100%; margin: 11px 0 15px; overflow-x: auto; border: 1px solid var(--line); background: var(--surface); }
-.doc-content pre code { display: block; min-width: max-content; padding: calc(var(--control-size, 2.25rem) + 1rem) 14px 14px; background: none; font-size: .875rem; line-height: 1.5; }
-.copy-code { position: absolute; top: 5px; right: 5px; padding: 2px 6px; border: 1px solid var(--line-strong); background: var(--paper); color: var(--muted); font-size: .875rem; font-variant: small-caps; letter-spacing: .3px; }
-.copy-code:hover { color: var(--blue); border-color: var(--blue); }
-.doc-content table { display: block; width: max-content; max-width: 100%; margin: 11px 0 16px; overflow-x: auto; border-collapse: collapse; font-size: .875rem; line-height: 1.4; }
+.doc-content pre code { display: block; min-width: max-content; padding: 0; background: none; font-size: .875rem; line-height: 1.5; }
+.doc-table-scroll { margin: 11px 0 16px; overflow: auto; }
+.doc-content table { width: 100%; margin: 0; border-collapse: collapse; font-size: .875rem; line-height: 1.4; }
 .doc-content th { background: var(--surface); color: var(--muted-strong); font-variant: small-caps; letter-spacing: .25px; }
 .doc-content th, .doc-content td { padding: 6px 8px; border: 1px solid var(--line); text-align: left; vertical-align: top; }
-.doc-content th:first-child { position: sticky; z-index: 2; left: 0; border-right-color: var(--line-strong); background: var(--surface); }
-.doc-content td:first-child { position: sticky; z-index: 1; left: 0; border-right-color: var(--line-strong); background: var(--paper); }
 .doc-content strong { font-weight: 600; }
 .doc-content hr { margin: 20px 0; border: 0; border-top: 1px solid var(--line); }
 .code-shell { max-width: 900px; }
@@ -83,7 +80,7 @@ body { padding-bottom: 42px; font-size: 1rem; line-height: 1.5; }
   .doc-hero h1 { font-size: 26px; }
   .doc-summary { font-size: .875rem; }
   .doc-actions, .raw-link { align-self: start; }
-  .guide-enhanced .toc-toggle { display: inline-block; min-height: var(--control-size, 2.25rem); }
+  .toc-toggle:not([hidden]) { display: inline-block; min-height: var(--control-size, 2.25rem); }
   .doc-layout { display: block; padding-top: 14px; }
   .doc-toc { position: static; width: 100%; max-height: none; margin-bottom: 1.5rem; padding: .75rem 0; border: 0; border-block: 1px solid var(--line); background: var(--paper); }
   .doc-content { font-size: 1rem; }
@@ -98,7 +95,7 @@ body { padding-bottom: 42px; font-size: 1rem; line-height: 1.5; }
 
 @media print {
   body { padding: 0; font-size: 10pt; }
-  .site-header, .doc-actions, .doc-toc, .copy-code { display: none !important; }
+  .site-header, .doc-actions, .doc-toc, .ui-copy { display: none !important; }
   .doc-shell { width: 100%; }
   .doc-layout { display: block; padding: 0; }
   .doc-hero { padding-top: 0; }
