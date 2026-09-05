@@ -23,3 +23,17 @@ test('generated enhancements preserve native tables, code, and stylesheet order'
     assert.ok(html.indexOf('/v2/components.css') < html.indexOf('assets/styles.css'));
   }
 });
+test('the workflow folds its duplicate file directory without omitting source links or workflow steps', () => {
+  const html = readFileSync(new URL('workflow.html', root), 'utf8');
+  const source = readFileSync(new URL('README.md', root), 'utf8');
+  const files = html.match(/<section[^>]*id="files"[^>]*>([\s\S]*?)<\/section>/)?.[1];
+  assert.ok(files);
+  assert.match(files, /<details><summary>Files<\/summary>/);
+  for (const [, href] of source.split('## Files')[1].split('## Workflow')[0].matchAll(/\]\(([^)]+)\)/g)) {
+    assert.ok(files.includes(`href="${href}"`), href);
+  }
+  const workflow = html.match(/<section[^>]*id="workflow"[^>]*>([\s\S]*?)<\/section>/)?.[1];
+  assert.match(workflow, /<h2>Workflow<\/h2>/);
+  assert.doesNotMatch(workflow, /<details/);
+  assert.equal((workflow.match(/<h3\b/g) || []).length, 9);
+});

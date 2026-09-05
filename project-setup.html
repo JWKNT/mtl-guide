@@ -14,31 +14,27 @@
     <script src="https://jehlp.net/site-theme/v2/components.js" defer></script>
     <link rel="stylesheet" href="assets/styles.css">
   </head>
-  <body>
+  <body data-site-tone="ochre">
     <a class="skip-link" href="#doc-content">Skip to document</a>
-    <header class="site-header">
-      <a class="site-title" href="index.html">MTL Guide</a>
+    <header class="site-header site-header--identity">
+      <div class="site-brand"><span class="site-mark" aria-hidden="true">§</span><a class="site-title" href="index.html">MTL Guide</a></div>
       <nav aria-label="Primary navigation">
         <a href="workflow.html">Workflow</a>
-        <a href="project-setup.html" aria-current="page">Setup</a>
-        <a href="round-trip-build.html">Build</a>
-        <a href="review-qa.html">Review & QA</a>
-        <a href="reading-order.html">Authorities</a>
-        <a href="prompts.html">Prompts</a>
-        <a href="https://jehlp.net/">Projects</a>
+        <a href="index.html#templates">Templates</a>
+        <a href="index.html#references">Reference</a>
         <button class="theme-toggle" type="button" data-theme-toggle aria-label="Use dark theme" aria-pressed="false">◐</button>
       </nav>
     </header>
     <main class="doc-shell">
       <header class="doc-hero">
-        <div><h1>Project blueprint and agent startup</h1><p class="doc-summary">A context-free project contract: canonical artifacts, manifests, story model, authorities, readiness gates, and safe agent startup.</p></div>
+        <h1>Project blueprint and agent startup</h1>
         <div class="doc-actions">
           <button class="toc-toggle" id="toc-toggle" type="button" aria-expanded="false" aria-controls="doc-toc" data-disclosure="(max-width: 650px)" hidden>Contents</button>
-          <a class="raw-link" href="PROJECT-SETUP.md">View raw Markdown</a>
+          <a class="raw-link" href="PROJECT-SETUP.md" aria-label="View Markdown source">Markdown ↗</a>
         </div>
       </header>
       <div class="doc-layout">
-        <aside class="doc-toc" id="doc-toc" aria-label="On this page"><h2>On this page</h2><ol><li><a href="#four-project-truths">Four project truths</a></li><li><a href="#suggested-private-workspace">Suggested private workspace</a></li><li><a href="#create-the-project-manifest-first">Create the project manifest first</a></li><li><a href="#define-ownership-and-status">Define ownership and status</a></li><li><a href="#build-a-story-model-before-bulk-translation">Build a story model before bulk translation</a></li><li><a href="#authority-index-and-conflict-order">Authority index and conflict order</a></li><li><a href="#context-free-agent-startup-protocol">Context-free agent startup protocol</a></li><li><a href="#readiness-gate">Readiness gate</a></li></ol></aside>
+        <aside class="doc-toc" id="doc-toc" aria-label="On this page"><h2>Contents</h2><ol><li><a href="#four-project-truths">Four project truths</a></li><li><a href="#suggested-private-workspace">Suggested private workspace</a></li><li><a href="#create-the-project-manifest-first">Create the project manifest first</a></li><li><a href="#define-ownership-and-status">Define ownership and status</a></li><li><a href="#build-a-story-model-before-bulk-translation">Build a story model before bulk translation</a></li><li><a href="#authority-index-and-conflict-order">Authority index and conflict order</a></li><li><a href="#context-free-agent-startup-protocol">Context-free agent startup protocol</a></li><li><a href="#readiness-gate">Readiness gate</a></li></ol></aside>
         <article class="doc-content" id="doc-content"><div class="doc-preamble"><p>Use this page before extraction or translation. Its purpose is to make the project understandable without chat history and to prevent a new agent from guessing which files are authoritative.</p></div><section class="doc-section" id="four-project-truths"><h2>Four project truths</h2><p>Every project should have four clearly named layers:</p><ul><li><strong>Immutable evidence:</strong> untouched game files, source text, hashes, screenshots, and extraction logs.</li><li><strong>Canonical working data:</strong> one master table keyed by stable line IDs. This is the source of truth for targets and review state.</li><li><strong>Authorities:</strong> versioned decisions for reading order, terminology, identity, pronouns, voice, grammar, wordplay, typography, and reveal timing.</li><li><strong>Receipts:</strong> reproducible build commands, validator output, changelogs, QA reports, and release manifests.</li></ul><p>Generated batches, compiled assets, web previews, and patch archives are outputs. Never let an output silently become the only copy of a translation decision.</p></section><section class="doc-section" id="suggested-private-workspace"><h2>Suggested private workspace</h2><pre data-copy-code><code class="language-text">project/
   original/       untouched inputs and hashes
   extraction/     decoded data and extraction logs

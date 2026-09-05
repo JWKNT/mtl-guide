@@ -14,31 +14,27 @@
     <script src="https://jehlp.net/site-theme/v2/components.js" defer></script>
     <link rel="stylesheet" href="assets/styles.css">
   </head>
-  <body>
+  <body data-site-tone="ochre">
     <a class="skip-link" href="#doc-content">Skip to document</a>
-    <header class="site-header">
-      <a class="site-title" href="index.html">MTL Guide</a>
+    <header class="site-header site-header--identity">
+      <div class="site-brand"><span class="site-mark" aria-hidden="true">§</span><a class="site-title" href="index.html">MTL Guide</a></div>
       <nav aria-label="Primary navigation">
         <a href="workflow.html">Workflow</a>
-        <a href="project-setup.html">Setup</a>
-        <a href="round-trip-build.html">Build</a>
-        <a href="review-qa.html">Review & QA</a>
-        <a href="reading-order.html">Authorities</a>
-        <a href="prompts.html" aria-current="page">Prompts</a>
-        <a href="https://jehlp.net/">Projects</a>
+        <a href="index.html#templates">Templates</a>
+        <a href="index.html#references">Reference</a>
         <button class="theme-toggle" type="button" data-theme-toggle aria-label="Use dark theme" aria-pressed="false">◐</button>
       </nav>
     </header>
     <main class="doc-shell">
       <header class="doc-hero">
-        <div><h1>Prompt library</h1><p class="doc-summary">Reusable prompts for discovery, authority building, translation, source-aware editing, corpus QA, and handoff.</p></div>
+        <h1>Prompt library</h1>
         <div class="doc-actions">
           <button class="toc-toggle" id="toc-toggle" type="button" aria-expanded="false" aria-controls="doc-toc" data-disclosure="(max-width: 650px)" hidden>Contents</button>
-          <a class="raw-link" href="PROMPTS.md">View raw Markdown</a>
+          <a class="raw-link" href="PROMPTS.md" aria-label="View Markdown source">Markdown ↗</a>
         </div>
       </header>
       <div class="doc-layout">
-        <aside class="doc-toc" id="doc-toc" aria-label="On this page"><h2>On this page</h2><ol><li><a href="#shared-project-brief">Shared project brief</a></li><li><a href="#0-context-free-project-bootstrap">0. Context-free project bootstrap</a></li><li><a href="#1-script-discovery-and-risk-scan">1. Script discovery and risk scan</a></li><li><a href="#2-terminology-authority-proposal">2. Terminology-authority proposal</a></li><li><a href="#3-vn-specific-uncommon-grammar-guide-builder">3. VN-specific uncommon-grammar guide builder</a></li><li><a href="#4-reading-order-identity-voice-and-wordplay-audit">4. Reading-order, identity, voice, and wordplay audit</a></li><li><a href="#5-strict-batch-translation">5. Strict batch translation</a></li><li><a href="#6-bilingual-accuracy-and-continuity-review">6. Bilingual accuracy and continuity review</a></li><li><a href="#7-character-voice-and-prose-pass">7. Character voice and prose pass</a></li><li><a href="#8-consistency-and-reveal-audit">8. Consistency and reveal audit</a></li><li><a href="#9-technical-and-row-correspondence-qa">9. Technical and row-correspondence QA</a></li><li><a href="#10-handoff-and-completion-audit">10. Handoff and completion audit</a></li><li><a href="#11-repeated-and-parallel-passage-reconciliation">11. Repeated and parallel passage reconciliation</a></li><li><a href="#12-support-presentation-and-stateful-runtime-qa">12. Support, presentation, and stateful runtime QA</a></li><li><a href="#13-clean-build-patcher-and-release-audit">13. Clean build, patcher, and release audit</a></li><li><a href="#prompt-version-record">Prompt-version record</a></li></ol></aside>
+        <aside class="doc-toc" id="doc-toc" aria-label="On this page"><h2>Contents</h2><ol><li><a href="#shared-project-brief">Shared project brief</a></li><li><a href="#0-context-free-project-bootstrap">0. Context-free project bootstrap</a></li><li><a href="#1-script-discovery-and-risk-scan">1. Script discovery and risk scan</a></li><li><a href="#2-terminology-authority-proposal">2. Terminology-authority proposal</a></li><li><a href="#3-vn-specific-uncommon-grammar-guide-builder">3. VN-specific uncommon-grammar guide builder</a></li><li><a href="#4-reading-order-identity-voice-and-wordplay-audit">4. Reading-order, identity, voice, and wordplay audit</a></li><li><a href="#5-strict-batch-translation">5. Strict batch translation</a></li><li><a href="#6-bilingual-accuracy-and-continuity-review">6. Bilingual accuracy and continuity review</a></li><li><a href="#7-character-voice-and-prose-pass">7. Character voice and prose pass</a></li><li><a href="#8-consistency-and-reveal-audit">8. Consistency and reveal audit</a></li><li><a href="#9-technical-and-row-correspondence-qa">9. Technical and row-correspondence QA</a></li><li><a href="#10-handoff-and-completion-audit">10. Handoff and completion audit</a></li><li><a href="#11-repeated-and-parallel-passage-reconciliation">11. Repeated and parallel passage reconciliation</a></li><li><a href="#12-support-presentation-and-stateful-runtime-qa">12. Support, presentation, and stateful runtime QA</a></li><li><a href="#13-clean-build-patcher-and-release-audit">13. Clean build, patcher, and release audit</a></li><li><a href="#prompt-version-record">Prompt-version record</a></li></ol></aside>
         <article class="doc-content" id="doc-content"><div class="doc-preamble"><p>These prompts are starting points. Replace every bracketed field and remove instructions that do not fit the project. Keep spoiler-bearing inputs and outputs in the private workspace.</p><p>Models may ignore formatting rules or damage markup. Validate their output programmatically before merging it.</p></div><section class="doc-section" id="shared-project-brief"><h2>Shared project brief</h2><p>Attach this block to each task, filled with the current approved rules.</p><pre data-copy-code><code class="language-text">PROJECT
 - Source language: [Japanese]
 - Target language: [English]

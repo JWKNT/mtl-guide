@@ -14,31 +14,27 @@
     <script src="https://jehlp.net/site-theme/v2/components.js" defer></script>
     <link rel="stylesheet" href="assets/styles.css">
   </head>
-  <body>
+  <body data-site-tone="ochre">
     <a class="skip-link" href="#doc-content">Skip to document</a>
-    <header class="site-header">
-      <a class="site-title" href="index.html">MTL Guide</a>
+    <header class="site-header site-header--identity">
+      <div class="site-brand"><span class="site-mark" aria-hidden="true">§</span><a class="site-title" href="index.html">MTL Guide</a></div>
       <nav aria-label="Primary navigation">
         <a href="workflow.html">Workflow</a>
-        <a href="project-setup.html">Setup</a>
-        <a href="round-trip-build.html">Build</a>
-        <a href="review-qa.html" aria-current="page">Review & QA</a>
-        <a href="reading-order.html">Authorities</a>
-        <a href="prompts.html">Prompts</a>
-        <a href="https://jehlp.net/">Projects</a>
+        <a href="index.html#templates">Templates</a>
+        <a href="index.html#references">Reference</a>
         <button class="theme-toggle" type="button" data-theme-toggle aria-label="Use dark theme" aria-pressed="false">◐</button>
       </nav>
     </header>
     <main class="doc-shell">
       <header class="doc-hero">
-        <div><h1>QA matrix template</h1><p class="doc-summary">A reusable matrix for chapter gates, runtime environments, installation states, stateful regressions, and release sign-off.</p></div>
+        <h1>QA matrix template</h1>
         <div class="doc-actions">
           <button class="toc-toggle" id="toc-toggle" type="button" aria-expanded="false" aria-controls="doc-toc" data-disclosure="(max-width: 650px)" hidden>Contents</button>
-          <a class="raw-link" href="templates/qa-matrix-template.md">View raw Markdown</a>
+          <a class="raw-link" href="templates/qa-matrix-template.md" aria-label="View Markdown source">Markdown ↗</a>
         </div>
       </header>
       <div class="doc-layout">
-        <aside class="doc-toc" id="doc-toc" aria-label="On this page"><h2>On this page</h2><ol><li><a href="#environment-matrix">Environment matrix</a></li><li><a href="#chapter-and-surface-gates">Chapter and surface gates</a></li><li><a href="#stateful-regression-cases">Stateful regression cases</a></li><li><a href="#release-sign-off">Release sign-off</a></li></ol></aside>
+        <aside class="doc-toc" id="doc-toc" aria-label="On this page"><h2>Contents</h2><ol><li><a href="#environment-matrix">Environment matrix</a></li><li><a href="#chapter-and-surface-gates">Chapter and surface gates</a></li><li><a href="#stateful-regression-cases">Stateful regression cases</a></li><li><a href="#release-sign-off">Release sign-off</a></li></ol></aside>
         <article class="doc-content" id="doc-content"><section class="doc-section" id="environment-matrix"><h2>Environment matrix</h2><div class="doc-table-scroll" data-scroll-region aria-label="Reference table"><table><thead><tr><th>Case</th><th>Game / store version</th><th>OS or compatibility layer</th><th>Resolution</th><th>Install state</th><th>Save state</th><th>Patch version</th><th>Result</th><th>Evidence</th></tr></thead><tbody><tr><td>Fresh install</td><td></td><td></td><td></td><td>Fresh</td><td>New</td><td></td><td></td><td></td></tr><tr><td>Update</td><td></td><td></td><td></td><td>Previous patch</td><td>Existing</td><td></td><td></td><td></td></tr><tr><td>Reinstall</td><td></td><td></td><td></td><td>Current patch</td><td>Existing</td><td></td><td></td><td></td></tr><tr><td>Recovery</td><td></td><td></td><td></td><td>Partial / interrupted</td><td>Existing</td><td></td><td></td><td></td></tr><tr><td>Removal</td><td></td><td></td><td></td><td>Current patch</td><td>Existing</td><td></td><td></td><td></td></tr></tbody></table></div></section><section class="doc-section" id="chapter-and-surface-gates"><h2>Chapter and surface gates</h2><div class="doc-table-scroll" data-scroll-region aria-label="Reference table"><table><thead><tr><th>Chapter / surface</th><th>Alignment</th><th>Accuracy</th><th>Continuity</th><th>Voice / prose</th><th>Presentation</th><th>Runtime</th><th>Clean-pass date</th></tr></thead><tbody><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></tbody></table></div></section><section class="doc-section" id="stateful-regression-cases"><h2>Stateful regression cases</h2><div class="doc-table-scroll" data-scroll-region aria-label="Reference table"><table><thead><tr><th>ID</th><th>Starting state</th><th>Actions</th><th>Expected result</th><th>Platforms tested</th><th>Result</th><th>Evidence / issue</th></tr></thead><tbody><tr><td>INPUT-01</td><td>Dialogue active</td><td>Open and close a tip repeatedly, then advance</td><td>Tip closes and every input method advances normally</td><td></td><td></td><td></td></tr><tr><td>INPUT-02</td><td>Dialogue active</td><td>Open several linked terms, close all overlays, then advance</td><td>Focus returns to gameplay; no invisible overlay intercepts input</td><td></td><td></td><td></td></tr><tr><td>TEXT-01</td><td>Maximum portraits visible</td><td>Advance through the longest line</td><td>Text wraps at word boundaries and never overlaps or clips</td><td></td><td></td><td></td></tr><tr><td>SAVE-01</td><td>Immediately before a choice</td><td>Save, choose, reload, choose alternate branch</td><td>Save and route state remain correct</td><td></td><td></td><td></td></tr><tr><td>BUILD-01</td><td>Clean supported install</td><td>Install, launch, update, reinstall, remove</td><td>Every operation completes or rolls back safely</td><td></td><td></td><td></td></tr></tbody></table></div></section><section class="doc-section" id="release-sign-off"><h2>Release sign-off</h2><pre data-copy-code><code class="language-text">canonical source hash:
 canonical target hash:
 build report:

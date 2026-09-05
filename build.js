@@ -12,6 +12,7 @@ const documents = [
     output: "workflow.html",
     title: "Workflow",
     summary: "The end-to-end process: canonical source, complete text inventory, context authorities, translation, editorial gates, handoff, and release.",
+    foldSections: ["files"],
   },
   {
     source: "PROJECT-SETUP.md",
@@ -141,13 +142,14 @@ function isSpecial(lines, index) {
   return !line.trim() || /^```/.test(line) || /^#{1,4}\s/.test(line) || /^>\s?/.test(line) || /^[-*]\s+/.test(line) || /^\d+\.\s+/.test(line) || /^---+$/.test(line.trim()) || (line.includes("|") && /^\s*\|?\s*:?-+/.test(next));
 }
 
-function renderMarkdown(markdown) {
+function renderMarkdown(markdown, foldSections = []) {
   const lines = markdown.replace(/\r\n/g, "\n").split("\n");
   const used = new Set();
   const toc = [];
   let html = "";
   let preamble = "";
   let inSection = false;
+  let inDisclosure = false;
   let index = 0;
 
   function append(fragment) {
@@ -178,10 +180,11 @@ function renderMarkdown(markdown) {
       const label = heading[2];
       const slug = slugify(label, used);
       if (level === 2) {
-        if (inSection) html += "</section>";
+        if (inSection) html += `${inDisclosure ? "</details>" : ""}</section>`;
         inSection = true;
+        inDisclosure = foldSections.includes(slug);
         toc.push({ slug, label: label.replace(/`/g, "") });
-        html += `<section class="doc-section" id="${slug}"><h2>${inlineMarkdown(label)}</h2>`;
+        html += `<section class="doc-section${inDisclosure ? " doc-section--folded" : ""}" id="${slug}">${inDisclosure ? `<details><summary>${inlineMarkdown(label)}</summary>` : `<h2>${inlineMarkdown(label)}</h2>`}`;
       } else {
         append(`<h${level} id="${slug}">${inlineMarkdown(label)}</h${level}>`);
       }
@@ -233,7 +236,7 @@ function renderMarkdown(markdown) {
     append(`<p>${inlineMarkdown(paragraph.join(" "))}</p>`);
   }
 
-  if (inSection) html += "</section>";
+  if (inSection) html += `${inDisclosure ? "</details>" : ""}</section>`;
   return { preamble, html, toc };
 }
 
@@ -260,31 +263,27 @@ function pageTemplate(document, rendered) {
     <script src="https://jehlp.net/site-theme/v2/components.js" defer></script>
     <link rel="stylesheet" href="assets/styles.css">
   </head>
-  <body>
+  <body data-site-tone="ochre">
     <a class="skip-link" href="#doc-content">Skip to document</a>
-    <header class="site-header">
-      <a class="site-title" href="index.html">MTL Guide</a>
+    <header class="site-header site-header--identity">
+      <div class="site-brand"><span class="site-mark" aria-hidden="true">§</span><a class="site-title" href="index.html">MTL Guide</a></div>
       <nav aria-label="Primary navigation">
         ${navLink("workflow.html", "Workflow", current === "workflow.html")}
-        ${navLink("project-setup.html", "Setup", current === "project-setup.html")}
-        ${navLink("round-trip-build.html", "Build", current === "round-trip-build.html")}
-        ${navLink("review-qa.html", "Review & QA", ["review-qa.html", "qa-matrix-template.html"].includes(current))}
-        ${navLink("reading-order.html", "Authorities", ["reading-order.html", "identity-pronouns.html", "voice.html", "wordplay.html"].includes(current))}
-        ${navLink("prompts.html", "Prompts", current === "prompts.html")}
-        <a href="https://jehlp.net/">Projects</a>
+        <a href="index.html#templates">Templates</a>
+        <a href="index.html#references">Reference</a>
         <button class="theme-toggle" type="button" data-theme-toggle aria-label="Use dark theme" aria-pressed="false">◐</button>
       </nav>
     </header>
     <main class="doc-shell">
       <header class="doc-hero">
-        <div><h1>${escapeHtml(document.title)}</h1><p class="doc-summary">${escapeHtml(document.summary)}</p></div>
+        <h1>${escapeHtml(document.title)}</h1>
         <div class="doc-actions">
           <button class="toc-toggle" id="toc-toggle" type="button" aria-expanded="false" aria-controls="doc-toc" data-disclosure="(max-width: 650px)" hidden>Contents</button>
-          <a class="raw-link" href="${document.source}">View raw Markdown</a>
+          <a class="raw-link" href="${document.source}" aria-label="View Markdown source">Markdown ↗</a>
         </div>
       </header>
       <div class="doc-layout">
-        <aside class="doc-toc" id="doc-toc" aria-label="On this page"><h2>On this page</h2><ol>${toc}</ol></aside>
+        <aside class="doc-toc" id="doc-toc" aria-label="On this page"><h2>Contents</h2><ol>${toc}</ol></aside>
         <article class="doc-content" id="doc-content">${rendered.preamble ? `<div class="doc-preamble">${rendered.preamble}</div>` : ""}${rendered.html}</article>
       </div>
     </main>
@@ -310,24 +309,20 @@ function codePageTemplate(document, code) {
     <script src="https://jehlp.net/site-theme/v2/components.js" defer></script>
     <link rel="stylesheet" href="assets/styles.css">
   </head>
-  <body>
+  <body data-site-tone="ochre">
     <a class="skip-link" href="#doc-content">Skip to code</a>
-    <header class="site-header">
-      <a class="site-title" href="index.html">MTL Guide</a>
+    <header class="site-header site-header--identity">
+      <div class="site-brand"><span class="site-mark" aria-hidden="true">§</span><a class="site-title" href="index.html">MTL Guide</a></div>
       <nav aria-label="Primary navigation">
         <a href="workflow.html">Workflow</a>
-        <a href="project-setup.html">Setup</a>
-        <a href="round-trip-build.html">Build</a>
-        <a href="review-qa.html">Review &amp; QA</a>
-        <a href="reading-order.html">Authorities</a>
-        <a href="prompts.html">Prompts</a>
-        <a href="https://jehlp.net/">Projects</a>
+        <a href="index.html#templates">Templates</a>
+        <a href="index.html#references">Reference</a>
         <button class="theme-toggle" type="button" data-theme-toggle aria-label="Use dark theme" aria-pressed="false">◐</button>
       </nav>
     </header>
     <main class="doc-shell code-shell">
       <header class="doc-hero">
-        <div><h1>${escapeHtml(document.title)}</h1><p class="doc-summary">${escapeHtml(document.summary)}</p></div>
+        <h1>${escapeHtml(document.title)}</h1>
       </header>
       <article class="doc-content code-document" id="doc-content"><pre data-copy-code><code class="language-${escapeHtml(document.language)}">${escapeHtml(code)}</code></pre></article>
     </main>
@@ -338,7 +333,7 @@ function codePageTemplate(document, code) {
 
 for (const document of documents) {
   const source = fs.readFileSync(path.join(root, document.source), "utf8");
-  const output = document.code ? codePageTemplate(document, source) : pageTemplate(document, renderMarkdown(source));
+  const output = document.code ? codePageTemplate(document, source) : pageTemplate(document, renderMarkdown(source, document.foldSections));
   fs.writeFileSync(path.join(root, document.output), output);
   process.stdout.write(`built ${document.output}\n`);
 }
