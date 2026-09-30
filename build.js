@@ -257,14 +257,13 @@ function pageTemplate(document, rendered) {
     <link rel="canonical" href="https://jehlp.net/mtl-guide/${document.output}">
     <title>${escapeHtml(document.title)} · jehlp.net</title>
     <link rel="icon" href="https://jehlp.net/site-theme/v2/favicons/mtl-guide.png" type="image/png">
-    <script src="https://jehlp.net/site-theme/v2/theme.js?v=20260930-home3"></script>
-    <link rel="stylesheet" href="https://jehlp.net/site-theme/v2/base.css?v=20260930-home2">
+    <script src="https://jehlp.net/site-theme/v2/theme.js?v=20260930-header-home"></script>
+    <link rel="stylesheet" href="https://jehlp.net/site-theme/v2/base.css?v=20260930-header-home">
     <link rel="stylesheet" href="https://jehlp.net/site-theme/v2/components.css">
     <script src="https://jehlp.net/site-theme/v2/components.js" defer></script>
     <link rel="stylesheet" href="assets/styles.css?v=20260905.3">
   </head>
   <body data-site-tone="ochre">
-    <nav class="site-home-dock" aria-label="Site"><a class="site-home" href="https://jehlp.net/" aria-label="Home · jehlp.net" title="Home · jehlp.net"><span aria-hidden="true">⌂</span></a></nav>
     <a class="skip-link" href="#doc-content">Skip to document</a>
     <header class="site-header site-header--identity">
       <div class="site-brand"><img class="site-mark" src="https://jehlp.net/site-theme/v2/marks/mtl-guide.png" width="32" height="32" alt=""><a class="site-title" href="index.html">MTL Guide</a></div>
@@ -272,7 +271,7 @@ function pageTemplate(document, rendered) {
         ${navLink("workflow.html", "Workflow", current === "workflow.html")}
         <a href="index.html#templates">Templates</a>
         <a href="index.html#references">Reference</a>
-        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Use dark theme" aria-pressed="false">◐</button>
+        <span class="site-utility-pair"><a class="site-home" href="https://jehlp.net/" aria-label="Home — jehlp.net" title="Home — jehlp.net"><span aria-hidden="true">✳</span></a><button class="theme-toggle" type="button" data-theme-toggle aria-label="Use dark theme" aria-pressed="false">◐</button></span>
       </nav>
     </header>
     <main class="doc-shell">
@@ -304,14 +303,13 @@ function codePageTemplate(document, code) {
     <link rel="canonical" href="https://jehlp.net/mtl-guide/${document.output}">
     <title>${escapeHtml(document.title)} · jehlp.net</title>
     <link rel="icon" href="https://jehlp.net/site-theme/v2/favicons/mtl-guide.png" type="image/png">
-    <script src="https://jehlp.net/site-theme/v2/theme.js?v=20260930-home3"></script>
-    <link rel="stylesheet" href="https://jehlp.net/site-theme/v2/base.css?v=20260930-home2">
+    <script src="https://jehlp.net/site-theme/v2/theme.js?v=20260930-header-home"></script>
+    <link rel="stylesheet" href="https://jehlp.net/site-theme/v2/base.css?v=20260930-header-home">
     <link rel="stylesheet" href="https://jehlp.net/site-theme/v2/components.css">
     <script src="https://jehlp.net/site-theme/v2/components.js" defer></script>
     <link rel="stylesheet" href="assets/styles.css?v=20260905.3">
   </head>
   <body data-site-tone="ochre">
-    <nav class="site-home-dock" aria-label="Site"><a class="site-home" href="https://jehlp.net/" aria-label="Home · jehlp.net" title="Home · jehlp.net"><span aria-hidden="true">⌂</span></a></nav>
     <a class="skip-link" href="#doc-content">Skip to code</a>
     <header class="site-header site-header--identity">
       <div class="site-brand"><img class="site-mark" src="https://jehlp.net/site-theme/v2/marks/mtl-guide.png" width="32" height="32" alt=""><a class="site-title" href="index.html">MTL Guide</a></div>
@@ -319,7 +317,7 @@ function codePageTemplate(document, code) {
         <a href="workflow.html">Workflow</a>
         <a href="index.html#templates">Templates</a>
         <a href="index.html#references">Reference</a>
-        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Use dark theme" aria-pressed="false">◐</button>
+        <span class="site-utility-pair"><a class="site-home" href="https://jehlp.net/" aria-label="Home — jehlp.net" title="Home — jehlp.net"><span aria-hidden="true">✳</span></a><button class="theme-toggle" type="button" data-theme-toggle aria-label="Use dark theme" aria-pressed="false">◐</button></span>
       </nav>
     </header>
     <main class="doc-shell code-shell">

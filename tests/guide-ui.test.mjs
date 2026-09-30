@@ -44,13 +44,12 @@ test('the workflow folds its duplicate file directory without omitting source li
 });
 
 
-test('authored and generated pages retain one native Home link before content', () => {
+test('authored and generated pages retain native Home in the existing header', () => {
   for (const name of ['index.html', ...pages]) {
     const html = readFileSync(new URL(name, root), 'utf8');
-    assert.equal((html.match(/class="site-home-dock"/g) || []).length, 1, name);
-    assert.match(html, /<body[^>]*>\s*<nav class="site-home-dock" aria-label="Site">/, name);
-    assert.match(html, /class="site-home" href="https:\/\/jehlp\.net\/" aria-label="Home · jehlp.net"/, name);
-    assert.ok(html.includes('base.css?v=20260930-home2'), name);
-    assert.ok(html.includes('theme.js?v=20260930-home3'), name);
+    assert.equal((html.match(/class="site-home"/g) || []).length, 1, name);
+    assert.doesNotMatch(html, /site-home-dock/);
+    assert.match(html, /<header class="site-header site-header--identity">[\s\S]*?<span class="site-utility-pair"><a class="site-home"[^>]*aria-label="Home — jehlp.net"[\s\S]*?<\/a><button[^>]*data-theme-toggle/, name);
+    for (const asset of ['base.css', 'theme.js']) assert.ok(html.includes(`${asset}?v=20260930-header-home`), name);
   }
 });
