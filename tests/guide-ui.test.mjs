@@ -50,6 +50,7 @@ test('authored and generated pages retain native Home in the existing header', (
     assert.equal((html.match(/class="site-home"/g) || []).length, 1, name);
     assert.doesNotMatch(html, /site-home-dock/);
     assert.match(html, /<header class="site-header site-header--identity">[\s\S]*?<span class="site-utility-pair"><a class="site-home"[^>]*aria-label="Home — jehlp.net"[\s\S]*?<\/a><button[^>]*data-theme-toggle/, name);
-    for (const asset of ['base.css', 'theme.js']) assert.ok(html.includes(`${asset}?v=20260930-header-home`), name);
+    assert.ok(html.includes('base.css?v=20260930-mobile-header'), name);
+    assert.ok(html.includes('theme.js?v=20260930-header-home'), name);
   }
 });
