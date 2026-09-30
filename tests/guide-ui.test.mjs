@@ -50,6 +50,7 @@ test('authored and generated pages retain one native Home link before content', 
     assert.equal((html.match(/class="site-home-dock"/g) || []).length, 1, name);
     assert.match(html, /<body[^>]*>\s*<nav class="site-home-dock" aria-label="Site">/, name);
     assert.match(html, /class="site-home" href="https:\/\/jehlp\.net\/" aria-label="Home · jehlp.net"/, name);
-    for (const asset of ['base.css', 'theme.js']) assert.ok(html.includes(`${asset}?v=20260930-home2`), name);
+    assert.ok(html.includes('base.css?v=20260930-home2'), name);
+    assert.ok(html.includes('theme.js?v=20260930-home3'), name);
   }
 });
