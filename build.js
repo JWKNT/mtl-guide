@@ -257,8 +257,8 @@ function pageTemplate(document, rendered) {
     <link rel="canonical" href="https://jehlp.net/mtl-guide/${document.output}">
     <title>${escapeHtml(document.title)} · jehlp.net</title>
     <link rel="icon" href="https://jehlp.net/site-theme/v2/favicons/mtl-guide.png" type="image/png">
-    <script src="https://jehlp.net/site-theme/v2/theme.js?v=20260930-home"></script>
-    <link rel="stylesheet" href="https://jehlp.net/site-theme/v2/base.css?v=20260930-home">
+    <script src="https://jehlp.net/site-theme/v2/theme.js?v=20260930-home2"></script>
+    <link rel="stylesheet" href="https://jehlp.net/site-theme/v2/base.css?v=20260930-home2">
     <link rel="stylesheet" href="https://jehlp.net/site-theme/v2/components.css">
     <script src="https://jehlp.net/site-theme/v2/components.js" defer></script>
     <link rel="stylesheet" href="assets/styles.css?v=20260905.3">
@@ -304,8 +304,8 @@ function codePageTemplate(document, code) {
     <link rel="canonical" href="https://jehlp.net/mtl-guide/${document.output}">
     <title>${escapeHtml(document.title)} · jehlp.net</title>
     <link rel="icon" href="https://jehlp.net/site-theme/v2/favicons/mtl-guide.png" type="image/png">
-    <script src="https://jehlp.net/site-theme/v2/theme.js?v=20260930-home"></script>
-    <link rel="stylesheet" href="https://jehlp.net/site-theme/v2/base.css?v=20260930-home">
+    <script src="https://jehlp.net/site-theme/v2/theme.js?v=20260930-home2"></script>
+    <link rel="stylesheet" href="https://jehlp.net/site-theme/v2/base.css?v=20260930-home2">
     <link rel="stylesheet" href="https://jehlp.net/site-theme/v2/components.css">
     <script src="https://jehlp.net/site-theme/v2/components.js" defer></script>
     <link rel="stylesheet" href="assets/styles.css?v=20260905.3">
