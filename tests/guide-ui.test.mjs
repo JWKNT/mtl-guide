@@ -42,3 +42,14 @@ test('the workflow folds its duplicate file directory without omitting source li
   assert.doesNotMatch(workflow, /<details/);
   assert.equal((workflow.match(/<h3\b/g) || []).length, 9);
 });
+
+
+test('authored and generated pages retain one native Home link before content', () => {
+  for (const name of ['index.html', ...pages]) {
+    const html = readFileSync(new URL(name, root), 'utf8');
+    assert.equal((html.match(/class="site-home-dock"/g) || []).length, 1, name);
+    assert.match(html, /<body[^>]*>\s*<nav class="site-home-dock" aria-label="Site">/, name);
+    assert.match(html, /class="site-home" href="https:\/\/jehlp\.net\/" aria-label="Home · jehlp.net"/, name);
+    for (const asset of ['base.css', 'theme.js']) assert.ok(html.includes(`${asset}?v=20260930-home`), name);
+  }
+});
