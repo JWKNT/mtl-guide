@@ -6,7 +6,7 @@ body { padding-bottom: 42px; font-size: 1rem; line-height: 1.5; }
 .doc-shell { width: min(1120px, calc(100% - 44px)); margin-inline: auto; }
 
 .site-header nav { flex-wrap: wrap; justify-content: flex-end; }
-.site-header nav a:hover { color: var(--blue); }
+.site-header nav a:not(.site-home):hover { color: var(--blue); }
 
 .minimal-home { max-width: 1000px; padding-top: clamp(28px, 4vw, 48px); }
 .minimal-home h1 { margin: 0; font-size: clamp(26px, 3vw, 32px); font-weight: 700; line-height: 1.15; letter-spacing: -.02em; }
