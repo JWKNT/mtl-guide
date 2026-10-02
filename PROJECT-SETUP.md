@@ -1,17 +1,17 @@
 # Project Blueprint and Agent Startup
 
-Use this page before extraction or translation. Its purpose is to make the project understandable without chat history and to prevent a new agent from guessing which files are authoritative.
+Before extraction or translation, use this page to record project requirements. The records must explain the project without chat history and identify its authoritative files.
 
 ## Four project truths
 
-Every project should have four clearly named layers:
+Give each project four clearly named parts:
 
 - **Immutable evidence:** untouched game files, source text, hashes, screenshots, and extraction logs.
 - **Canonical working data:** one master table keyed by stable line IDs. This is the source of truth for targets and review state.
 - **Authorities:** versioned decisions for reading order, terminology, identity, pronouns, voice, grammar, wordplay, typography, and reveal timing.
-- **Receipts:** reproducible build commands, validator output, changelogs, QA reports, and release manifests.
+- **Verification records:** reproducible build commands, validator output, changelogs, QA reports, and release manifests.
 
-Generated batches, compiled assets, web previews, and patch archives are outputs. Never let an output silently become the only copy of a translation decision.
+Generated batches, compiled assets, web previews, and patch archives are outputs. Keep translation decisions in the authoritative records, even when an output also contains them.
 
 ## Suggested private workspace
 
@@ -30,26 +30,26 @@ project/
   release/        versioned distributable patches
 ```
 
-Keep copyrighted assets and spoiler-bearing notes private. A public process guide should contain only fictional or structurally generic examples.
+Keep copyrighted assets and notes with spoilers private. Use only fictional examples or generic structures in a public process guide.
 
 ## Create the project manifest first
 
 Copy the [project manifest template](templates/project-manifest-template.md). Record at minimum:
 
-- title, language pair, engine, game edition, version, executable hash, and data-file hashes;
-- supported storefronts, platforms, resolutions, and runtime versions;
-- exact extraction, validation, build, install, update, and uninstall commands;
-- canonical source and target locations;
-- stable-ID schema, row counts, chapter counts, and text-surface inventory;
-- authority files in conflict-priority order;
-- review-status meanings and phase completion criteria;
+- title, language pair, engine, game edition, version, executable hash, and data-file hashes
+- supported storefronts, platforms, resolutions, and runtime versions
+- exact extraction, validation, build, install, update, and uninstall commands
+- canonical source and target locations
+- stable-ID schema, row counts, chapter counts, and text-surface inventory
+- authority files in conflict-priority order
+- review-status meanings and phase completion criteria
 - known uncertainties, rejected sources, unsupported builds, and current next action.
 
-Update the manifest when a fact changes. Do not make a new agent infer current state from filenames such as `final2` or `latest-fixed`.
+When a fact changes, update the manifest. Do not use filenames such as `final2` or `latest-fixed` as the only record of current state.
 
 ## Define ownership and status
 
-For every artifact, designate one authoritative location and one producer. For example, the master target table owns English prose; the glossary export is regenerated from it and the terminology authority. If the glossary and target disagree, the conflict order must say which wins.
+For each artifact, specify one authoritative location and one producer. For example, the master target table supplies English prose. The glossary generator uses that table and the terminology authority. If the glossary and target disagree, the documented authority order determines which has priority.
 
 Use explicit statuses instead of folder position. A useful line progression is:
 
@@ -57,63 +57,67 @@ Use explicit statuses instead of folder position. A useful line progression is:
 untranslated -> mt-draft -> accuracy-reviewed -> prose-reviewed -> engine-verified
 ```
 
-A useful chapter manifest also records separate gates for source alignment, authorities applied, bilingual review, prose review, support/UI review, layout review, and runtime verification.
+A chapter manifest also records separate gates for source alignment, authority application, bilingual review, and prose review. Other gates cover support/UI review, layout review, and runtime verification.
 
 ## Build a story model before bulk translation
 
-Read enough of the complete work to understand its actual structure before locking English choices. Create a private, spoiler-complete story model containing:
+Before approval of English choices, read enough of the complete work to understand its structure. Create a private story model with all spoilers and these records:
 
-- a chapter dependency graph and both runtime and editorial reading orders;
-- scene-level viewpoint, narrator, time period, location, and reveal state;
-- a character identity and relationship timeline;
-- internal speaker label to displayed name, portrait, voice, and voice-profile mappings;
-- recurring scenes, quotations, documents, flashbacks, and retellings that may repeat source text;
+- a chapter dependency graph and both runtime and editorial reading orders
+- scene-level viewpoint, narrator, time period, location, and reveal state
+- a character identity and relationship timeline
+- internal speaker label to displayed name, portrait, voice, and voice-profile mappings
+- recurring scenes, quotations, documents, flashbacks, and retellings that may repeat source text
 - unresolved mysteries where English must preserve ambiguity.
 
-The player-facing translation may be reveal-safe; the private authority should not be context-poor. Revisit early chapters after the full work is understood.
+The translation must respect reveal timing. The private authority must include the complete context. After you understand the full work, review early chapters again.
 
 ## Authority index and conflict order
 
-Create a one-page authority index. For each file, record its purpose, version or hash, owner, and whether it is locked or provisional. State the conflict order explicitly.
+Create a one-page authority index. For each file, record its purpose, version or hash, owner, and locked or provisional status. State the authority order for conflicts.
 
 A practical default is:
 
-1. current source line, engine events, and immediate scene;
-2. chapter chronology, narrator, and reveal map;
-3. identity and pronoun ledger;
-4. character and narrator voice guide;
-5. terminology and proper-noun authority;
-6. writing-system and wordplay decisions;
-7. grammar and restructuring guide;
+1. current source line, engine events, and immediate scene
+2. chapter chronology, narrator, and reveal map
+3. identity and pronoun ledger
+4. character and narrator voice guide
+5. terminology and proper-noun authority
+6. writing-system and wordplay decisions
+7. grammar and restructuring guide
 8. current English draft.
 
-The English draft is never evidence that the source means what the draft says.
+The English draft does not prove the meaning of the source.
 
 ## Context-free agent startup protocol
 
-Before editing, a new agent should:
+Before edits, a new agent should complete these steps:
 
 1. Read the project manifest, authority index, and current handoff.
-2. Verify the canonical source and target hashes and run the baseline validators.
-3. Read every authority required for the current phase, including narrator, identity, pronoun, and voice rules.
-4. Inspect the chapter dependency and editorial reading orders.
-5. Confirm the current phase, completed gates, unresolved decisions, exact next chapter, and permitted files to modify.
-6. State any contradictions before resolving them; never silently choose a lower-priority authority.
-7. Make edits through stable IDs, record old and new targets, and rerun validators before handoff.
+2. Verify the canonical source and target hashes.
+3. Run the baseline validators.
+4. Read each authority file required for the current phase, including narrator, identity, pronoun, and voice rules.
+5. Inspect the chapter dependency and editorial reading orders.
+6. Confirm the current phase, completed gates, unresolved decisions, exact next chapter, and permitted files for changes.
+7. Before you resolve contradictions, report them.
+8. Do not select a lower-priority authority without a record.
+9. Make edits through stable IDs.
+10. Record old and new targets.
+11. Before handoff, run validators again.
 
-This acknowledgement should be brief, but it prevents a fresh context from starting an unauthorized new first pass.
+Keep this acknowledgement short. It prevents a new agent from starting an unauthorized first pass.
 
 ## Readiness gate
 
 Do not begin bulk translation until all of these are true:
 
-- the runtime source has been identified with evidence;
-- a one-line export/import canary has appeared correctly in a clean runtime build;
-- visible text surfaces and engine control fields have been inventoried;
-- stable IDs survive export, merge, rebuild, and re-extraction;
-- source and target schemas, statuses, and validators exist;
-- the story, narrator, identity, terminology, voice, grammar, and wordplay authorities are initialized;
-- the rebuild starts from an immutable clean base;
+- the runtime source has been identified with evidence
+- a one-line export/import canary has appeared correctly in a clean runtime build
+- visible text surfaces and engine control fields have been inventoried
+- stable IDs survive export, merge, rebuild, and re-extraction
+- source and target schemas, statuses, and validators exist
+- the story, narrator, identity, terminology, voice, grammar, and wordplay authorities are initialized
+- the rebuild starts from an immutable clean base
 - the project manifest identifies the exact next action and definition of done.
 
-If a gate is unresolved, investigate it before spending model time on prose that may not be importable or correctly contextualized.
+If a gate remains open, investigate it before model translation. Otherwise, the resulting prose can have incorrect context or fail import.

@@ -1,8 +1,8 @@
 # Uncommon Japanese Grammar Guide — Spoiler-Free Example
 
-> All lines and characters below are invented for this guide. They do not come from a published visual novel. In a real project, use short examples from the private canonical script and cite stable line IDs.
+> This guide uses invented lines and characters. They do not come from a published visual novel. In a real project, use short examples from the private canonical script. Cite stable line IDs.
 
-This file demonstrates what a title-specific grammar guide should look like. Every worked example includes a plausible bad English output and a good English output. The bad version should expose a real MT failure—wrong scope, lost agency, flattened uncertainty, literal syntax, broken register, or damaged markup—not merely sound comically unnatural. Good translations illustrate the required decision; they are not the only valid line edits.
+This file shows the structure of a grammar guide for one title. Each worked example includes realistic bad English output and corrected good English output. The bad version shows an MT error in scope, agency, uncertainty, syntax, register, or markup. The good version shows the required translation decision. Other correct translations are possible.
 
 ## Core procedure
 
@@ -15,7 +15,7 @@ For each difficult line:
 5. Restructure freely while preserving voice, ambiguity, and reveal timing.
 6. Check approved names and terms.
 7. Confirm that tags and placeholders remain balanced.
-8. Record both the likely bad output and a corrected good output so the failure is concrete.
+8. Record the probable bad output and a corrected good output to show the failure.
 
 ## 1. Long prenominal modifiers
 
@@ -38,7 +38,7 @@ The Japanese explains the full behavior before naming the object. English is cle
 - Bad English: “The girl who left the island when she was young and returned to the lighthouse for the first time in ten years.”
 - Good English: “She had left the island as a child. Now, ten years later, she had returned to the lighthouse.”
 
-Do not force two life stages into “the girl who left…and returned….” Separate sentences can preserve the temporal turn.
+Do not force two life stages into “the girl who left…and returned….” Separate sentences can preserve the change in time.
 
 ## 2. Omitted subjects and viewpoint
 
@@ -72,7 +72,7 @@ The subject of `話せば` comes from viewpoint context. `先生` is the subject
 - Bad English: “None of the records survived.”
 - Good English: “Not all of the records were lost.”
 
-The source denies total loss; it does not assert that everything disappeared.
+The source denies total loss. It does not state that everything disappeared.
 
 ### Example 6 — `ないわけではない`
 
@@ -92,7 +92,7 @@ The double negative concedes that a method exists before introducing the real li
 
 ## 4. `という`, `こと`, and delayed definitions
 
-These forms quote, label, nominalize, explain, or infer. Repeating “the fact that” usually produces wooden English.
+These forms quote, label, nominalize, explain, or infer. Repeated use of “the fact that” usually produces unnatural English.
 
 ### Example 7 — inferred consequence
 
@@ -130,7 +130,7 @@ This corrects the first category with a more precise one.
 - Bad English: “Even when we run to the harbor now, we cannot be in time for the last ferry.”
 - Good English: “Even if we ran to the harbor now, we'd never make the last ferry.”
 
-The conditional is explicitly futile, not a neutral future sequence.
+The conditional states that the action cannot succeed. It does not describe a neutral future sequence.
 
 ### Example 11 — reluctant concession
 
@@ -150,7 +150,7 @@ The conditional is explicitly futile, not a neutral future sequence.
 - Bad English: “It became that I would participate in the investigation in the form of being persuaded by my older sister.”
 - Good English: “My sister talked me into joining the investigation.”
 
-The Japanese uses passive persuasion plus a formal result construction. English can make the persuader the active cause.
+The Japanese uses passive persuasion and a formal result construction. English can use the persuader as the subject of an active verb.
 
 ### Example 13 — formal compulsion
 
@@ -159,7 +159,7 @@ The Japanese uses passive persuasion plus a formal result construction. English 
 - Bad English: “Due to the dense fog, the ship was unavoidably made to return.”
 - Good English: “The fog forced the boat to turn back.”
 
-The bad version preserves Japanese compulsion mechanically and produces no natural English agent. In a formal report, “The vessel was forced to turn back because of heavy fog” is also good; choose voice according to register.
+The bad version copies the Japanese compulsion construction without a natural English agent. In a formal report, “The vessel was forced to turn back because of heavy fog” is also good. Choose active or passive voice according to register.
 
 ## 7. Change, completion, regret, and loss of control
 
@@ -181,11 +181,11 @@ The bad version preserves Japanese compulsion mechanically and produces no natur
 - Bad English: “When I hear that song, unfortunately I end up remembering old things.”
 - Good English: “Whenever I heard that song, memories of the past came flooding back.”
 
-The lack of control is carried by the English verb. Adding “unfortunately” would overstate the source.
+The English verb expresses the lack of control. The addition of “unfortunately” overstates the source.
 
 ## 8. Evidentiality and narrator certainty
 
-This distinction is essential in mystery stories. Do not flatten inference or hearsay into fact.
+This distinction is necessary in mystery stories. Do not change inference or hearsay into fact.
 
 ### Example 16 — appearance
 
@@ -194,7 +194,7 @@ This distinction is essential in mystery stories. Do not flatten inference or he
 - Bad English: “The window was broken from the inside.”
 - Good English: “The window appeared to have been broken from the inside.”
 
-The narrator is inferring from evidence.
+The narrator makes an inference from evidence.
 
 ### Example 17 — hearsay
 
@@ -224,7 +224,7 @@ Plain-form `そうだ` reports hearsay. It is not proof that the observatory exi
 - Bad English: “What appears on nights when the foghorn sounds only once is that white ship.”
 - Good English: “The white ship appeared only on nights when the foghorn sounded once.”
 
-English need not imitate the delayed `のが…だ` cleft when a direct subject is stronger.
+When a direct subject is clearer, English does not need the delayed `のが…だ` cleft.
 
 ### Example 19 — intentional catalogue fragments
 
@@ -233,9 +233,9 @@ English need not imitate the delayed `のが…だ` cleft when a direct subject 
 - Bad English: “There were a rusted chain, a wet ticket, and a waiting room where no one was.”
 - Good English: “A rusted chain. A waterlogged ticket. An empty waiting room.”
 
-The fragments create a visual sequence. Joining them into a complete sentence would flatten the rhythm.
+The fragments create a visual sequence. A complete sentence removes the separate rhythmic units.
 
-List markers such as `や`, `たり`, `とか`, and `など` are often nonexhaustive. Do not imply that examples form a complete inventory unless context says so.
+List markers such as `や`, `たり`, `とか`, and `など` often introduce an incomplete list. Treat examples as a complete inventory only when context supports that meaning.
 
 ## 10. Register, roles, and social address
 
@@ -248,7 +248,7 @@ Japanese role terms do not have one global English equivalent.
 | `兄貴` | older brother, sworn-brother address, or rough respect? |
 | `旦那` | husband, patron, boss, or informal “sir”? |
 
-Use contractions, sentence length, hedging, titles, and vocabulary to convey register. Avoid phonetic eye dialect unless the project has a deliberate, reviewed policy.
+Use contractions, sentence length, hedging, titles, and vocabulary to convey register. Use phonetic eye dialect only under a deliberate, reviewed project policy.
 
 ### Example 20 — translate the role, not the dictionary label
 
@@ -258,7 +258,7 @@ Use contractions, sentence length, hedging, titles, and vocabulary to convey reg
 - Bad English: “Teacher, please look at me one more time.”
 - Good English: “Doctor, could you examine me again?”
 
-The bad version selects the most familiar dictionary meaning of `先生` and treats `診る` as ordinary looking. The context determines both the role noun and the medical sense of the verb; the polite request should remain polite without becoming stiff.
+The bad version selects the most familiar dictionary meaning of `先生`. It treats `診る` as ordinary looking. The context determines the role noun and the medical meaning of the verb. Keep the request polite and natural.
 
 ## 11. Reveal-sensitive ambiguity
 
@@ -278,7 +278,7 @@ The source proposes an identity conditionally. Later knowledge must not turn the
 - Bad English: “Did she also know the same thing?”
 - Good English: “Had that person known the same thing?”
 
-If the viewpoint intentionally avoids a name or gender, English should not reveal either. Awkwardness can be preferable to a spoiler.
+If the viewpoint deliberately avoids a name or gender, do not reveal either in English. Unnatural wording can be preferable to a spoiler.
 
 ## 12. Markup inside grammar
 
@@ -291,7 +291,7 @@ Treat tags as protected structure, not punctuation.
 - Bad English: “That night was the first time I saw the White Ship.”
 - Good English: “That night was the first time I saw the <term=004>White Ship</term>.”
 
-Translate visible text inside the tag while preserving the tag name, ID, and pair. If tags are replaced before generation, the protected form might be `That night was the first time I saw [[TAG_0001]]White Ship[[TAG_0002]].`
+Translate visible text inside the tag. Preserve the tag name, ID, and pair. With placeholders before generation, the protected form can be `That night was the first time I saw [[TAG_0001]]White Ship[[TAG_0002]].`
 
 Do not move only one half of a pair across a line, page, or textbox split.
 
@@ -299,19 +299,19 @@ Do not move only one half of a pair across a line, page, or textbox split.
 
 Split when:
 
-- a long modifier becomes clearer as a new sentence;
-- Japanese chains several independent claims;
-- a punch line or reveal deserves its own beat;
+- a long modifier becomes clearer as a new sentence
+- Japanese chains several independent claims
+- a punch line or reveal deserves its own beat
 - the English line would exceed comfortable textbox width.
 
 Do not split when:
 
-- a voice clip or presentation tag requires continuity;
-- suspense depends on a withheld subject;
-- page-control behavior would display the pieces incorrectly;
+- a voice clip or presentation tag requires continuity
+- suspense depends on a withheld subject
+- page-control behavior would display the pieces incorrectly
 - a paired tag or variable would become unbalanced.
 
-Join only when Japanese fragments are grammatical supports that would sound accidental in English. Preserve deliberate catalogue fragments, interruptions, and emotional beats.
+Join Japanese fragments only when they support the grammar and sound accidental as separate English fragments. Preserve deliberate catalogue fragments, interruptions, and emotional beats.
 
 ### Example 24 — split a clause chain into readable beats
 
@@ -320,49 +320,49 @@ Join only when Japanese fragments are grammatical supports that would sound acci
 - Bad English: “The terminal remaining silent, even though she called out many times there was no reply, and before long even the screen's light disappeared.”
 - Good English: “The terminal stayed silent. No matter how many times she called, no one answered. Eventually, even the screen went dark.”
 
-The bad version follows each Japanese connective and leaves English without a stable main clause. The good version turns three narrative developments into three finite sentences while preserving their order and escalation.
+The bad version copies each Japanese connective without a stable English main clause. The good version uses three finite sentences for three narrative developments. It preserves their order and increasing intensity.
 
 ## Batch checklist
 
 Before translation:
 
-- identify narrator, speaker, time period, and active scene;
-- load relevant terminology and identity rules;
-- inspect neighboring rows;
+- identify narrator, speaker, time period, and active scene
+- load relevant terminology and identity rules
+- inspect neighboring rows
 - note aliases or facts the viewpoint does not yet know.
 
 For each difficult line:
 
-- bracket long modifiers and name their head nouns;
-- label omitted subjects in scratch work;
-- mark negative scope;
-- mark evidence level;
-- choose the English main clause;
-- check pronouns against every active character;
+- bracket long modifiers and name their head nouns
+- label omitted subjects in scratch work
+- mark negative scope
+- mark evidence level
+- choose the English main clause
+- check pronouns against every active character
 - preserve tags, IDs, and variables.
 
 After translation:
 
-- search for approved and deprecated terms;
-- check partial negatives and competing alternatives;
-- check that hypotheses did not become facts;
-- check that production labels did not leak into names;
-- read English alone for clarity;
+- search for approved and deprecated terms
+- check partial negatives and competing alternatives
+- check that hypotheses did not become facts
+- check that production labels do not appear in displayed names
+- read English alone for clarity
 - compare against Japanese again for lost qualifications.
 
 ## Quick reference
 
 | Construction | Main danger | Default repair |
 |---|---|---|
-| long clause + noun | unreadable noun pile | name noun early; relative clause or new sentence |
+| long clause + noun | unreadable noun sequence | name noun early, then use a relative clause or new sentence |
 | omitted subject | wrong character acts | recover from topic, agency, and viewpoint |
 | `すべて…ない` | partial/total negative reversal | “not all” / “not every” |
 | `ないわけではない` | concession lost | “not that…couldn't,” “did have some…” |
-| `ということになる` | wooden nominalization | state the inferred consequence directly |
+| `ということになる` | unnatural nominalization | state the inferred consequence directly |
 | `ものの` / `とはいえ` | lost expectation contrast | “although,” “even so,” “only to…” |
-| `たところで` | futility neutralized | “even if…, it would not…” |
-| passive/causative chain | real agent disappears | restore actor; use active English where suitable |
-| `てしまう` | automatic “unfortunately” | encode completion, accident, regret, or irreversibility contextually |
+| `たところで` | loss of stated futility | “even if…, it would not…” |
+| passive/causative chain | missing actor | restore the actor with active English where suitable |
+| `てしまう` | unsupported “unfortunately” | express completion, accident, regret, or irreversibility according to context |
 | `らしい` / `ようだ` / `そうだ` | rumor becomes fact | preserve evidence level |
 | `や` / `たり` / `とか` | false exhaustiveness | use representative, parallel examples |
 | alias or vague pronoun | premature reveal | use only what the viewpoint knows |

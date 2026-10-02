@@ -1,10 +1,10 @@
 # [Project] — Uncommon Grammar and Restructuring Guide
 
-> Translator-facing companion to `terminology-authority.md`. This is based on recurring constructions in the canonical VN script, not generic textbook coverage. Keep spoiler-bearing examples in the private workspace.
+> Use this guide with `terminology-authority.md`. Base the guide on repeated constructions in the canonical VN script. Do not use generic textbook coverage. Keep examples with spoilers in the private workspace.
 
 ## Core principle
 
-[Summarize the title's dominant sentence-architecture, viewpoint, or register risk.]
+[Summarize the title's main sentence-structure, viewpoint, or register risk.]
 
 For every difficult line:
 
@@ -16,7 +16,7 @@ For every difficult line:
 6. Preserve tags, variables, and presentation constraints.
 7. Show both a plausible bad English output and a corrected good English output.
 
-The bad output is required. It should represent a failure a literal translator or model might realistically produce, not deliberately nonsensical prose. Make the defect observable: wrong agency, reversed scope, flattened uncertainty, premature reveal, broken register, Japanese-shaped syntax, or damaged markup.
+Each entry requires bad output. Use a realistic error from a literal translator or model. Show an error in agency, scope, uncertainty, reveal timing, register, syntax, or markup. Do not use deliberately meaningless prose.
 
 ## [Construction or recurring failure]
 
@@ -61,18 +61,19 @@ Do not split when:
 
 Before translating:
 
-- identify narrator, speaker, time period, and active scene;
-- load relevant terminology and identity rules;
-- inspect neighboring rows;
+- identify narrator, speaker, time period, and active scene
+- load relevant terminology and identity rules
+- inspect neighboring rows
 - note aliases or facts the viewpoint does not yet know.
 
 After translating:
 
-- check names and recurring terms;
-- check negative scope and causal direction;
-- check facts versus inference/hearsay/possibility;
-- check pronouns and aliases for premature reveals;
-- read English alone, then compare against the source;
+- check names and recurring terms
+- check negative scope and causal direction
+- check facts versus inference/hearsay/possibility
+- check pronouns and aliases for premature reveals
+- read the English alone
+- then compare the English with the source
 - validate tags, variables, and line limits.
 
 ## Quick reference
@@ -89,4 +90,4 @@ After translating:
 - Last reviewed: [date/person]
 - Open questions: [links or IDs]
 
-Add a guide entry when an error repeats across batches or when one error would materially change plot logic, agency, or reveal timing.
+If an error repeats across batches, add a guide entry. Also add an entry for a significant error in plot logic, agency, or reveal timing.

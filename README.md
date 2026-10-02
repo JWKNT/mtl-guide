@@ -1,14 +1,14 @@
 # Visual Novel MTL Workflow
 
-A reusable process for machine-assisted visual novel translation. The goal is not one-click output; it is a translation that can be resumed, reviewed, validated, and rebuilt.
+This guide gives a reusable process for machine-assisted visual novel translation. The process includes translation, review, validation, and repeatable builds. It also records the state needed to continue work.
 
-All public examples in this repository are fictional. Keep extracted scripts, game assets, keys, and spoiler-bearing project notes private.
+The public workflow examples are fictional. Keep extracted scripts, game assets, keys, and project notes that contain spoilers private.
 
 ## Files
 
-- [`PROJECT-SETUP.md`](PROJECT-SETUP.md): project contract, private workspace, manifest, story model, authority index, and context-free agent startup protocol.
+- [`PROJECT-SETUP.md`](PROJECT-SETUP.md): project requirements, private workspace, manifest, story model, authority index, and startup procedure for a new agent.
 - [`ROUND-TRIP-BUILD.md`](ROUND-TRIP-BUILD.md): canonical-source proof, canary import, presentation constraints, deterministic builds, patching, and release gates.
-- [`REVIEW-QA.md`](REVIEW-QA.md): editorial pass ladder, repeated-text reconciliation, tag/layout audits, stateful runtime testing, and clean-pass closure.
+- [`REVIEW-QA.md`](REVIEW-QA.md): editorial review passes, repeated-text checks, tag and layout audits, stateful runtime tests, and final verification.
 - [`templates/project-manifest-template.md`](templates/project-manifest-template.md): reusable manifest for build identity, canonical paths, commands, counts, phase state, and handoff.
 - [`templates/qa-matrix-template.md`](templates/qa-matrix-template.md): reusable chapter, platform, installation, and interaction regression matrix.
 - [`grammar-guide-example.md`](grammar-guide-example.md): a filled, spoiler-free example of a VN-specific grammar guide.
@@ -25,21 +25,30 @@ All public examples in this repository are fictional. Keep extracted scripts, ga
 
 ### 1. Establish the project contract
 
-Create the private workspace, project manifest, authority index, review statuses, and definition of done described in [`PROJECT-SETUP.md`](PROJECT-SETUP.md). Separate immutable evidence, canonical working data, authorities, and build/QA receipts. Give every artifact one authoritative location and say how derived copies are regenerated.
+Create the private workspace, project manifest, authority index, review statuses, and completion criteria described in [`PROJECT-SETUP.md`](PROJECT-SETUP.md). Keep immutable evidence, canonical working data, authority files, and build/QA records separate. Give each artifact one authoritative location. Record the procedure to regenerate derived copies.
 
-Before bulk work, require a new agent to verify hashes and validator counts, read the authorities for its current phase, acknowledge the exact next action, and edit only through stable IDs. Project state belongs in manifests and reports, not only in chat history.
+Before bulk work, give a new agent these requirements:
+
+- Verify hashes and validator counts.
+- Read the authority files for the current phase.
+- Confirm the exact next action.
+- Make edits only through stable IDs.
+
+Record project state in manifests and reports. Chat history alone is insufficient.
 
 ### 2. Verify the canonical source and round trip
 
-Games may ship duplicate, obsolete, or development scripts. Extract likely sources without modifying the originals, then compare distinctive lines, chapter order, speakers, choices, and UI text with a clean runtime session. Document which source the executable actually uses.
+Games can include duplicate, obsolete, or development scripts. Extract possible sources without changes to the originals. Compare distinctive lines, chapter order, speakers, choices, and UI text with a clean runtime session. Record the source that the executable uses.
 
-Record the game version, hashes, extraction method, exact runtime evidence, and why every alternate source was accepted or rejected. Do not assume the easiest file to decode is the file the executable displays.
+Record the game version, hashes, extraction method, and exact runtime evidence. Record the reason for acceptance or rejection of each alternative source. Do not assume that the easiest file to decode contains the text that the executable displays.
 
-Before translating a chapter, run the clean export/import canary in [`ROUND-TRIP-BUILD.md`](ROUND-TRIP-BUILD.md): change one harmless target through a stable ID, rebuild a disposable copy, confirm the running game displays it, re-extract to detect collateral changes, and reproduce the result from the immutable base. This proves both the source and the import path.
+Before chapter translation, run the clean export/import canary test in [`ROUND-TRIP-BUILD.md`](ROUND-TRIP-BUILD.md). Change one harmless target through a stable ID. Rebuild a disposable copy. Confirm that the running game displays the change. Re-extract the copy to find unintended changes. Reproduce the result from the immutable base.
+
+This test verifies the source and the import path.
 
 ### 3. Export losslessly
 
-Keep one row per engine row, including command rows. Preserve source order and every control field. Give each row a stable ID such as `chapter:source-row`; never use translated text or current row position as the key.
+Keep one row per engine row, including command rows. Preserve source order and every control field. Give each row a stable ID such as `chapter:source-row`. Do not use translated text or the current row position as the key.
 
 A useful master schema is:
 
@@ -55,59 +64,84 @@ line_id, speaker_source, speaker_target, source_text,
 target_text, status, model, notes
 ```
 
-Regenerating targets must preserve existing translations and review state unless an explicit reset is requested.
+When you regenerate targets, preserve existing translations and review state. Reset them only after an explicit request.
 
-Define review statuses before work begins. A useful progression is `draft` → `accuracy-reviewed` → `prose-reviewed` → `engine-verified`; advance a row or chapter only after that gate is actually complete.
+Before work starts, define review statuses. A useful sequence is `draft` → `accuracy-reviewed` → `prose-reviewed` → `engine-verified`. Advance a row or chapter only after completion of the applicable review gate.
 
-Inventory the complete text surface before calling the export complete: scenario prose, speaker/name boxes, choices, tips/glossary, menus and settings, chapter select, galleries, sound room, credits, and text baked into textures. Keep internal lookup keys separate from visible text; translating an engine identifier can break the game.
+Before export sign-off, make an inventory of all visible text:
 
-Retain command-only and apparently blank rows. Background, portrait, name-box, timing, and page-state changes often occur there and affect the next visible line. Any reader, preview, or patch builder must replay the engine's real event stream; never infer visual state from the translated speaker or prose.
+- scenario prose and speaker/name boxes
+- choices and tips/glossary
+- menus, settings, and chapter select
+- galleries, sound room, and credits
+- text in textures
+
+Keep internal lookup keys separate from visible text. Translation of an engine identifier can cause a game failure.
+
+Keep command-only rows and rows that appear blank. These rows often change backgrounds, portraits, name boxes, timing, or page state before the next visible line. Each reader, preview, or patch builder must replay the engine's actual event stream. Do not infer visual state from the translated speaker or prose.
 
 ### 4. Write the terminology authority
 
-Do this before bulk translation. Mine speaker tables, character definitions, profiles, tips, ruby/readings, UI strings, and the script itself.
+Before bulk translation, write the terminology authority. Find evidence in speaker tables, character definitions, profiles, tips, ruby/readings, UI strings, and the script.
 
 Record:
 
-- names, aliases, nicknames, inherited titles, and timeline-dependent identities;
-- organizations, locations, items, abilities, drugs, equipment, ranks, and recurring concepts;
-- typography and romanization rules;
-- terms that look similar but must remain distinct;
-- production-only speaker qualifiers that must not enter displayed names;
+- names, aliases, nicknames, inherited titles, and timeline-dependent identities
+- organizations, locations, items, abilities, drugs, equipment, ranks, and recurring concepts
+- typography and romanization rules
+- terms that look similar but must remain distinct
+- production-only speaker qualifiers that must not enter displayed names
 - evidence, usage notes, and unresolved decisions.
 
-Use `locked`, `working`, `review`, and `deprecated` states. A glossary is not only a word list: it must explain when each form is valid.
+Use `locked`, `working`, `review`, and `deprecated` states. Explain when each glossary form is valid.
 
 ### 5. Build the context authorities
 
-Before bulk translation, read the script in the order a player can encounter it and create four compact private references:
+Before bulk translation, read the script in player order. Create four short private references:
 
-- a chapter unlock/reading-order map with narrator, viewpoint, time period, and reveal boundaries;
-- an identity and pronoun ledger that keeps a character's gender, English pronouns, Japanese self-reference, and gendered speech style as separate facts;
-- a voice guide based on observable language—syntax, contraction level, directness, address terms, code-switching, verbal habits, and progression—not personality adjectives alone;
+- a chapter unlock/reading-order map with narrator, viewpoint, time period, and reveal boundaries
+- an identity and pronoun ledger that keeps a character's gender, English pronouns, Japanese self-reference, and gendered speech style as separate facts
+- a voice guide with syntax, contraction level, directness, address terms, code-switching, verbal habits, and progression, supported by observed language
 - a writing-system guide for ruby mismatches, kanji readings, homophones, script switches, name formation, glyph contrasts, and recurring lexical networks.
 
-Also maintain mappings from internal speakers and engine events to displayed names, voice profiles, portraits, and backgrounds. Build a report of repeated and near-repeated source passages so quotations, flashbacks, retellings, and parallel viewpoints can be reconciled deliberately rather than translated independently.
+Keep mappings from internal speakers and engine events to displayed names, voice profiles, portraits, and backgrounds. Report repeated and near-repeated source passages. Use the report to compare quotations, flashbacks, retellings, and parallel viewpoints before translation decisions.
 
-Read enough of the complete work to create a spoiler-complete private story model before locking early English. Revisit the opening after later identities, narrators, relationships, and recurring language are understood; preserve only what the player is meant to know at each reveal boundary.
+Before approval of early English, read enough of the complete work to create a private story model with all spoilers. After you understand later identities, narrators, relationships, and repeated language, review the opening again. At each reveal boundary, preserve only the information that the player should know.
 
-For wordplay, choose deliberately among **preserve directly**, **explain once**, **rebuild locally**, **accept a controlled loss**, and **do not force**. Record the source line, function, recommended treatment, and sacrifice. A tempting sound resemblance is not automatically an intentional pun.
+For wordplay, choose **preserve directly**, **explain once**, **rebuild locally**, **accept a controlled loss**, or **do not force**. Record the source line, function, recommended treatment, and information lost. Similar sounds alone do not prove an intentional pun.
 
-Write an authority order. A useful default is: current source line and scene; reading/reveal chronology; identity/pronoun ledger; voice guide; name and terminology authority; writing-system decisions; grammar guide; current draft. The draft is evidence, never authority over the source.
+Record the authority order. This default order is useful:
+
+1. Current source line and scene
+2. Reading/reveal chronology
+3. Identity/pronoun ledger
+4. Voice guide
+5. Name and terminology authority
+6. Writing-system decisions
+7. Grammar guide
+8. Current draft
+
+The draft is evidence of previous work. It cannot override the source.
 
 ### 6. Write the VN-specific grammar guide
 
-Sample narration, dialogue, exposition, choices, tips, and late-game scenes. Add constructions that repeatedly cause incorrect, wooden, or reveal-breaking output.
+Sample narration, dialogue, exposition, choices, tips, and late-game scenes. Add constructions that repeatedly cause incorrect or unnatural output, or premature reveals.
 
-Each entry should include a stable line ID, short source excerpt, plausible bad English output, corrected good English output, named failure type, and a brief explanation. The bad output must show a realistic error rather than a caricature, so future translators and models can see exactly what must be avoided. Common subjects include long prenominal modifiers, omitted subjects, partial negatives, `という` and `わけ`, concession, passive chains, evidentiality, register, deliberate ambiguity, and markup inside grammatical units.
+Include these fields in each entry:
+
+- stable line ID and short source excerpt
+- realistic bad English output and corrected good English output
+- named failure type and short explanation
+
+Use a realistic error to show translators and models what to avoid. Common subjects include long prenominal modifiers, omitted subjects, partial negatives, `という` and `わけ`, concession, and passive chains. Other subjects include evidentiality, register, deliberate ambiguity, and markup inside grammatical units.
 
 Use real examples in the private project guide. Use [`grammar-guide-example.md`](grammar-guide-example.md) as the public format reference.
 
 ### 7. Translate context-sized batches
 
-Batch by scene or chapter boundary, not an arbitrary character count. Include neighboring read-only rows, the scene and speaker context, relevant terminology entries, relevant grammar notes, and an exact output schema.
+Use scene or chapter boundaries for batches. Do not use an arbitrary character count. Include adjacent read-only rows, scene and speaker context, applicable terminology entries, applicable grammar notes, and an exact output schema.
 
-Large batches are efficient when they remain a coherent chapter or scene and the agent can retain the relevant authorities. Size alone is not a quality control; stable boundaries and sufficient context are.
+Large batches can improve efficiency if they keep a chapter or scene together and the agent retains the applicable authority files. Batch quality depends on stable boundaries and sufficient context. Size alone does not control quality.
 
 For each batch:
 
@@ -119,24 +153,35 @@ For each batch:
 6. Merge by `line_id` only.
 7. Mark output `mt-draft` until reviewed.
 
-Never silently overwrite an existing translation. Protect complicated engine tags with unique placeholders before generation when possible, then restore and compare them mechanically.
+Do not overwrite an existing translation without a record. Where possible, protect complex engine tags with unique placeholders before generation. Then restore the tags. Compare the restored tags with a script.
 
 ### 8. Edit through explicit gates
 
-Treat a complete first draft as a milestone, not a finished translation. Review chapters in the documented player reading order, not filename or extraction order.
+A complete first draft still requires review. Review chapters in the documented player reading order. Do not use filename or extraction order.
 
 - **Structural QA** checks IDs, row counts, empty targets, tags, variables, placeholders, remaining source-language text, length limits, and changed control fields.
-- **Bilingual accuracy and continuity** checks every row against the source and local scene: meaning, omissions, invented information, subjects, pronouns, narrator number, negation, causality, certainty, terminology, identity, and reveal timing.
-- **Voice and prose** rereads every row with the speaker/narrator dossier, then reads the chapter straight through in English. It repairs cadence, diction, contraction level, dialogue rhythm, exposition, and narrator texture without undoing accuracy.
-- **Corpus audits** search globally for deprecated names, inconsistent terms, source-language remnants, unsupported I/we shifts, identity leaks, stale batch archives, and unequal target/source coverage.
-- **Support/UI QA** reviews glossary, speaker labels, choices, menus, galleries, sound titles, and embedded texture text under the same terminology rules. Check sentence spacing, word-boundary wrapping and pagination, duplicated title forms, ruby/helper alignment, and overlays where translated text may sit on top of original text or art.
+- **Bilingual accuracy and continuity** checks each row against the source and local scene. It checks meaning, omissions, invented information, subjects, pronouns, and narrator number. It also checks negation, causality, certainty, terminology, identity, and reveal timing.
+- **Voice and prose** checks every row against the speaker/narrator record. This pass then reads the complete chapter in English. It corrects cadence, diction, contraction level, dialogue rhythm, exposition, and narrator texture without loss of accuracy.
+- **Corpus audits** search globally for deprecated names, inconsistent terms, source-language remnants, unsupported I/we shifts, premature identity reveals, outdated batch archives, and unequal target/source coverage.
+- **Support/UI QA** checks glossary, speaker labels, choices, menus, galleries, sound titles, and texture text against the same terminology rules. It checks sentence spacing, word-boundary wrapping, pagination, duplicate title forms, ruby/helper alignment, and overlays over original text or art.
 - **In-engine QA** checks overflow, fonts, line and page breaks, choices, voice timing, tags, backlog, save/load, menus, galleries, patch installation, and removal.
 
-Do not collapse these gates. A robust order is complete draft → bilingual accuracy → voice/prose → technical and row-correspondence QA → support/UI QA → in-engine QA. The later mechanical pass should fix only demonstrated spelling, grammar, typography, locked-term, tag, newline, or alignment defects; it should not quietly reopen prose style.
+Keep these review gates separate. Use this sequence:
 
-Use [`REVIEW-QA.md`](REVIEW-QA.md) for the complete editorial and runtime test ladder. It separates repeated-text, narrator/identity, tag-function, presentation, stateful interaction, platform, and release-installation audits so a clean script cannot mask a broken game.
+1. Complete draft
+2. Bilingual accuracy
+3. Voice/prose
+4. Technical and row-correspondence QA
+5. Support/UI QA
+6. In-engine QA
 
-For each pass, maintain a chapter manifest with pending/in-progress/complete status and a short sign-off. Apply revisions through stable IDs, preserve `line_id | source | old target | new target | reason/pass` in a changelog, synchronize any batch archives, and rerun structural validation after every chapter. Treat automated first-person searches as an inventory, not a verdict: manually adjudicate every suspicious English I/we/my/our form against the actual narrator and scene. If a QA pass changes anything, merge the fixes and run the complete pass again. Finish only after an entire pass returns no changes. Do not trust a passing validator as proof of linguistic quality.
+In the later mechanical pass, correct only verified spelling, grammar, typography, locked-term, tag, newline, or alignment defects. Do not change prose style in that pass.
+
+Use [`REVIEW-QA.md`](REVIEW-QA.md) for the complete editorial and runtime test sequence. It separates repeated-text, narrator/identity, tag-function, presentation, stateful interaction, platform, and release-installation audits. A correct script does not prove that the game operates correctly.
+
+For each pass, keep a chapter manifest with pending/in-progress/complete status and a short sign-off. Apply revisions through stable IDs. Keep `line_id | source | old target | new target | reason/pass` in a changelog. Synchronize batch archives. After each chapter, run structural validation again.
+
+Use automated first-person searches to make an inventory. Manually check each suspect English I/we/my/our form against the actual narrator and scene. If a QA pass changes anything, merge the corrections. Then run the complete pass again. Finish only after a complete pass returns no changes. A passing validator does not prove linguistic quality.
 
 Run the included structural example with:
 
@@ -146,25 +191,25 @@ python3 tools/validate_batch.py examples/sample-batch.tsv
 
 ### 9. Resolve, compile, and release
 
-Resolve every `review` terminology entry, search for deprecated forms, rerun validators against the full corpus, and test a clean patch install against the supported game version.
+Resolve every `review` terminology entry. Search for deprecated forms. Run validators again against the full corpus. Test a clean patch installation against the supported game version.
 
-Always compile from immutable originals plus canonical reviewed targets, never recursively from a previously patched build. Emit a build report with input and output hashes, tools, commands, counts, changed files, validator results, supported versions, and warnings. Test fresh install, update, reinstall, interrupted-state recovery, language restoration if applicable, and removal across the supported runtime matrix.
+Compile from immutable originals and canonical reviewed targets. Do not compile from a previously patched build. Generate a build report with input/output hashes, tools, commands, counts, changed files, validator results, supported versions, and warnings. Across the supported runtime matrix, test fresh installation, update, reinstallation, interrupted-state recovery, and removal. If applicable, also test language restoration.
 
-Distribute only the minimum patch data permitted by the project. The release should be rebuildable from the private canonical source and reviewed target tables without repeating model calls. See [`ROUND-TRIP-BUILD.md`](ROUND-TRIP-BUILD.md) for deterministic build and idempotent patcher requirements.
+Distribute only the minimum patch data that the project permits. The release should be rebuildable from the private canonical source and reviewed target tables without new model calls. See [`ROUND-TRIP-BUILD.md`](ROUND-TRIP-BUILD.md) for deterministic build and idempotent patcher requirements.
 
 ## Handoff packet
 
-A new agent should not have to reconstruct project state from chat history. Hand off:
+Give a new agent the project state outside chat history. Include these items in the handoff:
 
-- the canonical source location, game version, hashes, extraction notes, and rejected alternate sources;
-- authoritative target tables, stable-ID schema, status meanings, and exact validator commands with expected counts;
-- the reading-order map and an index of every authority file in conflict-priority order;
-- per-pass chapter progress, unresolved decisions, and the exact next action;
-- a line-level changelog containing source, old target, and revised target;
-- synchronized batch/support archives and a report proving coverage, tag integrity, and archive equality;
+- the canonical source location, game version, hashes, extraction notes, and rejected alternate sources
+- authoritative target tables, stable-ID schema, status meanings, and exact validator commands with expected counts
+- the reading-order map and an index of every authority file in conflict-priority order
+- per-pass chapter progress, unresolved decisions, and the exact next action
+- a line-level changelog containing source, old target, and revised target
+- synchronized batch/support archives and a report proving coverage, tag integrity, and archive equality
 - compile/import instructions and the current in-engine QA state.
 
-The receiving agent should acknowledge the authorities, treat accumulated English as editable draft, work in player order, and leave the project in an equally resumable state.
+The receiving agent should confirm the authority files and treat the existing English as an editable draft. The agent should work in player order and record sufficient state for the next handoff.
 
 ## Non-negotiable rules
 
@@ -174,7 +219,7 @@ The receiving agent should acknowledge the authorities, treat accumulated Englis
 - Do not turn rumor, inference, possibility, or a conditional identity into fact.
 - Do not normalize all aliases to the final identity when the source changes names over time.
 - Do not infer identity or English pronouns from feminine/masculine Japanese speech alone.
-- Do not reduce character voice to personality labels or a catchphrase; document repeatable linguistic behavior and progression.
+- Record repeatable linguistic behavior and progression. Personality labels or a catchphrase alone do not define character voice.
 - Do not infer portrait, background, name-box, or pagination state from dialogue text when engine events are available.
 - Do not declare translation complete while visible UI, glossary, speaker, or rasterized text remains uninventoried.
 - Do not declare QA complete until a full post-fix pass finds nothing to change.
@@ -183,22 +228,22 @@ The receiving agent should acknowledge the authorities, treat accumulated Englis
 
 ## Completion checklist
 
-- project manifest, authority index, phase state, and definition of done current;
-- canonical runtime source documented;
-- clean canary export/import/re-extraction round trip reproducible;
-- every visible text surface inventoried;
-- every translatable row has a stable ID and reviewed target;
-- player reading order, narrators, identity axes, voice progression, and writing-system decisions documented;
-- terminology review queue resolved;
-- bilingual accuracy and English prose passes completed in player order;
-- global pronoun, terminology, remnant, tag, coverage, and archive-equality audits pass;
-- final spelling, grammar, markup, newline, and one-to-one row-correspondence pass returns no changes;
-- support/UI text reviewed under the same authorities;
-- routes and auxiliary text tested in-engine;
-- repeated overlays, linked terms, input methods, save/load, focus, and progression tested as stateful sequences;
-- supported versions, storefronts, platforms, compatibility layers, resolutions, install states, and save states recorded in a QA matrix;
-- clean installation, update, and removal tested;
-- release reproducible from archived originals and reviewed targets;
+- project manifest, authority index, phase state, and definition of done current
+- canonical runtime source documented
+- clean canary export/import/re-extraction round trip reproducible
+- every visible text surface inventoried
+- every translatable row has a stable ID and reviewed target
+- player reading order, narrators, identity axes, voice progression, and writing-system decisions documented
+- terminology review queue resolved
+- bilingual accuracy and English prose passes completed in player order
+- global pronoun, terminology, remnant, tag, coverage, and archive-equality audits pass
+- final spelling, grammar, markup, newline, and one-to-one row-correspondence pass returns no changes
+- support/UI text reviewed under the same authorities
+- routes and auxiliary text tested in-engine
+- repeated overlays, linked terms, input methods, save/load, focus, and progression tested as stateful sequences
+- supported versions, storefronts, platforms, compatibility layers, resolutions, install states, and save states recorded in a QA matrix
+- clean installation, update, and removal tested
+- release reproducible from archived originals and reviewed targets
 - handoff packet names the exact state, unresolved work, and next action.
 
-The extraction and import layers are engine-specific. Stable IDs, terminology, grammar notes, batching, review states, and QA gates are portable between projects.
+Extraction and import depend on the engine. Other projects can use the same stable-ID, terminology, grammar-note, batching, review-state, and QA-gate methods.
