@@ -1,9 +1,7 @@
 html { scroll-padding-top: 16px; }
 body { padding-bottom: 42px; font-size: 1rem; line-height: 1.5; }
 
-.site-header,
-.landing-shell,
-.doc-shell { width: min(1120px, calc(100% - 44px)); margin-inline: auto; }
+.landing-shell, .doc-shell { width: min(1120px, calc(100% - 44px)); margin-inline: auto; }
 
 .site-header nav { flex-wrap: wrap; justify-content: flex-end; }
 .site-header nav a:not(.site-home):hover { color: var(--blue); }
@@ -70,8 +68,7 @@ body { padding-bottom: 42px; font-size: 1rem; line-height: 1.5; }
 }
 
 @media (max-width: 650px) {
-  .site-header, .landing-shell, .doc-shell { width: min(100% - 28px, 1120px); }
-  .site-header { padding-top: 14px; }
+  .landing-shell, .doc-shell { width: min(100% - 28px, 1120px); }
   .site-title { font-size: 20px; }
   .site-header nav { gap: 8px 11px; }
   .minimal-home { padding-top: 26px; }
