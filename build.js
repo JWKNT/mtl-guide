@@ -13,6 +13,7 @@ const documents = [
     title: "Workflow",
     summary: "Use this process for source verification, text inventory, context authorities, translation, review, handoff, and release.",
     foldSections: ["files"],
+    tocDepth: 3,
   },
   {
     source: "PROJECT-SETUP.md",
@@ -142,7 +143,7 @@ function isSpecial(lines, index) {
   return !line.trim() || /^```/.test(line) || /^#{1,4}\s/.test(line) || /^>\s?/.test(line) || /^[-*]\s+/.test(line) || /^\d+\.\s+/.test(line) || /^---+$/.test(line.trim()) || (line.includes("|") && /^\s*\|?\s*:?-+/.test(next));
 }
 
-function renderMarkdown(markdown, foldSections = []) {
+function renderMarkdown(markdown, foldSections = [], tocDepth = 2) {
   const lines = markdown.replace(/\r\n/g, "\n").split("\n");
   const used = new Set();
   const toc = [];
@@ -183,9 +184,11 @@ function renderMarkdown(markdown, foldSections = []) {
         if (inSection) html += `${inDisclosure ? "</details>" : ""}</section>`;
         inSection = true;
         inDisclosure = foldSections.includes(slug);
-        toc.push({ slug, label: label.replace(/`/g, "") });
+        toc.push({ slug, label: label.replace(/`/g, ""), children: [] });
         html += `<section class="doc-section${inDisclosure ? " doc-section--folded" : ""}" id="${slug}">${inDisclosure ? `<details><summary>${inlineMarkdown(label)}</summary>` : `<h2>${inlineMarkdown(label)}</h2>`}`;
       } else {
+        // Optional nested contents for procedure steps; folded sections stay closed.
+        if (level === 3 && tocDepth >= 3 && inSection && !inDisclosure) toc.at(-1)?.children.push({ slug, label: label.replace(/`/g, "") });
         append(`<h${level} id="${slug}">${inlineMarkdown(label)}</h${level}>`);
       }
       index += 1;
@@ -245,7 +248,8 @@ function navLink(href, label, current) {
 }
 
 function pageTemplate(document, rendered) {
-  const toc = rendered.toc.map((item) => `<li><a href="#${item.slug}">${inlineMarkdown(item.label)}</a></li>`).join("");
+  const tocItem = (item) => `<li><a href="#${item.slug}">${inlineMarkdown(item.label)}</a>${item.children?.length ? `<ol>${item.children.map(tocItem).join("")}</ol>` : ""}</li>`;
+  const toc = rendered.toc.map(tocItem).join("");
   const current = document.output;
   return `<!doctype html>
 <html lang="en">
@@ -333,7 +337,7 @@ function codePageTemplate(document, code) {
 
 for (const document of documents) {
   const source = fs.readFileSync(path.join(root, document.source), "utf8");
-  const output = document.code ? codePageTemplate(document, source) : pageTemplate(document, renderMarkdown(source, document.foldSections));
+  const output = document.code ? codePageTemplate(document, source) : pageTemplate(document, renderMarkdown(source, document.foldSections, document.tocDepth));
   fs.writeFileSync(path.join(root, document.output), output);
   process.stdout.write(`built ${document.output}\n`);
 }
