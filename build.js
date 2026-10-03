@@ -262,7 +262,7 @@ function pageTemplate(document, rendered) {
     <title>${escapeHtml(document.title)} · jehlp.net</title>
     <link rel="icon" href="https://jehlp.net/site-theme/v2/favicons/mtl-guide.png" type="image/png">
     <script src="https://jehlp.net/site-theme/v2/theme.js?v=20260930-header-home"></script>
-    <link rel="stylesheet" href="https://jehlp.net/site-theme/v2/base.css?v=20261001-utilities">
+    <link rel="stylesheet" href="https://jehlp.net/site-theme/v2/base.css?v=20261003-controls">
     <link rel="stylesheet" href="https://jehlp.net/site-theme/v2/components.css">
     <script src="https://jehlp.net/site-theme/v2/components.js" defer></script>
     <link rel="stylesheet" href="assets/styles.css?v=20261001-utilities">
@@ -283,7 +283,7 @@ function pageTemplate(document, rendered) {
         <h1>${escapeHtml(document.title)}</h1>
         <div class="doc-actions">
           <button class="toc-toggle" id="toc-toggle" type="button" aria-expanded="false" aria-controls="doc-toc" data-disclosure="(max-width: 650px)" hidden>Contents</button>
-          <a class="raw-link" href="${document.source}" aria-label="View Markdown source">Markdown ↗</a>
+          <a class="raw-link" href="${document.source}" aria-label="View Markdown source">Markdown <span class="ui-link-arrow" aria-hidden="true"></span></a>
         </div>
       </header>
       <div class="doc-layout">
@@ -308,7 +308,7 @@ function codePageTemplate(document, code) {
     <title>${escapeHtml(document.title)} · jehlp.net</title>
     <link rel="icon" href="https://jehlp.net/site-theme/v2/favicons/mtl-guide.png" type="image/png">
     <script src="https://jehlp.net/site-theme/v2/theme.js?v=20260930-header-home"></script>
-    <link rel="stylesheet" href="https://jehlp.net/site-theme/v2/base.css?v=20261001-utilities">
+    <link rel="stylesheet" href="https://jehlp.net/site-theme/v2/base.css?v=20261003-controls">
     <link rel="stylesheet" href="https://jehlp.net/site-theme/v2/components.css">
     <script src="https://jehlp.net/site-theme/v2/components.js" defer></script>
     <link rel="stylesheet" href="assets/styles.css?v=20261001-utilities">
