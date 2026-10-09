@@ -24,7 +24,7 @@ body { padding-bottom: 42px; font-size: 1rem; line-height: 1.5; }
 .doc-shell:not(.code-shell) > .doc-hero { grid-template-columns: 210px minmax(0, var(--measure)); column-gap: 42px; justify-content: center; }
 .doc-shell:not(.code-shell) > .doc-hero h1 { grid-column: 2; grid-row: 1; }
 .doc-shell:not(.code-shell) > .doc-hero .doc-actions { grid-column: 1; grid-row: 1; padding-left: .6rem; }
-.doc-hero h1 { max-width: 30ch; margin: 0; font-size: 30px; font-weight: 700; letter-spacing: -.02em; line-height: 1.18; text-wrap: balance; }
+.doc-hero h1 { font-family: var(--reading, "Wrenfold Text", Georgia, serif); max-width: 30ch; margin: 0; font-size: 30px; font-weight: 700; letter-spacing: -.02em; line-height: 1.18; text-wrap: balance; }
 .doc-actions { display: flex; align-items: center; gap: 8px; }
 .raw-link { display: inline-flex; align-items: center; min-height: var(--control-size, 2.25rem); font: .875rem/1.4 var(--ui, var(--serif)); white-space: nowrap; }
 .toc-toggle { display: none; padding: 4px 8px; border: 1px solid var(--line-strong); border-radius: 0; background: var(--paper); font: .875rem/1.4 var(--ui, var(--serif)); }
@@ -39,7 +39,7 @@ body { padding-bottom: 42px; font-size: 1rem; line-height: 1.5; }
 .doc-toc a.is-active { border-left-color: var(--blue); color: var(--blue-dark); }
 .doc-toc ol ol a { padding-block: .3rem; padding-left: 1.35rem; font-size: .8125rem; }
 
-.doc-content { min-width: 0; padding-bottom: 30px; font-size: 1.125rem; line-height: 1.65; }
+.doc-content { font-family: var(--reading, "Wrenfold Text", Georgia, serif); min-width: 0; padding-bottom: 30px; font-size: 1.125rem; line-height: 1.65; }
 .doc-preamble { margin-bottom: 24px; color: var(--muted-strong); }
 .doc-preamble > :first-child { margin-top: 0; }
 .doc-preamble > :last-child { margin-bottom: 0; }
@@ -60,7 +60,7 @@ body { padding-bottom: 42px; font-size: 1rem; line-height: 1.5; }
 .doc-content pre { position: relative; max-width: 100%; margin: 11px 0 15px; overflow-x: auto; border: 1px solid var(--line); background: var(--surface); }
 .doc-content pre code { display: block; min-width: max-content; padding: 0; background: none; font-size: .875rem; line-height: 1.5; }
 .doc-table-scroll { margin: 11px 0 16px; overflow: auto; }
-.doc-content table { width: 100%; font: 1rem/1.5 var(--serif); }
+.doc-content table { width: 100%; font: 1rem/1.5 var(--reading, "Wrenfold Text", Georgia, serif); }
 .doc-content th, .doc-content td { padding: .6rem .65rem; text-align: left; vertical-align: top; }
 .doc-content strong { font-weight: 600; }
 .doc-content hr { margin: 20px 0; border: 0; border-top: 1px solid var(--line); }
@@ -112,3 +112,6 @@ body { padding-bottom: 42px; font-size: 1rem; line-height: 1.5; }
   .doc-section { break-inside: avoid-page; }
   a { color: inherit; }
 }
+
+.doc-content :is(h2, h3, h4, h5, h6, th) { font-family: var(--reading, "Wrenfold Text", Georgia, serif); }
+.doc-content :is(button, input, select, textarea, nav) { font-family: var(--ui, var(--serif)); }

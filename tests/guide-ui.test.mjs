@@ -50,7 +50,7 @@ test('authored and generated pages retain native Home in the existing header', (
     assert.equal((html.match(/class="site-home"/g) || []).length, 1, name);
     assert.doesNotMatch(html, /site-home-dock/);
     assert.match(html, /<header class="site-header site-header--identity">[\s\S]*?<span class="site-utility-pair"><a class="site-home"[^>]*aria-label="Home — jehlp.net"[\s\S]*?<\/a><button[^>]*data-theme-toggle/, name);
-    assert.ok(html.includes('base.css?v=20261009-folio-wrenfold'), name);
+    assert.ok(html.includes('base.css?v=20261009-reading-folio'), name);
     assert.ok(html.includes('theme.js?v=20260930-header-home'), name);
   }
 });
@@ -72,4 +72,14 @@ test('mastheads are plain text and generated navigation omits self-links', () =>
     assert.ok(!header.includes(`href="${name}"`), name);
     if (name !== 'index.html') assert.match(header, /href="index.html#templates"/);
   }
+});
+
+
+test('article text uses the reading font while controls keep the interface font', () => {
+  const css = readFileSync(new URL('../assets/styles.css', import.meta.url), 'utf8');
+  assert.match(css, /\.doc-content \{ font-family: var\(--reading,/);
+  assert.match(css, /\.doc-hero h1 \{ font-family: var\(--reading,/);
+  assert.match(css, /\.doc-content :is\(h2, h3, h4, h5, h6, th\) \{ font-family: var\(--reading,/);
+  assert.match(css, /\.doc-content :is\(button, input, select, textarea, nav\) \{ font-family: var\(--ui, var\(--serif\)\); \}/);
+  assert.match(css, /\.doc-content code \{[^}]*var\(--mono\)/);
 });
