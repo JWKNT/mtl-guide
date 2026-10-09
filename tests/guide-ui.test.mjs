@@ -61,3 +61,15 @@ test("navigation hover leaves the shared Home control alone", () => {
   assert.match(css, /\.site-header nav a:not\(\.site-home\):hover/);
   assert.doesNotMatch(css, /\.site-header nav a:hover/);
 });
+
+
+test('mastheads are plain text and generated navigation omits self-links', () => {
+  for (const name of ['index.html', ...pages]) {
+    const html = readFileSync(new URL(name, root), 'utf8');
+    const header = html.match(/<header class="site-header[^>]*>([\s\S]*?)<\/header>/)[1];
+    assert.match(header, /<span class="site-title">MTL Guide<\/span>/);
+    assert.doesNotMatch(header, /<a[^>]*class="site-title"/);
+    assert.ok(!header.includes(`href="${name}"`), name);
+    if (name !== 'index.html') assert.match(header, /href="index.html#templates"/);
+  }
+});

@@ -244,7 +244,7 @@ function renderMarkdown(markdown, foldSections = [], tocDepth = 2) {
 }
 
 function navLink(href, label, current) {
-  return `<a href="${href}"${current ? ' aria-current="page"' : ""}>${label}</a>`;
+  return current ? "" : `        <a href="${href}">${label}</a>\n`;
 }
 
 function pageTemplate(document, rendered) {
@@ -270,10 +270,9 @@ function pageTemplate(document, rendered) {
   <body data-site-tone="ochre">
     <a class="skip-link" href="#doc-content">Skip to document</a>
     <header class="site-header site-header--identity">
-      <div class="site-brand"><img class="site-mark" src="https://jehlp.net/site-theme/v2/marks/mtl-guide.png" width="32" height="32" alt=""><a class="site-title" href="index.html">MTL Guide</a></div>
+      <div class="site-brand"><img class="site-mark" src="https://jehlp.net/site-theme/v2/marks/mtl-guide.png" width="32" height="32" alt=""><span class="site-title">MTL Guide</span></div>
       <nav aria-label="Primary navigation">
-        ${navLink("workflow.html", "Workflow", current === "workflow.html")}
-        <a href="index.html#templates">Templates</a>
+${navLink("workflow.html", "Workflow", current === "workflow.html")}        <a href="index.html#templates">Templates</a>
         <a href="index.html#references">Reference</a>
         <span class="site-utility-pair"><a class="site-home" href="https://jehlp.net/" aria-label="Home — jehlp.net" title="Home — jehlp.net"><span aria-hidden="true">✳</span></a><button class="theme-toggle" type="button" data-theme-toggle aria-label="Use dark theme" aria-pressed="false">◐</button></span>
       </nav>
@@ -316,7 +315,7 @@ function codePageTemplate(document, code) {
   <body data-site-tone="ochre">
     <a class="skip-link" href="#doc-content">Skip to code</a>
     <header class="site-header site-header--identity">
-      <div class="site-brand"><img class="site-mark" src="https://jehlp.net/site-theme/v2/marks/mtl-guide.png" width="32" height="32" alt=""><a class="site-title" href="index.html">MTL Guide</a></div>
+      <div class="site-brand"><img class="site-mark" src="https://jehlp.net/site-theme/v2/marks/mtl-guide.png" width="32" height="32" alt=""><span class="site-title">MTL Guide</span></div>
       <nav aria-label="Primary navigation">
         <a href="workflow.html">Workflow</a>
         <a href="index.html#templates">Templates</a>
