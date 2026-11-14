@@ -247,6 +247,23 @@ function navLink(href, label, current) {
   return current ? "" : `        <a href="${href}">${label}</a>\n`;
 }
 
+// The link preview that Discord, Slack, Teams and other apps show for a shared link, with the
+// MTL Guide symbol card of the site theme.
+function previewTags(document) {
+  return [
+    ["property", "og:type", "article"],
+    ["property", "og:site_name", "jehlp.net"],
+    ["property", "og:title", `${document.title} · MTL Guide`],
+    ["property", "og:description", document.summary],
+    ["property", "og:url", `https://jehlp.net/mtl-guide/${document.output}`],
+    ["property", "og:image", "https://jehlp.net/site-theme/v2/cards/mtl-guide.png"],
+    ["property", "og:image:width", 600],
+    ["property", "og:image:height", 600],
+    ["property", "og:image:alt", "The MTL Guide symbol"],
+    ["name", "twitter:card", "summary"],
+  ].map(([kind, key, value]) => `    <meta ${kind}="${key}" content="${escapeHtml(value)}">`).join("\n");
+}
+
 function pageTemplate(document, rendered) {
   const tocItem = (item) => `<li><a href="#${item.slug}">${inlineMarkdown(item.label)}</a>${item.children?.length ? `<ol>${item.children.map(tocItem).join("")}</ol>` : ""}</li>`;
   const toc = rendered.toc.map(tocItem).join("");
@@ -259,6 +276,7 @@ function pageTemplate(document, rendered) {
     <meta name="description" content="${escapeHtml(document.summary)}">
     <meta name="theme-color" content="#ffffff">
     <link rel="canonical" href="https://jehlp.net/mtl-guide/${document.output}">
+${previewTags(document)}
     <title>${escapeHtml(document.title)} · jehlp.net</title>
     <link rel="icon" href="https://jehlp.net/site-theme/v2/favicons/mtl-guide.png" type="image/png">
     <script src="https://jehlp.net/site-theme/v2/theme.js?v=20260930-header-home"></script>
@@ -304,6 +322,7 @@ function codePageTemplate(document, code) {
     <meta name="description" content="${escapeHtml(document.summary)}">
     <meta name="theme-color" content="#ffffff">
     <link rel="canonical" href="https://jehlp.net/mtl-guide/${document.output}">
+${previewTags(document)}
     <title>${escapeHtml(document.title)} · jehlp.net</title>
     <link rel="icon" href="https://jehlp.net/site-theme/v2/favicons/mtl-guide.png" type="image/png">
     <script src="https://jehlp.net/site-theme/v2/theme.js?v=20260930-header-home"></script>
